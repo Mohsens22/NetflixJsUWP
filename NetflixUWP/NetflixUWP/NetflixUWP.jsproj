@@ -40,9 +40,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AppxBlockMap.xml" />
     <Content Include="AppxManifest.xml" />
-    <Content Include="AppxSignature.p7x" />
     <Content Include="default.html" />
     <Content Include="fonts\HandsetSansKufiArabic-Bold.ttf" />
     <Content Include="fonts\HandsetSansKufiArabic-Bold.woff" />
