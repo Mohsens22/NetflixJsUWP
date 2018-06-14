@@ -1,0 +1,846 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.2">
+
+  <CommandSet xml:lang="en-US" Name="NetflixSearchCommandSet_en-us">
+    <AppName> Netflix </AppName>
+    <Example>find House of Cards</Example>
+    <Command Name="FindTitle">
+      <Example>find House of Cards</Example>
+      <ListenFor>find {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">find {title} on {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">find {title} using {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">find {title} with {builtin:AppName}</ListenFor>
+      <Feedback>Netflix is finding {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchTitle">
+      <Example>search House of Cards</Example>
+      <ListenFor>search {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">search {title} on {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">search {title} using {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">search {title} with {builtin:AppName}</ListenFor>
+      <Feedback>Netflix is searching for {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchForTitle">
+      <Example>search for House of Cards</Example>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">search for {title}</ListenFor>
+      <Feedback>Netflix is searching for {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitle">
+      <Example>look for House of Cards</Example>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">look for {title}</ListenFor>
+      <Feedback>Netflix is looking for {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookUpTitle">
+      <Example>look up House of Cards</Example>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">look up {title}</ListenFor>
+      <Feedback>Netflix is looking up {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <PhraseTopic Label="title" Scenario="Dictation"/>
+  </CommandSet>
+
+
+  <CommandSet xml:lang="en-GB">
+    <AppName> Netflix </AppName>
+    <Example>find House of Cards</Example>
+    <Command Name="FindTitle">
+      <Example>find House of Cards</Example>
+      <ListenFor>find {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">find {title} on {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">find {title} using {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">find {title} with {builtin:AppName}</ListenFor>
+      <Feedback>Netflix is finding {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchTitle">
+      <Example>search House of Cards</Example>
+      <ListenFor>search {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">search {title} on {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">search {title} using {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">search {title} with {builtin:AppName}</ListenFor>
+      <Feedback>Netflix is searching for {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchForTitle">
+      <Example>search for House of Cards</Example>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">search for {title}</ListenFor>
+      <Feedback>Netflix is searching for {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitle">
+      <Example>look for House of Cards</Example>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">look for {title}</ListenFor>
+      <Feedback>Netflix is looking for {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookUpTitle">
+      <Example>look up House of Cards</Example>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">look up {title}</ListenFor>
+      <Feedback>Netflix is looking up {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <PhraseTopic Label="title" Scenario="Dictation"/>
+  </CommandSet>
+
+<!--
+  <CommandSet xml:lang="pt">
+    <AppName> Netflix </AppName>
+    <Example>buscar House of Cards</Example>
+    <Command Name="FindTitle">
+      <Example>buscar por House of Cards</Example>
+      <ListenFor>buscar por {title}</ListenFor>
+      <Feedback>Netflix está buscando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchTitle">
+      <Example>busca por House of Cards</Example>
+      <ListenFor>busca por {title}</ListenFor>
+      <Feedback>Netflix está buscando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchForTitle">
+      <Example>busque por House of Cards</Example>
+      <ListenFor>busque por {title}</ListenFor>
+      <Feedback>Netflix está buscando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitle">
+      <Example>procurar por House of Cards</Example>
+      <ListenFor>procurar por {title}</ListenFor>
+      <Feedback>Netflix está procurando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookUpTitle">
+      <Example>procura por House of Cards</Example>
+      <ListenFor>procurar por {title}</ListenFor>
+      <Feedback>Netflix está procurando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookUpTitleAlternateLocalization1">
+      <Example>procurando por House of Cards</Example>
+      <ListenFor>procurando por {title}</ListenFor>
+      <Feedback>Netflix está procurando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <PhraseTopic Label="title" Scenario="Dictation"/>
+  </CommandSet>
+-->
+<!--
+  <CommandSet xml:lang="es">
+    <AppName> Netflix </AppName>
+    <Example>encuentra House of Cards</Example>
+    <Command Name="FindTitle">
+      <Example>encuentra House of Cards</Example>
+      <ListenFor>encuentra {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">encuentra {title} con {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">encuentra {title} en {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">encuentra {title} usando {builtin:AppName}</ListenFor>
+      <Feedback>Netflix está buscando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchTitle">
+      <Example>encuéntrame House of Cards</Example>
+      <ListenFor>encuéntrame {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">encuéntrame {title} con {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">encuéntrame {title} en {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">encuéntrame {title} usando {builtin:AppName}</ListenFor>
+      <Feedback>Netflix está buscando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchForTitle">
+      <Example>busca House of Cards</Example>
+      <ListenFor>busca {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">busca {title} con {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">busca {title} en {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">busca {title} usando {builtin:AppName}</ListenFor>
+      <Feedback>Netflix está buscando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitle">
+      <Example>búscame House of Cards</Example>
+      <ListenFor>búscame {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">búscame {title} con {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">búscame {title} en {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">búscame {title} usando {builtin:AppName}</ListenFor>
+      <Feedback>Netflix está buscando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookUpTitle">
+      <Example>localiza House of Cards</Example>
+      <ListenFor>localiza {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">localiza {title} con {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">localiza {title} en {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">localiza {title} usando {builtin:AppName}</ListenFor>
+      <Feedback>Netflix está localizando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookUpTitleAlternateLocalization1">
+      <Example>localízame House of Cards</Example>
+      <ListenFor>localízame {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">localízame {title} con {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">localízame {title} en {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">localízame {title} usando {builtin:AppName}</ListenFor>
+      <Feedback>Netflix está localizando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <PhraseTopic Label="title" Scenario="Dictation"/>
+  </CommandSet>
+-->
+  <CommandSet xml:lang="da">
+    <AppName> Netflix </AppName>
+    <Example>find House of Cards</Example>
+    <Command Name="FindTitle">
+      <Example>find House of Cards</Example>
+      <ListenFor>find {title}</ListenFor>
+      <Feedback>Netflix finder {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchTitle">
+      <Example>søg efter House of Cards</Example>
+      <ListenFor>søg efter {title}</ListenFor>
+      <Feedback>Netflix søger efter {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchForTitle">
+      <Example>søg på House of Cards</Example>
+      <ListenFor>søg på {title}</ListenFor>
+      <Feedback>Netflix søger på {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitle">
+      <Example>led efter House of Cards</Example>
+      <ListenFor>led efter {title}</ListenFor>
+      <Feedback>Netflix leder efter {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <PhraseTopic Label="title" Scenario="Dictation"/>
+  </CommandSet>
+<!--
+  <CommandSet xml:lang="nb">
+    <AppName> Netflix </AppName>
+    <Example>finn House of Cards</Example>
+    <Command Name="FindTitle">
+      <Example>finn House of Cards</Example>
+      <ListenFor>finn {title}</ListenFor>
+      <Feedback>Netflix finner {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchTitle">
+      <Example>søk etter House of Cards</Example>
+      <ListenFor>søk etter {title}</ListenFor>
+      <Feedback>Netflix søker etter {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchForTitle">
+      <Example>søk på House of Cards</Example>
+      <ListenFor>søk på House of Cards</ListenFor>
+      <Feedback>Netflix søker på House of Cards</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitle">
+      <Example>let etter House of Cards</Example>
+      <ListenFor>let etter {title}</ListenFor>
+      <Feedback>Netflix leter etter House of Cards</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <PhraseTopic Label="title" Scenario="Dictation"/>
+  </CommandSet>
+-->
+<!--
+  <CommandSet xml:lang="sv">
+    <AppName> Netflix </AppName>
+    <Example>hitta House of Cards på Netflix</Example>
+    <Command Name="FindTitle">
+      <Example>Hitta House of Cards på Netflix</Example>
+      <ListenFor>hitta {title}</ListenFor>
+      <Feedback>Netflix letar efter {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchTitle">
+      <Example>Sök efter House of Cards på Netflix</Example>
+      <ListenFor>sök efter {title}</ListenFor>
+      <Feedback>Netflix söker efter {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchForTitle">
+      <Example>Leta efter House of Cards på Netflix</Example>
+      <ListenFor>leta efter {title}</ListenFor>
+      <Feedback>Netflix letar efter {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <PhraseTopic Label="title" Scenario="Dictation"/>
+  </CommandSet>
+-->
+<!--
+  <CommandSet xml:lang="fi">
+    <AppName> Netflix </AppName>
+    <Example>hae House of Cards</Example>
+    <Command Name="FindTitle">
+      <Example>hae House of Cards</Example>
+      <ListenFor>hae {title}</ListenFor>
+      <Feedback>Netflix hakee {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchTitle">
+      <Example>etsi House of Cards</Example>
+      <ListenFor>etsi {title}</ListenFor>
+      <Feedback>Netflix etsii {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchForTitle">
+      <Example>haku House of Cards</Example>
+      <ListenFor>haku {title}</ListenFor>
+      <Feedback>Netflix tekee haun {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitle">
+      <Example>löydä House of Cards</Example>
+      <ListenFor>löydä {title}</ListenFor>
+      <Feedback>Netflix löytää {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookUpTitle">
+      <Example>missä House of Cards</Example>
+      <ListenFor>missä {title}</ListenFor>
+      <Feedback>Netflix etsii missä {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <PhraseTopic Label="title" Scenario="Dictation"/>
+  </CommandSet>
+-->
+<!--
+  <CommandSet xml:lang="nl">
+    <AppName> Netflix </AppName>
+    <Example>zoek House of Cards</Example>
+    <Command Name="FindTitle">
+      <Example>zoek House of Cards</Example>
+      <ListenFor>zoek {title}</ListenFor>
+      <Feedback>Netflix zoekt {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchTitle">
+      <Example>House of Cards zoeken</Example>
+      <ListenFor>{title} zoeken</ListenFor>
+      <Feedback>Netflix zoekt {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchForTitle">
+      <Example>zoek naar House of Cards</Example>
+      <ListenFor>zoek naar {title}</ListenFor>
+      <Feedback>Netflix zoekt naar {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitle">
+      <Example>vraag naar House of Cards</Example>
+      <ListenFor>vraag naar {title}</ListenFor>
+      <Feedback>Netflix vraagt naar {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookUpTitle">
+      <Example>zoek House of Cards op</Example>
+      <ListenFor>zoek {title} op</ListenFor>
+      <Feedback>Netflix zoekt {title} op</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <PhraseTopic Label="title" Scenario="Dictation"/>
+  </CommandSet>
+-->
+  <CommandSet xml:lang="fr-CA">
+    <AppName> Netflix </AppName>
+    <Example>trouvez House of Cards</Example>
+    <Command Name="FindTitle">
+      <Example>trouvez House of Cards</Example>
+      <ListenFor>trouvez {title}</ListenFor>
+      <Feedback>Netflix trouve {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchTitle">
+      <Example>cherchez House of Cards</Example>
+      <ListenFor>cherchez {title}</ListenFor>
+      <Feedback>Netflix cherche {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchForTitle">
+      <Example>recherchez House of Cards</Example>
+      <ListenFor>recherchez {title}</ListenFor>
+      <Feedback>Netflix recherche {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <PhraseTopic Label="title" Scenario="Dictation"/>
+  </CommandSet>
+
+  <CommandSet xml:lang="fr-fr">
+    <AppName> Netflix </AppName>
+    <Example>trouve House of Cards</Example>
+    <Command Name="FindTitle">
+      <Example>trouve House of Cards</Example>
+      <ListenFor>trouve {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trouve {title} dans {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trouve {title} avec {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trouve {title} sur {builtin:AppName}</ListenFor>
+      <Feedback>Netflix est en train de trouver {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchTitle">
+      <Example>trouvez House of Cards</Example>
+      <ListenFor>trouvez {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trouvez {title} dans {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trouvez {title} avec {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trouvez {title} sur {builtin:AppName}</ListenFor>
+      <Feedback>Netflix est en train de chercher {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchForTitle">
+      <Example>cherche House of Cards</Example>
+      <ListenFor>cherche {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">cherche {title} dans {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">cherche {title} avec {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">cherche {title} sur {builtin:AppName}</ListenFor>
+      <Feedback>Netflix est en train de chercher {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitle">
+      <Example>cherchez House of Cards</Example>
+      <ListenFor>cherchez {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">cherchez {title} dans {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">cherchez {title} avec {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">cherchez {title} sur {builtin:AppName}</ListenFor>
+      <Feedback>Netflix est en train de chercher {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitleAlternateLocalization1">
+      <Example>recherche House of Cards</Example>
+      <ListenFor>recherche {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">recherche {title} dans {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">recherche {title} avec {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">recherche {title} sur {builtin:AppName}</ListenFor>
+      <Feedback>Netflix est en train de rechercher {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookUpTitleAlternateLocalization2">
+      <Example>trouve-moi House of Cards</Example>
+      <ListenFor>trouve-moi {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trouve-moi {title} dans {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trouve-moi {title} avec {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trouve-moi {title} sur {builtin:AppName}</ListenFor>
+      <Feedback>Netflix est en train de trouver {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookUpTitleAlternateLocalization3">
+      <Example>trouvez-moi House of Cards</Example>
+      <ListenFor>trouvez-moi {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trouvez-moi {title} dans {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trouvez-moi {title} avec {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trouvez-moi {title} sur {builtin:AppName}</ListenFor>
+      <Feedback>Netflix est en train de trouver {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <PhraseTopic Label="title" Scenario="Dictation"/>
+  </CommandSet>
+
+
+  <CommandSet xml:lang="de-de">
+    <AppName> Netflix </AppName>
+    <Example>finde House of Cards</Example>
+    <Command Name="FindTitle">
+      <Example>finde House of Cards</Example>
+      <ListenFor>finde {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">finde {title} in {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">finde {title} auf {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">finde {title} mit {builtin:AppName}</ListenFor>
+      <Feedback>Netflix findet {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchTitle">
+      <Example>finden Sie House of Cards</Example>
+	  <ListenFor>finden Sie {title}</ListenFor>
+	  <ListenFor RequireAppName="ExplicitlySpecified">finden Sie {title} in {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">finden Sie {title} auf {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">finden Sie {title} mit {builtin:AppName}</ListenFor>
+      <Feedback>Netflix findet {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchForTitle">
+      <Example>suche House of Cards</Example>
+      <ListenFor>suche {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">suche {title} in {builtin:AppName}</ListenFor>
+	  <ListenFor RequireAppName="ExplicitlySpecified">suche {title} auf {builtin:AppName}</ListenFor>
+	  <ListenFor RequireAppName="ExplicitlySpecified">suche {title} mit {builtin:AppName}</ListenFor>
+      <Feedback>Netflix sucht {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitle">
+      <Example>such House of Cards</Example>
+      <ListenFor>such {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">such {title} in {builtin:AppName}</ListenFor>
+	  <ListenFor RequireAppName="ExplicitlySpecified">such {title} auf {builtin:AppName}</ListenFor>
+	  <ListenFor RequireAppName="ExplicitlySpecified">such {title} mit {builtin:AppName}</ListenFor>
+      <Feedback>Netflix sucht {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookUpTitle">
+      <Example>suchen Sie House of Cards</Example>
+	  <ListenFor>suchen Sie {title}</ListenFor>
+	  <ListenFor RequireAppName="ExplicitlySpecified">suchen Sie {title} in {builtin:AppName}</ListenFor>
+	  <ListenFor RequireAppName="ExplicitlySpecified">suchen Sie {title} auf {builtin:AppName}</ListenFor>
+	  <ListenFor RequireAppName="ExplicitlySpecified">suchen Sie {title} mit {builtin:AppName}</ListenFor>
+      <Feedback>Netflix sucht {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <PhraseTopic Label="title" Scenario="Dictation"/>
+  </CommandSet>    
+
+  <CommandSet xml:lang="es-ES">
+    <AppName> Netflix </AppName>
+    <Example>encuentra House of Cards</Example>
+    <Command Name="FindTitle">
+      <Example>encuentra House of Cards</Example>
+   	  <ListenFor>encuentra {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">encuentra {title} con {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">encuentra {title} en {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">encuentra {title} usando {builtin:AppName}</ListenFor>
+      <Feedback>Netflix está buscando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchTitle">
+      <Example>busca House of Cards</Example>
+	  <ListenFor>busca {title}</ListenFor>
+	  <ListenFor RequireAppName="ExplicitlySpecified">busca {title} con {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">busca {title} en {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">busca {title} usando {builtin:AppName}</ListenFor>
+      <Feedback>Netflix está buscando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchForTitle">
+      <Example>localiza House of Cards</Example>
+ 	  <ListenFor>localiza {title}</ListenFor>
+	  <ListenFor RequireAppName="ExplicitlySpecified">localiza {title} con {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">localiza {title} en {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">localiza {title} usando {builtin:AppName}</ListenFor>
+      <Feedback>Netflix está localizando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitle">
+      <Example>ve a House of Cards</Example>
+	  <ListenFor>ve a {title}</ListenFor>
+	  <ListenFor RequireAppName="ExplicitlySpecified">ve a {title} con {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">ve a {title} en {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">ve a {title} usando {builtin:AppName}</ListenFor>
+      <Feedback>Netflix está yendo a {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="FindTitleAlternateLocalization1">
+      <Example>encontrar House of Cards</Example>
+	  <ListenFor>encontrar {title}</ListenFor>
+	  <ListenFor RequireAppName="ExplicitlySpecified">encontrar {title} con {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">encontrar {title} en {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">encontrar {title} usando {builtin:AppName}</ListenFor>
+      <Feedback>Netflix está buscando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchTitleAlternateLocalization2">
+      <Example>buscar House of Cards</Example>
+	  <ListenFor>buscar {title}</ListenFor>
+	  <ListenFor RequireAppName="ExplicitlySpecified">buscar {title} con {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">buscar {title} en {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">buscar {title} usando {builtin:AppName}</ListenFor>
+      <Feedback>Netflix está buscando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchForTitleAlternateLocalization3">
+      <Example>localizar House of Cards</Example>
+	  <ListenFor>localizar {title}</ListenFor>
+	  <ListenFor RequireAppName="ExplicitlySpecified">localizar {title} con {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">localizar {title} en {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">localizar {title} usando {builtin:AppName}</ListenFor>	  
+      <Feedback>Netflix está localizando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <PhraseTopic Label="title" Scenario="Dictation"/>
+  </CommandSet>    
+
+  <CommandSet xml:lang="it-it">
+    <AppName> Netflix </AppName>
+    <Example>cerca House of Cards</Example>
+    <Command Name="FindTitle">
+      <Example>cerca House of Cards</Example>
+      <ListenFor>cerca {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">cerca {title} usando {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">cerca {title} con {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">cerca {title} da {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">cerca {title} su {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">cerca {title} in {builtin:AppName}</ListenFor>
+      <Feedback>Netflix sta cercando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchTitle">
+      <Example>trova House of Cards</Example>
+      <ListenFor>trova {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trova {title} usando {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trova {title} con {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trova {title} da {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trova {title} su {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trova {title} in {builtin:AppName}</ListenFor>
+      <Feedback>Netflix sta trovando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchForTitle">
+      <Example>cerchi House of Cards</Example>
+      <ListenFor>cerchi {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">cerchi {title} usando {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">cerchi {title} con {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">cerchi {title} da {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">cerchi {title} su {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">cerchi {title} in {builtin:AppName}</ListenFor>
+      <Feedback>Netflix sta cercando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitle">
+      <Example>trovi House of Cards</Example>
+      <ListenFor>trovi {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trovi {title} usando {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trovi {title} con {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trovi {title} da {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trovi {title} su {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">trovi {title} in {builtin:AppName}</ListenFor>
+      <Feedback>Netflix sta trovando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookUpTitle">
+      <Example>rintraccia House of Cards</Example>
+      <ListenFor>rintraccia {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">rintraccia {title} usando {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">rintraccia {title} con {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">rintraccia {title} da {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">rintraccia {title} su {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">rintraccia {title} in {builtin:AppName}</ListenFor>
+      <Feedback>Netflix sta rintracciando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookUpTitleAlternateLocalization1">
+      <Example>individua House of Cards</Example>
+      <ListenFor>individua {title}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">individua {title} usando {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">individua {title} con {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">individua {title} da {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">individua {title} su {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">individua {title} in {builtin:AppName}</ListenFor>
+      <Feedback>Netflix sta individuando {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <PhraseTopic Label="title" Scenario="Dictation"/>
+  </CommandSet>    
+<!--	
+  <CommandSet xml:lang="pt-pt">
+    <AppName> Netflix </AppName>
+    <Example>procura House of Cards</Example>
+    <Command Name="FindTitle">
+      <Example>procura House of Cards</Example>
+      <ListenFor>procurar {title}</ListenFor>
+      <Feedback>Netflix está à procura de {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchTitle">
+      <Example>pesquisa House of Cards</Example>
+      <ListenFor>pesquisar {title}</ListenFor>
+      <Feedback>Netflix está a pesquisar por {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchForTitle">
+      <Example>localizar House of Cards</Example>
+      <ListenFor>localizar {title}</ListenFor>
+      <Feedback>Netflix está a localizar {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitle">
+      <Example>encontra o House of Cards</Example>
+      <ListenFor>encontrar {title}</ListenFor>
+      <Feedback>Netflix está a encontrar {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <PhraseTopic Label="title" Scenario="Dictation"/>
+  </CommandSet>
+-->
+<!--
+  <CommandSet xml:lang="ar">
+    <AppName> Netflix </AppName>
+    <Example>Netflix جد</Example>
+    <Command Name="FindTitle">
+      <Example>Netflix جد</Example>
+      <ListenFor>جد {title}</ListenFor>
+      <Feedback>Netflix يحاول إيجاد {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchTitle">
+      <Example>Netflix ابحث عن</Example>
+      <ListenFor>ابحث عن {title}</ListenFor>
+      <Feedback>Netflix يبحث عن {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchForTitle">
+      <Example>فتش عن House of Cards</Example>
+      <ListenFor>فتش عن {title}</ListenFor>
+      <Feedback>Netflix يفتش عن House of Cards</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitle">
+      <Example>تحرى عن House of Cards</Example>
+      <ListenFor>تحرى عن {title}</ListenFor>
+      <Feedback>Netflix يتحرى عن {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitleAlternateLocalization1">
+      <Example>تحقق من وجود House of Cards</Example>
+      <ListenFor>تحقق من وجود {title}</ListenFor>
+      <Feedback>Netflix يتحقق من وجود {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <PhraseTopic Label="title" Scenario="Dictation"/>
+  </CommandSet>    
+-->	
+<!--
+	<CommandSet xml:lang="ko">
+    <AppName> Netflix </AppName>
+    <Example>하우스 오브 카드를 찾아줘</Example>
+    <Command Name="FindTitle">
+      <Example>하우스 오브 카드를 찾아줘</Example>
+      <ListenFor>{title} 검색</ListenFor>
+      <Feedback>Netflix에서 {title}(을)를 검색 중입니다</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchTitle">
+      <Example>하우스 오브 카드를 검색해줘</Example>
+      <ListenFor>{title} 검색</ListenFor>
+      <Feedback>Netflix에서 {title}(을)를 검색 중입니다</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchForTitle">
+      <Example>하우스 오브 카드를 검색해줘</Example>
+      <ListenFor>{title} 찾기</ListenFor>
+      <Feedback>Netflix에서 {title}(을)를 찾는 중입니다</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitle">
+      <Example>하우스 오브 카드를 찾아줘</Example>
+      <ListenFor>{title} 찾기</ListenFor>
+      <Feedback>Netflix에서 {title}(을)를 찾는 중입니다</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <PhraseTopic Label="title" Scenario="Dictation"/>
+  </CommandSet>    
+-->
+<!--
+  <CommandSet xml:lang="zh-tw">
+    <AppName> Netflix </AppName>
+    <Example>找 House of Cards</Example>
+    <Command Name="FindTitle">
+      <Example>找 House of Cards</Example>
+      <ListenFor>找 {title}</ListenFor>
+      <Feedback>Netflix 正在找 House of Cards</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchTitle">
+      <Example>查 House of Cards</Example>
+      <ListenFor>搜尋 {title}</ListenFor>
+      <Feedback>Netflix 正在搜尋 House of Cards</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchForTitle">
+      <Example>查找 House of Cards</Example>
+      <ListenFor>查找 {title}</ListenFor>
+      <Feedback>Netflix 正在查找 House of Cards</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitle">
+      <Example>查看 House of Cards</Example>
+      <ListenFor>查看 {title}</ListenFor>
+      <Feedback>Netflix 正在查看 House of Cards</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <PhraseTopic Label="title" Scenario="Dictation"/>
+  </CommandSet>    
+-->
+  <CommandSet xml:lang="zh-cn">
+    <AppName> Netflix </AppName>
+    <Example>查找 House of Cards</Example>
+    <Command Name="FindTitle">
+      <Example>查找 House of Cards</Example>
+      <ListenFor>查找 {title}</ListenFor>
+      <Feedback>Netflix 正在查找 {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchTitle">
+      <Example>搜寻 House of Cards</Example>
+      <ListenFor>搜寻 {title}</ListenFor>
+      <Feedback>Netflix 正在搜寻 {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchForTitle">
+      <Example>搜索 House of Cards</Example>
+      <ListenFor>搜索 {title}</ListenFor>
+      <Feedback>Netflix 正在搜索 {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitle">
+      <Example>找寻 House of Cards</Example>
+      <ListenFor>找寻 {title}</ListenFor>
+      <Feedback>Netflix 正在找寻 {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitleAlternateLocalization1">
+      <Example>查看 House of Cards</Example>
+      <ListenFor>查看 {title}</ListenFor>
+      <Feedback>Netflix 正在查看 {title}</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <PhraseTopic Label="title" Scenario="Dictation"/>
+  </CommandSet>    
+	
+	<CommandSet xml:lang="ja">
+    <AppName> Netflix </AppName>
+    <Example>ネットフリックス ハウス オブ カードを検索</Example>
+    <Command Name="FindTitle">
+      <Example>ネットフリックス ハウス オブ カードを検索</Example>
+      <ListenFor>{title}を検索</ListenFor>
+      <Feedback>ネットフリックスは、 {title}を検索しています</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchTitle">
+      <Example>ネットフリックス ハウス オブ カードを検索する</Example>
+      <ListenFor>{title}を検索する</ListenFor>
+      <Feedback>ネットフリックスは、 {title}を検索しています</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="SearchForTitle">
+      <Example>ネットフリックス　ハウス オブ カードを探せ</Example>
+      <ListenFor>{title}を探せ</ListenFor>
+      <Feedback>ネットフリックスは、 {title}を探しています</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitle">
+      <Example>ネットフリックス ハウス オブ カードを探す</Example>
+      <ListenFor>{title}を探す</ListenFor>
+      <Feedback>ネットフリックスは、 {title}を探しています</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+	 <Command Name="SearchForTitleAlternateLocalization1">
+      <Example>ネットフリックス ハウス オブ カードを探して</Example>
+      <ListenFor>{title}を探して</ListenFor>
+      <Feedback>ネットフリックスは、 {title}を検索しています</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <Command Name="LookForTitleAlternateLocalization1">
+      <Example>ネットフリックス　ハウス オブ カードを見つけろ</Example>
+      <ListenFor>{title}を見つけろ</ListenFor>
+      <Feedback>ネットフリックスは、 {title}を見つけています</Feedback>
+      <Navigate Target="SearchResults"/>
+    </Command>
+    <PhraseTopic Label="title" Scenario="Dictation"/>
+  </CommandSet>
+  
+</VoiceCommands>

@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "noEmit": true
+    },
+    "include": [
+        "modules/**/*",
+        "js/**/*"
+    ]
+}
