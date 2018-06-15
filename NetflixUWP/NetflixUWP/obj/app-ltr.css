@@ -1,0 +1,2313 @@
+﻿@font-face {
+    font-family: 'Handset Sans Kufi Arabic';
+    src: url('/fonts/HandsetSansKufiArabic-Regular.woff') format('woff'),
+         url('/fonts/HandsetSansKufiArabic-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Handset Sans Kufi Arabic';
+    src: url('/fonts/HandsetSansKufiArabic-Bold.woff') format('woff'),
+         url('/fonts/HandsetSansKufiArabic-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+/*rtl:ignore*/
+.app-ltr {
+    direction: ltr;
+}
+/*rtl:ignore*/
+.app-rtl {
+    direction: rtl;
+}
+/*rtl:ignore*/
+.app-rtl .icon-mirror-for-rtl {
+    transform: scaleX(-1);
+    transform-origin: 50% 50%;
+    display: inline-block;
+}
+
+.app-ltr div:not([class*=" icon-"]):not([class^="icon-"]) {
+    font-family: "Segoe UI", sans-serif, "Segoe MDL2 Assets", "Symbols" /*rtl:prepend:"Handset Sans Kufi Arabic",*/;
+}
+
+.app-ltr .apptitle {
+    text-align:center
+}
+
+.app-ltr .splash-progress-container {
+    text-align: center;
+}
+
+.app-ltr .floatLeft {
+    float: left;
+}
+
+.app-ltr .floatRight {
+    float: right;
+}
+
+.app-ltr .accessibility-only {
+    pointer-events: none;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    opacity:0;
+}
+
+/* Ellipsis for overflow text */
+.app-ltr .ellipsis {
+    /* Keep this hack here until we know how to show the right tail of Thai characters when overflow:hidden */
+    padding-right: 4px;
+}
+
+@keyframes pleaseWaitSpin {
+    100% {
+        transform: rotate(360deg) /*rtl:rotate(360deg)*/;
+    }
+}
+
+/* pages */
+.app-ltr .details-popup-box {
+    margin: 0 auto;
+    left:0;
+    right:0;
+    box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.701961);
+}
+
+.app-ltr .details-popup-enter-active .details-shim {
+    transition: opacity .2s ease-out;
+}
+.app-ltr .details-popup-leave-active .details-shim {
+    transition: opacity .2s ease-in;
+}
+.app-ltr .details-popup-enter .details-popup-box{
+    transform: translateY(222px);
+}
+.app-ltr .details-popup-enter-active .details-popup-box {
+    transform: translateY(0);
+    transition: transform .6s cubic-bezier(0,1,0,1), opacity .3s ease-out;
+}
+.app-ltr .details-popup-enter-active {
+    transition: opacity .6s;
+}
+.app-ltr .details-popup-leave-active {
+    transition: opacity .6s;
+}
+.app-ltr .details-popup-leave-active .details-popup-box{
+    transform: translateY(222px);
+    transition: transform .5s cubic-bezier(.1,0,0,1), opacity .5s cubic-bezier(.1,0,0,1);
+}
+.app-ltr .details-page-content-enter.details-page-content-enter-active {
+    transition: opacity .3s;
+}
+.app-ltr .details-page-leave-active {
+    transition: opacity .4s;
+}
+.app-ltr .details-closeButton,
+.app-ltr .details-backButton {
+    text-shadow: -1px 0 5px rgba(0,0,0,0.8), 1px 0 5px rgba(0,0,0,0.8);
+    text-align: center;
+    transition: transform .2s cubic-bezier(0,1,0,1);
+}
+
+.app-ltr .details-backButton:hover {
+    transform: scale(1.2) translate(4px, 3px);
+    text-shadow: -1px 0px 5px rgba(0,0,0,0.9), 1px 0px 5px rgba(0,0,0,0.9);
+}
+
+.app-ltr .details-closeButton:hover {
+    transform: scale(1.2) translate(-5px, 3px);
+    text-shadow: -1px 0px 5px rgba(0,0,0,0.9), 1px 0px 5px rgba(0,0,0,0.9);
+}
+
+.app-ltr .details-closeButton {
+    padding: 16px 0px 48px 48px;
+    right: 13px; /* scroll bar width */
+}
+
+.app-ltr .details-backButton {
+    padding: 16px 48px 48px 13px;  /* 13px scroll bar width (for symmetry) */
+}
+
+.app-ltr .display-page-title .episode .number {
+    margin-right: 10px; 
+}
+.app-ltr .display-page-title .episode .number {
+    margin-right: 10px; 
+}
+.app-ltr .display-page-title .title-heading {
+    margin: 0 !important;
+    text-shadow: 0px -1px 8px rgba(0,0,0,0.5);
+}
+.app-ltr .title-synopsis {
+    margin: 10px 0;
+    padding: 0;
+}
+.app-ltr .details-header {
+    background: linear-gradient(
+        rgba(25,25,25, 0),
+        rgba(25,25,25,.5) 20px, /* gradient is kind of non-linear: at 1/3 of the distance we already have 50% transparency*/
+        rgba(25,25,25, 1) 60px  /* the same 60px that header overlaps background image by */
+    );
+}
+
+.app-ltr .image-cycler-layer {
+    left: 0;
+    background-position: center 0;
+}
+.app-ltr .display-page-story-art {
+    transform: translate3d(0,0,0);
+    transition: opacity 100ms linear;
+}
+.app-ltr .aspect-box {
+    float: left;
+}
+.app-ltr .aspect-content {
+    left: 0;
+    right: 0;
+}
+/*.details-gradient{ 
+  background: linear-gradient(rgba(29,29,29,0) 90%, rgba(29,29,29,1) 100%);
+  }
+  */
+
+/*rtl:ignore*/
+.app-ltr .display-page-play-button {
+    left: 50%;
+    margin: -40px 0 0 -40px;
+}
+
+/*rtl:ignore*/
+.app-ltr .display-page-play-button .play-button-icon::after {
+    text-align: center;
+    left: 50%;
+    margin-left: -26px;
+}
+/*rtl:ignore*/
+.app-ltr .display-page-play-button .play-button-icon::before {
+    left: 50%;
+    margin-left: -29px;
+    border-radius: 50%;
+}
+.app-ltr .episode-details {
+/*    padding: 8px;
+*/ 
+}
+.app-ltr .episode-title {
+/*    margin-right: 8px;
+ */
+}
+
+@media all and (max-width: 431px) {
+  .app-ltr .details-page-content .win-listview .win-gridlayout .win-container {
+    margin: 0;    
+    padding: 4px; 
+  }
+  .app-ltr .details-page-content .win-listview .win-vertical .win-gridlayout.win-surface {
+    margin: 0;    /* winjs' dark-ui.css has 20px margin on the left. Override it ... */
+    padding: 0 1px; /* and use padding instead to cover image cycler behind Listview   */
+  }
+  .app-ltr .details-header {
+    padding: 0 9px 10px 9px;
+  }
+  .app-ltr .details-page-content .win-itemscontainer {
+    padding: 5px; /* This padding should be at least as wide as selection/hover outline */
+  }
+}
+
+@media all and (min-width: 432px) {
+  .app-ltr .details-media::after { content: "432px < Fullscreen Standard"; }
+  .app-ltr .details-page-content .win-listview .win-gridlayout .win-container {
+    margin: 0;  
+    padding: 4px; 
+  }
+  .app-ltr .details-page-content .win-listview > .win-viewport.win-vertical .win-surface {
+    margin: 0;       /* winjs' dark-ui.css has 20px margin on the left. Override it ... */
+    padding: 0 1px; /* and use padding instead to cover image cycler behind Listview   */
+
+  }
+  .app-ltr .details-header {
+    padding: 0 9px 10px 9px;
+  }
+  .app-ltr .details-page-content .win-itemscontainer {
+    padding: 5px; /* This padding should be at least as wide as selection/hover outline */
+  }
+}
+
+@media all and (min-width: 640px)  {
+  .app-ltr .details-media::after { content: "640px < Fullscreen Standard "; }
+  .app-ltr .details-page-content .win-listview > .win-viewport.win-vertical .win-surface {
+    margin: 0;       /* winjs' dark-ui.css has 20px margin on the left. Override it ... */
+    padding: 0 39px; /* and use padding instead to cover image cycler behind Listview   */
+  }
+  .app-ltr .details-header {
+    padding: 0 47px 10px 47px;
+  }
+  .app-ltr .details-page-content .win-itemscontainer {
+    padding: 5px; /* This padding should be at least as wide as selection/hover outline */
+  }
+}
+
+
+/* Bookmark bar is LTR regardless of language */
+/*rtl:ignore*/
+.app-ltr .details-bookmark.episode {
+    right: 0px;
+    left: 0px;
+}
+
+/* Bookmark bar is LTR regardless of language */
+/*rtl:ignore*/
+.app-ltr .details-bookmark-bar {
+    padding: 12px 0px;
+    direction: ltr;
+}
+
+/* Bookmark bar is LTR regardless of language */
+/*rtl:ignore*/
+.app-ltr .episode .details-bookmark-bar {
+    padding: 25px 7px 10px 7px;
+}
+
+/* Bookmark bar is LTR regardless of language */
+/*rtl:ignore*/
+.app-ltr .episode .details-bookmark-bar {
+    background: 
+        linear-gradient(
+            rgba(0,0,0,0),
+            rgba(0,0,0,.8) 80%
+    )
+}
+/*rtl:ignore*/
+.app-ltr .details-bookmark-label.left {
+    order: 1;
+    margin: 0 12px;
+    color: #E50914;
+}
+/*rtl:ignore*/
+.app-ltr .details-bookmark-label.right {
+    order: 3;
+    margin: 0 12px;
+    color: #666666;
+}
+.app-ltr .details-page-content .virtualized-list-footer.details-list-container {
+    padding:12px;
+}
+.app-ltr .details-list-container.c-r {
+    left: 50%;
+    margin-right:47px;
+}
+.app-ltr .details-list-container.c-l {
+    margin-left:47px;
+}
+.app-ltr .details-list-item-highlight {
+    /*padding: 4px;*/
+}
+.app-ltr .details-list-container .details-list-item-highlight:hover,
+.app-ltr .details-list-container .details-list-item-highlight.hover {
+    box-shadow: 0px 0px 20px 4px rgba(0,0,0,0.801961);
+}
+.app-ltr .episode-image-container {
+  background: linear-gradient(-180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.08) 100%);
+}
+.app-ltr .episode-image-container img {
+  transition: opacity .3s ease-out 50ms;
+  transform: translateY(-50%);
+}
+.app-ltr .episode-synopsis {
+    margin: 2px 0 24px 0;
+}
+@media all and (max-width: 639px) {
+    .app-ltr .details-list-container.c-r {
+        margin-right: 9px;
+    }
+
+    .app-ltr .details-list-container.c-l {
+        margin-left: 9px;
+    }
+}
+
+.app-ltr .details-list-container.details-group-container {
+    padding: 24px 4px 8px 4px;
+}
+
+.app-ltr .image-container div.placeholder {
+  background: linear-gradient(-180deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.8) 100%);
+}
+.app-ltr .image-container div.image{
+  transition: .5s opacity ease-out ;
+  background-position: 50% 50%;
+}
+.app-ltr .episode-meta  {
+    transition: opacity .3s ease-out;
+}
+
+
+
+.app-ltr .episode-dl-placeholder .dl_button{ 
+    position: absolute;
+    top: 4px; right: 0px;  /* and offset it slightly to align with the right place */
+    transform: scale(.75) translateX(4px);
+}
+.app-ltr .app-ltr .view-more-episodes-button {
+    border: 1px solid white;
+    padding: 6px 12px 8px 12px;
+}
+.app-ltr .downloaded-episodes-footer {
+    margin: 20px 49px 68px 49px;
+    background: rgb(25, 25, 25);
+    position: relative;
+}
+.app-ltr .view-more-episodes-button {
+    border: 1px solid white;
+    padding: 6px 12px 8px 12px;
+}
+.app-ltr .view-more-episodes-button:hover {
+    background : #2f2f2f;
+}
+
+.app-ltr .details-buttons-section {
+    display: flex;
+    margin: 20px -1em;
+}
+
+.app-ltr .details-buttons-section svg { position: absolute; }
+.app-ltr .lottie-button svg { position: relative; }
+
+.app-ltr .da-container {
+  display: flex; 
+  flex-direction: column;
+  justify-content: flex-end;
+
+  margin: 0 1em;
+
+  align-items: center;
+
+}
+
+.app-ltr .da-container:hover { color: white; }
+.app-ltr .da-hover       .da-icon-container { transform: scale(.9); transition: .2s transform; }
+.app-ltr .da-hover:hover .da-icon-container { transform: scale(1) ; transition: .3s transform; }
+
+.app-ltr .da-hover.lottie-button .da-icon-container svg path { transition: .2s fill, .2s transform; fill: #b3b3b3; }
+.app-ltr .da-hover:hover.lottie-button .da-icon-container svg path { transition: .3s fill, .3s transform; fill: #ffffff}
+
+.app-ltr .da-hover.lottie-button .da-label-container { transition: .2s color; }
+.app-ltr .da-hover:hover.lottie-button .da-label-container { transition: .3s color; }
+
+.app-ltr .da-container .da-label-container .label-sizer-container,
+.app-ltr .da-container .da-label-container {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: .5px;
+}
+.app-ltr .da-container .da-label-container {
+  margin-top: -4px;
+}
+
+.app-ltr .da-container .da-label-container .label-sizer {
+  visibility: collapse;
+}
+
+.app-ltr .episode-dl-placeholder .da-label-container {
+  display: none;
+}
+
+.app-ltr .da-container .da-icon-container {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+
+  margin-bottom: 4px;
+  align-items: center;
+}
+
+.app-ltr .thumbRate-icon-container {
+    color: #b3b3b3;
+    position: relative;
+    width: 1em;
+    height: 1em;
+    font-size:52px;
+}
+
+
+
+.app-ltr .thumbRate-button-container { position: relative; z-index:101; }
+
+.app-ltr .thumbRate-button-container .shim-container {
+    position: absolute;
+    width: 0; height: 0;
+}
+.app-ltr .thumbRate-button-container .shim {
+    position: absolute;
+    width: 0; height: 0;
+    background: linear-gradient(
+        rgba(25,25,25,0) 0%,
+        rgba(25,25,25,1) 30%,
+        rgba(25,25,25,1) 70%,
+        rgba(25,25,25,0) 100%
+    );
+    transition: .3s opacity ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.app-ltr .thumbRate-icon-container svg {
+    font-size: 34px;
+    width: 1em;
+    height: 1em;
+}
+
+
+.app-ltr .thumbRate-expanded-true .up-container   { transform: translate(-48px, -48px) scale(1.2); }
+.app-ltr .thumbRate-expanded-true .down-container { transform: translate( 48px, -48px) scale(1.2); }
+.app-ltr .thumbRate-expanded-true .shim { opacity: 1 ; pointer-events: initial;}
+.app-ltr .thumbRate-expanded-true .thumb-rating-close-button { transform: translate(0, 0px); opacity: 1 }
+
+.app-ltr .thumbRate-button-container .up-container,
+.app-ltr .thumbRate-button-container .down-container,
+.app-ltr .thumbRate-button-container .close-container {
+    transition: .3s transform cubic-bezier(.1,0,0,1),
+                .3s opacity   cubic-bezier(.1,0,0,1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-ltr .thumbRate-button-container .button-ring { 
+    opacity: 0;
+    transition: .3s opacity; 
+    overflow: visible;
+    fill: transparent;
+    stroke: currentColor;
+    font-size: 52px;
+}
+
+.app-ltr .thumbRate-icon-container.thumbRate-expanded-true .button-ring { opacity: 1; }
+
+.app-ltr .thumbRate-icon-container .close-container {
+    width: 1em;
+    height: 1em;
+    position: absolute;
+    opacity: 0;
+}
+.app-ltr .thumbRate-icon-container.thumbRate-expanded-true .close-container {
+    opacity: 1;
+}
+.app-ltr .thumbRate-expanded-false .up-container,
+.app-ltr .thumbRate-expanded-false .down-container {
+    transform: scale(0.9);
+    transition: .2s transform;
+    width: 1em;
+    height: 1em;
+    position: absolute;
+}
+
+.app-ltr .thumbRate-button-container:hover .thumbRate-expanded-false .up-container,
+.app-ltr .thumbRate-button-container:hover .thumbRate-expanded-false .down-container {
+    transform: scale(1);
+    transition: .3s transform;
+    color: white;
+}
+
+.app-ltr .up-container:hover,
+.app-ltr .down-container:hover,
+.app-ltr .close-container:hover {
+    color: white;
+}
+
+.app-ltr .thumbRate-button-container .thumbRate-expanded-true .button-ring { opacity: 1 }
+
+.app-ltr .thumbRate-button-container .close-container .button-ring {
+    font-size: 42px;
+}
+
+.app-ltr .thumbRate-button-container .thumb-btn-upFilled,
+.app-ltr .thumbRate-button-container .thumb-btn-downFilled,
+.app-ltr .thumbRate-button-container .thumb-btn-up,
+.app-ltr .thumbRate-button-container .thumb-btn-down,
+.app-ltr .thumbRate-button-container .thumb-rating-close-button  {
+    transition: .3s transform cubic-bezier(.1,0,0,1),
+                .3s opacity   cubic-bezier(.1,0,0,1);
+}
+.app-ltr .thumbRate-button-container .thumb-rating-close-button {
+    font-size: 21px;
+}
+
+.app-ltr .thumbRate-expanded-false.currentRating-UNRATED .thumb-btn-upFilled { opacity: 0 }
+.app-ltr .thumbRate-expanded-true.currentRating-UNRATED .thumb-btn-upFilled { opacity: 0 }
+.app-ltr .thumbRate-expanded-false.currentRating-THUMBS_UP .thumb-btn-upFilled { opacity: 1 }
+.app-ltr .thumbRate-expanded-true.currentRating-THUMBS_UP .thumb-btn-upFilled { opacity: 1 }
+.app-ltr .thumbRate-expanded-false.currentRating-THUMBS_DOWN .thumb-btn-upFilled { opacity: 0 }
+.app-ltr .thumbRate-expanded-true.currentRating-THUMBS_DOWN .thumb-btn-upFilled { opacity: 0 }
+
+.app-ltr .thumbRate-expanded-false.currentRating-UNRATED .thumb-btn-downFilled { opacity: 0 }
+.app-ltr .thumbRate-expanded-true.currentRating-UNRATED .thumb-btn-downFilled { opacity: 0 }
+.app-ltr .thumbRate-expanded-false.currentRating-THUMBS_UP .thumb-btn-downFilled { opacity: 0 }
+.app-ltr .thumbRate-expanded-true.currentRating-THUMBS_UP .thumb-btn-downFilled { opacity: 0 }
+.app-ltr .thumbRate-expanded-false.currentRating-THUMBS_DOWN .thumb-btn-downFilled { opacity: 1 }
+.app-ltr .thumbRate-expanded-true.currentRating-THUMBS_DOWN .thumb-btn-downFilled { opacity: 1 }
+
+.app-ltr .thumbRate-expanded-false.currentRating-UNRATED .thumb-btn-up { opacity: 1 }
+.app-ltr .thumbRate-expanded-true.currentRating-UNRATED .thumb-btn-up { opacity: 1 }
+.app-ltr .thumbRate-expanded-false.currentRating-THUMBS_UP .thumb-btn-up { opacity: 0 }
+.app-ltr .thumbRate-expanded-true.currentRating-THUMBS_UP .thumb-btn-up { opacity: 0 }
+.app-ltr .thumbRate-expanded-false.currentRating-THUMBS_DOWN .thumb-btn-up { opacity: 0 }
+.app-ltr .thumbRate-expanded-true.currentRating-THUMBS_DOWN .thumb-btn-up { opacity: 0 }
+
+.app-ltr .thumbRate-expanded-false.currentRating-UNRATED .thumb-btn-down { opacity: 0 }
+.app-ltr .thumbRate-expanded-true.currentRating-UNRATED .thumb-btn-down { opacity: 1 }
+.app-ltr .thumbRate-expanded-false.currentRating-THUMBS_UP .thumb-btn-down { opacity: 0 }
+.app-ltr .thumbRate-expanded-true.currentRating-THUMBS_UP .thumb-btn-down { opacity: 0 }
+.app-ltr .thumbRate-expanded-false.currentRating-THUMBS_DOWN .thumb-btn-down { opacity: 0 }
+.app-ltr .thumbRate-expanded-true.currentRating-THUMBS_DOWN .thumb-btn-down { opacity: 0 }
+
+.app-ltr h1.downloads-page-title {
+    margin: 0;
+    margin-left: 38px;
+}
+
+
+.app-ltr .downloads-page {
+}
+
+
+.app-ltr .downloads-page.empty {
+}
+
+
+.app-ltr .downloads-page.empty .container {
+    text-align: center;
+}
+
+
+.app-ltr .downloads-page .section-header {
+}
+
+
+.app-ltr .downloads-page .section-header .title {
+    margin-left: 13px;
+}
+
+
+.app-ltr .downloads-page.full {
+}
+
+
+.app-ltr .downloads-page.full .win-hub-surface {
+    padding-left: 12px;
+    width: calc(100% - 12px);
+}
+
+
+.app-ltr .downloads-page.full .win-hub-section {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+.app-ltr .downloads-page.full .win-hub-section:not(:last-child) {
+    margin-right: 76px;
+}
+
+
+.app-ltr .downloads-page.full .downloads-list {
+}
+
+
+.app-ltr .downloads-page.full .downloads-list:not(.three-col) .item:nth-child(2n) {
+    margin-left: 11px;
+}
+
+
+.app-ltr .downloads-page.full .downloads-list.three-col .item:not(:nth-child(3n-2)) {
+    margin-left: 11px;
+}
+
+
+.app-ltr .downloads-page.full .item {
+}
+
+
+.app-ltr .downloads-page.full .item .error > svg {
+    margin-right: 4px;
+}
+
+
+.app-ltr .downloads-page.full .item .item-container {
+}
+
+
+.app-ltr .downloads-page.full .item .item-container .download-group.placeholder {
+    right: 0;
+    left: 0;
+}
+
+
+.app-ltr .downloads-page.full .item .item-container .viewableitem {
+    right: 0;
+    left: 0;
+}
+
+
+.app-ltr .downloads-page.full .item .item-container .edit-control {
+    right: 0;
+    left: 0;
+}
+
+
+.app-ltr .downloads-page.full .item .item-container .edit-control .checkbox {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+}
+
+
+.app-ltr .downloads-page.full .item .item-container .edit-control .checkbox.unchecked {
+    border: 3px solid white;
+}
+.app-ltr .onboard-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.app-ltr .onboard-dialog {
+    border-radius: 6px;
+    padding: 12px
+}
+
+.app-ltr .onboard-dialog h1 {
+}
+
+.app-ltr .onboard-dialog h1, .app-ltr .onboard-dialog p, .app-ltr .onboard-dialog .icon {
+    text-align: center;
+}
+
+.app-ltr .onboard-dialog .button {
+    padding-left: 6px;
+    padding-right: 6px;
+    text-align: center;
+}
+
+.app-ltr .lomo-row {
+}
+
+.app-ltr .lomo-row .virtualized-list-surface {
+    margin-left: 16px;
+}
+
+.app-ltr .lomo-row-title {
+    margin-left: 20px;
+}
+
+.app-ltr .home-page .movie-container {
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.app-ltr .home-page .viewableitem.placeholder,
+.app-ltr .home-page .continueItem.placeholder {
+    left: 0px;
+    right: 0px;
+    background-image: linear-gradient(-180deg, rgba(255,255,255,0.50) 0%, rgba(255,255,255,0.80) 100%);
+}
+
+.app-ltr .home-page .continueItem .continue-scrim {
+    left: 0;
+    right: 0; /* IE10+ */
+    background: linear-gradient(to bottom, rgba(5,5,5,0) 0%,rgba(5,5,5,1) 60%,rgba(5,5,5,1) 100%); /* W3C */
+}
+
+.app-ltr .home-page .continueItem .continue-info {
+    padding: 0 8px;
+}
+
+.app-ltr .home-page .continueItem .continueImage {
+    background-position: 50% 50%;
+}
+.app-ltr .home-page .continue-info .titles {
+    padding-right: 4px;
+}
+.app-ltr .home-page .continueItem .progress-bar {
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Progress bar is LTR regardless of language */
+/*rtl:ignore*/
+.app-ltr .home-page .continueItem .progress-bar {
+    direction: ltr;
+}
+
+.app-ltr .home-page .continuePlayButton {
+    left: 50%;
+    margin-left: -30px;
+    border-radius: 50%;
+}
+
+/* The play icon stays the same for RTL. */
+/*rtl:ignore*/
+.app-ltr .home-page .play-icon {
+    left: 20px;
+}
+.app-ltr .playback-page {
+    left:   0;
+    top:    0;
+    right:  0;
+    bottom: 0;
+}
+
+.app-ltr .playback-background-image {
+    transition: opacity 0.3s linear;
+    left:           50%;
+    top:            50%;
+    transform:      translate(-50%,-50%);
+}
+
+.app-ltr .playback-page .playback-background-image-cover {
+    position: absolute;
+    bottom: 0;
+    top:    0;
+    left:   0;
+    right:  0;
+}
+
+.app-ltr .playback-page.hidden-mouse {
+    cursor:none;
+}
+
+.app-ltr .playback-page .bar-group {
+    bottom: 0;
+    top:    0;
+    left:   0;
+    right:  0;
+}
+
+.app-ltr .playbackTopBar {
+    left: 0;
+}
+.app-ltr .playbackBottomBar {
+    left: 0;
+}
+.app-ltr .playback-top-bar .bar-button {
+    margin-right: 4pt;
+}
+
+.app-ltr .playback-top-bar {
+    transform: translateY(0);
+}
+
+.app-ltr .playback-top-bar .playback-title {
+    margin-right: 8pt;
+}
+
+.app-ltr .bar-group-enter.bar-group-enter-active {
+    opacity: 1;
+    transition: opacity .6s;
+}
+.app-ltr .bar-group-leave-active {
+    opacity: .99;
+    transition: opacity .25s;
+}
+.app-ltr .bar-group-enter.playback-top-bar {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+.app-ltr .bar-group-enter.bar-group-enter-active.playback-top-bar {
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform .6s cubic-bezier(0,1,0,1), opacity .3s cubic-bezier(0,1,0,1);
+}
+
+.app-ltr .bar-group-leave-active.playback-top-bar {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: transform .25s cubic-bezier(.5,0,1,.5), opacity .25s cubic-bezier(.5,0,1,.5);
+}
+
+.app-ltr .bar-group-enter.playback-bottom-bar {
+    opacity: 0;
+    transform: translateY(20px);
+}
+.app-ltr .bar-group-enter.bar-group-enter-active.playback-bottom-bar {
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform .6s cubic-bezier(0,1,0,1), opacity .3s cubic-bezier(0,1,0,1);
+}
+
+.app-ltr .bar-group-leave-active.playback-bottom-bar {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform .25s cubic-bezier(.5,0,1,.5), opacity .25s cubic-bezier(.5,0,1,.5);
+}
+
+.app-ltr .playback-gradient {
+    left: 0; right: 0;
+}
+.app-ltr .playback-gradient-top {
+    background: linear-gradient(
+        rgba(0,0,0,.64) 0%,
+        rgba(0,0,0,  0) 47%
+    );
+}
+.app-ltr .playback-gradient-bottom {
+    background: linear-gradient(
+        rgba(0,0,0,  0) 53%,
+        rgba(0,0,0,.64) 100%
+    );
+}
+
+.app-ltr .postplay-playback-gradient {
+    background: linear-gradient(-180deg, rgba(0,0,0,0.00) 0%, #000000 92%);
+    left: 0;
+    top: 0;
+}
+
+.app-ltr .image-based-subtitles {
+    top: 0;
+    left: 0;
+}
+
+.app-ltr .bar-group-enter.bar-group-enter-active.playback-gradient {
+    opacity: 1;
+    transition: opacity .6s cubic-bezier(0,1,0,1);
+}
+
+.app-ltr .bar-group-leave-active.playback-gradient {
+    opacity: 0;
+    transition: opacity .25s cubic-bezier(.5,0,1,.5);
+}
+
+.app-ltr .profilegate {
+    /*margin: 0 var(--list-margin);*/
+}
+
+.app-ltr .profile-header {
+    margin: 0 28px 10vh 28px;
+}
+.app-ltr .profile-header:focus {
+    outline: none;
+}
+
+.app-ltr .profile-container {
+    margin: 0 16px;
+    outline: none;
+}
+
+.app-ltr .profile-container:focus .profile-image,
+.app-ltr .profile-container:hover .profile-image {
+    outline: solid 4px white;
+}
+
+.app-ltr .profile-name {
+    padding: 10px 0;
+}
+
+@media all and (max-width: 400px) {
+    .app-ltr .profile-count-3 .profile-header {
+        padding: 20px;
+    }
+}
+
+@media all and (max-width: 540px) {
+    .app-ltr .profile-count-4 .profile-header {
+        padding: 20px;
+    }
+}
+
+@media all and (max-width: 680px) {
+    .app-ltr .profile-count-5 .profile-header {
+        padding: 20px;
+    }
+}
+
+.app-ltr .related-header {
+    margin: 24px 24px 0 26px;
+}
+.app-ltr .related-page .related-list {
+    margin: 8px 24px 24px 24px;
+}
+.app-ltr .related-page .related-list .related-viewable{
+    margin: 2px;
+}
+.app-ltr .related-page .related-list .related-viewable.placeholder{
+    margin: 0 2px;
+}
+
+.app-ltr .search-results .win-hub-surface {
+    padding: 0 24px;
+}
+.app-ltr .search-results-list-videos .viewableitem {
+    margin: 4px;
+}
+.app-ltr .search-results-list-videos .viewableitem.placeholder{
+    margin: 0 4px;
+}
+/*.search-results.win-hub-horizontal .win-hub-surface {
+    padding: 0px;
+}*/
+.app-ltr .search-results-hubsection.win-hub-section {
+    padding: 0 48px 0 0;
+}
+.app-ltr .search-results-list .personitem {
+    margin: 8px 4px;
+}
+.app-ltr .search-results-list .suggestion {
+    margin: 8px 4px 24px 4px;
+}
+
+.app-ltr .search-results-list .personitem-name {
+    margin-left: 10px;
+}
+.app-ltr .search-results.win-hub-horizontal .win-hub-section-header {
+    margin: 0 0 0 4px;
+}
+
+/*
+@media (--phone-widths) {
+    .search-results :first-of-type.search-results-hubsection .win-hub-section-header-content {
+        margin-left: 0;
+    }
+}
+*/
+/*
+@media (--small-phone-widths) {
+    .search-results .win-hub-section {
+        padding:0 8px 0 0;
+    }
+}
+*/
+/*
+@media (--large-phone-widths) {
+    .search-results .win-hub-section {
+        padding:0;
+    }
+    .search-results-hubsection .win-hub-section-header-content{
+        margin-left: 0px !important;
+    }
+*/
+
+@media       all and (min-width: 432px) {
+    .app-ltr .search-results .win-hub-surface {
+        padding: 0 12px;
+    }
+
+    .app-ltr .search-results .search-results-hubsection-videos.win-hub-section {
+        padding-right: 36px;
+    }
+    .app-ltr .search-results.section-count-1 .search-results-hubsection-videos.win-hub-section {
+        padding: 0px;
+    }
+    /* Two Columns*/
+    .app-ltr .search-results-list-videos .viewableitem {
+        margin: 2px;
+    }
+    .app-ltr .search-results-list-videos .viewableitem.placeholder {
+        margin: 0 2px;
+    }
+    .app-ltr .search-results-list .personitem {
+        margin: 4px;
+    }
+    .app-ltr .search-results-list .suggestion {
+        margin: 16px 4px 32px 4px;
+    }
+}
+@media      all and (min-width: 600px) {
+    .app-ltr .search-results .win-hub-surface{
+        padding: 0 24px;
+    }
+}
+
+@media (min-width: 600px) {
+    .app-ltr .settings-page {
+        left: calc(50% - 300px)
+    }
+}
+
+.app-ltr .settings-page {
+    padding: 36px
+}
+
+.app-ltr .settings-page:after {
+    content: "";
+    display: block;
+    height: 36px;
+    width: 100%;
+}
+
+.app-ltr .settings-page .external-link {
+    cursor: pointer;
+}
+
+.app-ltr .settings-page .details-closeButton {
+    padding: 0 0 48px 48px;
+    top: 18px;
+    right: 10px;
+}
+
+.app-ltr .settings-page h3 {
+    margin: 0;
+    margin-top: 16px;
+}
+
+.app-ltr .settings-page .imprint-block {
+    margin: 0;
+    padding: 0;
+}
+
+.app-ltr .settings-page .video-quality-selector {
+}
+
+.app-ltr .settings-page .video-quality-selector .video-quality-menu {
+    left: 0;
+}
+
+.app-ltr .settings-page .menu-item, .app-ltr .settings-page .delete-all-item {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.app-ltr .settings-page .legend-entry .swatch {
+    margin-right: 6px;
+}
+.app-ltr .sign-in-form input, .app-ltr .sign-in-form button {
+    margin: 0;
+}
+
+.app-ltr .sign-in-container hr {
+    border-color: #2f2f2f;
+    margin: 0;
+    padding: 0;
+}
+
+/* components */
+.app-ltr .bar-button-icon .text,
+.app-ltr .bar-button-icon:before {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.app-ltr .bar-button-text,
+.app-ltr .bar-button-icon.bar-button-text {
+    width: auto;
+    white-space: nowrap;
+    margin: 16px;
+}
+.app-ltr .cancelable-overlay-clickgrabber {
+    left: 0;
+    right: 0;
+}
+.app-ltr .icon-download {
+    vertical-align: middle;
+    font-size: 52px;
+    position: relative;
+}
+.app-ltr .icon-download:after {
+    color: transparent;
+    content: "\F020";
+}
+
+/* Progress on Download button is LTR regardless of language */
+/* rtl:ignore */
+.app-ltr .dl_button_direction {
+    direction:ltr;
+}
+
+.app-ltr .dl_button {
+    width: 52px;
+    height: 52px;
+    position: absolute;
+}
+
+.app-ltr .reason-failed { 
+    color: rgba(232, 124, 3, 1);
+    padding: 8px 12px;
+    white-space: pre-line;
+    max-width: 300px;
+    line-height: 24px;
+    box-shadow: inset 0 0 1px #333;
+}
+
+.app-ltr .win-flyout.download-menu {
+    position: fixed;
+}
+.app-ltr .downloadsStatus-container {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    z-index: 101;
+}
+
+.app-ltr .downloadsStatus-tray {
+    background: #007aff;
+    height: 61px; /* TODO: figure out the height sufficient for tray with subheader */
+    min-width: 500px;
+    max-width: 768px;
+    width: 100%;
+    left: 50%;
+    position: absolute;
+    bottom: 0px;
+    transform: translate(-50%, 0);
+    position: relative;
+    box-shadow: 0 0 20px 4px rgba(0,0,0,0.8);
+}
+.app-ltr .downloadsStatus-tray.downloads-group-enter        { opacity:0;  transform: translate(-50%, 100px); transition: .4s opacity cubic-bezier(.3,0,.3,1), .5s transform cubic-bezier(.3,1,.3,1); }
+.app-ltr .downloadsStatus-tray.downloads-group-enter-active { opacity:1;  transform: translate(-50%,   0px); transition: .4s opacity cubic-bezier(.3,1,.3,1), .5s transform cubic-bezier(.3,1,.3,1); }
+.app-ltr .downloadsStatus-tray.downloads-group-leave        { opacity:1;  transform: translate(-50%,   0px); transition: .4s opacity cubic-bezier(.3,1,.3,1), .5s transform cubic-bezier(.3,1,.3,1); }
+.app-ltr .downloadsStatus-tray.downloads-group-leave-active { opacity:0;  transform: translate(-50%, 100px); transition: .4s opacity cubic-bezier(.3,0,.3,1), .5s transform cubic-bezier(.3,1,.3,1); }
+
+/* ProgressBar on Downloads Status trey (Snackbar) is LTR regardless of language */
+/* rtl:ignore */
+.app-ltr .downloadsStatus-tray .progress-container {
+    direction: ltr;
+    height: 5px;
+    background: black;
+    transition: .5s opacity;
+    position: absolute;
+}
+.app-ltr .downloadsStatus-tray .progress-indicator {
+    transform-origin: 0 0;
+    
+/* removing temporarily to avoid downloadTrayProgressBar drunk behavior 
+    transition: .4s transform cubic-bezier(.3,0,.3,1);
+*/
+    transform: scale(1, 1);
+    
+    background: white;
+    height: 100%;
+    position: absolute;
+}   
+/*
+.downloadsStatus-tray .progress-indicator.progress-enter        { transform: scale(0, 1); transition: .3s transform  0s cubic-bezier(.3,0,.3,1); }
+.downloadsStatus-tray .progress-indicator.progress-enter-active { transform: scale(1, 1); transition: .3s transform  0s cubic-bezier(.3,0,.3,1); }
+.downloadsStatus-tray .progress-indicator.progress-leave        { transform: scale(1, 1); transition: .3s transform  0s cubic-bezier(.3,0,.3,1); }
+.downloadsStatus-tray .progress-indicator.progress-leave-active { transform: scale(0, 1); transition: .3s transform .3s cubic-bezier(.3,0,.3,1); }
+*/
+
+.app-ltr .downloadsStatus-tray .status-vertically-centered {
+    position: absolute;
+    top: calc( ( 100% + 5px ) / 2 );
+    transform: translateY(-50%)
+}
+
+.app-ltr .downloadsStatus-tray .status-header {
+    font: 500 18px/150% 'Segoe UI';
+    padding: 0px 70px 0 32px;
+}
+.app-ltr .downloadsStatus-tray .status-subheader {
+    font: 300 14px/150% 'Segoe UI';
+    padding: 0 70px 0px 32px;
+}
+/* Orange bang */
+.app-ltr .downloadsStatus-tray.someErrors .status-subheader::before {
+    content: "!";
+    display: inline-block;
+    color: white;
+    border: 1px solid white;
+    border-radius: 50% 50%;
+    width: 14px;
+    height: 14px;
+    text-align: center;
+    font: 600 12.5px/14.5px serif;
+    margin: 0 5px 0 0;
+    background: #e67c21;
+}
+
+
+.app-ltr .downloadsStatus-tray .status-button {
+    right: 20px;
+    width: 40px;
+    height: 40px;
+}
+
+.app-ltr .downloadsStatus-tray .status-button::before {
+    content: "\E867";
+    position: relative;
+    display:block;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%) /*rtl:translate(50%,-50%) scaleX(-1)*/;
+    text-align: center;
+}
+
+.app-ltr .downloadsStatus-tray .status-button:hover {
+    background: white;
+    color: black;
+}
+
+.app-ltr .downloadsStatus-tray.doneWithErrors {
+    background: #e67c21;
+}
+
+.app-ltr .downloadsStatus-tray.done progress-container {
+    opacity: 0;
+    transform: translateY(0);
+}
+.app-ltr .header {
+    left:0;
+}
+
+.app-ltr .header .left-side,
+.app-ltr .header .right-side {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.app-ltr .logoContainer:first-child {
+    margin-left: 20px;
+}
+
+.app-ltr .header .bar-button {
+    margin-right: 5.33px;
+}
+
+.app-ltr .overflow-menu {
+    right: 0;
+}
+
+.app-ltr .sidebar-menu {
+    left: 0;
+    overflow: hidden;
+}
+
+.app-ltr .sidebar-menu .profile-info .avatar {
+    margin-left: 16px;
+    margin-right: 20px;
+}
+
+.app-ltr .sidebar-menu .profile-info .profile-switch-button {
+    margin-left: 20px;
+    margin-right: 16px;
+}
+
+.app-ltr .sidebar-menu .profile-info .profile-name {
+    padding: 0;
+}
+
+.app-ltr .sidebarButton {
+    padding-left: 16px;
+    padding-right: 16px
+}
+
+.app-ltr .sidebarButton .icon {
+    margin-right: 8px;
+}
+
+.app-ltr .settingsButtonContainer,
+.app-ltr .signOutButtonContainer,
+.app-ltr .genreButtonContainer {
+    padding: 0 20px;
+}
+
+.app-ltr .genreButtonContainer {
+    padding: 0;
+}
+
+.app-ltr .settingsButtonContainer span,
+.app-ltr .signOutButtonContainer span {
+    padding: 0;
+}
+
+.app-ltr .genreButtonContainer .content {
+    padding: 0 16px;
+}
+
+.app-ltr .header-group-leave.header-group-leave-active{
+    transition: opacity 0.2s ease-in;
+}
+
+.app-ltr .header-group-appear.header-group-appear-active,
+.app-ltr .header-group-enter.header-group-enter-active{
+    transition: opacity 0.2s ease-in 0.1s;
+}
+
+
+.app-ltr .sidebar-menu > .profile-info,
+.app-ltr .sidebar-menu > .profile-separator,
+.app-ltr .sidebar-menu > .categories,
+.app-ltr .sidebar-menu > .notifications
+{ 
+    transition: .3s transform  cubic-bezier(0,.4,.6,1),
+                .3s opacity    cubic-bezier(0,.4,.6,1);
+}
+
+.app-ltr .sidebar-menu.abridged > .profile-info,
+.app-ltr .sidebar-menu.abridged > .profile-separator,
+.app-ltr .sidebar-menu.abridged > .categories
+{
+    transform: translateX(0);
+    opacity: 1;
+}
+.app-ltr .sidebar-menu.abridged > .notifications {
+    transform: translateX(100px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.app-ltr .sidebar-menu.full > .profile-info,
+.app-ltr .sidebar-menu.full > .profile-separator,
+.app-ltr .sidebar-menu.full > .categories
+{
+    transform: translateX(-100px);
+    opacity: 0;
+    pointer-events: none;
+}
+.app-ltr .sidebar-menu.full > .notifications {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.app-ltr .header .signInButton {
+    border-radius: 3px;
+}
+.app-ltr .mdx-menu {
+    box-shadow: 0 0 20px 3px rgba(0, 50, 50, 50.701961);
+    right: 5%;
+}
+
+.app-ltr .mdx-device {
+    margin:5px 15px;
+}
+.app-ltr .metabar {
+    margin-left: -16px;
+}
+
+.app-ltr .metabar .metabar-part {
+    margin-left: 16px;
+}
+
+.app-ltr .metabar .maturity {
+    padding: 0.5px 5px 2.5px 5px;
+    border-radius: 2.5px; 
+}
+
+.app-ltr .metabar .icon-badge {
+    margin-left: 16px;
+}
+
+.app-ltr .match-score {
+  color: #46d369;
+  font-weight: 500;
+}
+.app-ltr .notifications.full,
+.app-ltr .notifications.full .notifications-container
+ {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.app-ltr .notifications.full .notifications-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.app-ltr .notifications-header {
+    padding: 14px 10px 5px 10px;
+}
+.app-ltr .notifications-scroller {
+    flex-grow: 1;
+    padding-top: 8px;
+    overflow-y: auto;
+}
+.app-ltr .notifications.full .notifications-header {
+    text-align: center;
+	padding: 10px 10px 10px 12px;
+}
+.app-ltr .notifications.full .notifications-header-arrow {
+    left: 16px;
+    right: auto;
+    top: 16px;
+}
+
+.app-ltr .notifications-header-arrow {
+	right: 16px;
+}
+
+/* var(--netflix-red);
+*/
+.app-ltr .notifications-badge::after {
+    content: attr(data-badge);
+}
+.app-ltr .notifications-badge {
+    content: attr(data-badge);
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    font-size: 0.7em;
+    min-width: 11px;
+    background: #E50914;
+    color: white;
+    height: 16px;
+    padding: 1px 3.7px 1px 3.3px;
+    text-align: center;
+    border-radius: 46%;
+    box-shadow: 0px 0px 2px 2px #000;
+    transform: translate(65%);
+    opacity: .99;
+}
+.app-ltr .notifications-badge[data-badge="0"] {
+    display:none;
+}
+
+.app-ltr .notifications-badge + .notifications-badge {
+    z-index: 0;
+}
+.app-ltr .notifications-badge.notifications-badge-leave,
+.app-ltr .notifications-badge.notifications-badge-enter.notifications-badge-enter-active {
+    transform: translate(65%);
+    opacity: .99;
+    transition: .5s transform cubic-bezier(0,.7,.2,1), /* animate transform and opacity together */
+                .5s opacity   cubic-bezier(0,.7,.2,1);
+}
+
+.app-ltr .notifications-badge.notifications-badge-enter {
+    transform: translate(265%);
+    opacity: 0;
+    transition: .01s transform cubic-bezier(0,.7,.2,1) .5s, /* wait with transform until opacity is done */
+                .5s  opacity   cubic-bezier(.7,0,1,.2);
+}
+.app-ltr .notifications-badge.notifications-badge-leave.notifications-badge-leave-active {
+    transform: translate(65%, -150%);
+    opacity: 0;
+    transition: .3s transform cubic-bezier(0,-.7,1,-.7), /* wait with transform until opacity is done */
+                .2s opacity   cubic-bezier(.3, 0,1,.7) .1s;
+}
+
+
+
+.app-ltr .notifications-badge-container {
+    position: absolute;
+    top:0;
+    right:0;
+    pointer-events:none;
+}
+
+
+.app-ltr .notifications.abridged .notifications-header::before
+{
+    left: -4px;
+}
+
+.app-ltr .notifications-item::before {
+    left: -4px;
+    transform: translateY(47%);
+}
+
+.app-ltr .notifications-item {
+    padding: 4px 16px 4px 10px;
+}
+
+.app-ltr .notifications-item .text {
+    margin-left: 9px;
+}
+.app-ltr .notifications.abridged .notifications-container .profile-separator {
+    margin: 11px 0 15px 0;
+}
+
+.app-ltr .notifications.full     .notifications-container .profile-separator {
+    margin-top: 2px;
+}
+/*rtl:ignore*/
+.app-ltr .pinprompt-container .pinpad {
+    direction: ltr;
+}
+
+/*rtl:ignore*/
+.app-ltr .pinprompt-container .message {
+    margin-right: 40px;
+    margin-left: 40px
+}
+
+/*rtl:ignore*/
+.app-ltr .pinprompt-container a {
+    margin-left: auto;
+    margin-right: auto
+}
+
+/*rtl:ignore*/
+.app-ltr .pinprompt-container .pin-number {
+    padding: 10px;
+    text-align: center;
+}
+/*rtl:ignore*/
+.app-ltr .compact-overlay-bar {
+    right: 4px;
+}
+.app-ltr .gradient-background {
+    background: linear-gradient(-180deg, rgba(0,0,0,0.00) 0%, #000000 92%);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+}
+/* Quickly hide content-advisory if any other top-bar is present (when user action causes top bar to apper) */
+.app-ltr .playback-top-bar ~ .content-advisory {
+    opacity: 0 !important;
+    transition: .2s opacity !important;
+}
+
+/* Make sure we override bar-group's default animation duration for content-advisory (so that CSSTransitionGroup can have TransitionEnd events at the right time) */
+.app-ltr .content-advisory.bar-group-enter.bar-group-enter-active {
+    opacity: 1;
+    transition: opacity 2.1s;
+}
+.app-ltr .content-advisory.bar-group-leave-active {
+    opacity: .99;
+    transition: opacity 0.88333333s;
+}
+
+.app-ltr .content-advisory {
+  margin: 0 39px;
+  padding-left: 9px;
+}
+
+.app-ltr .content-advisory .bar {
+  right: 100%;
+  margin: 0 ;
+  background: #E50914;
+}
+.app-ltr .content-advisory h4 {
+  margin: 0;
+}
+.app-ltr .content-advisory p {
+  margin: 0 0 4px;
+}
+.app-ltr .bar-group-enter.content-advisory .bar {
+  transform: translate3d(0, 0.5em, 0);
+}
+.app-ltr .bar-group-enter-active.bar-group-enter.content-advisory .bar {
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.83333333s cubic-bezier(0, 0, 0.1, 1), height 0.4s cubic-bezier(0, 0, 0.5, 1);
+}
+.app-ltr .bar-group-leave.content-advisory .bar {
+  transform: translate3d(0, 0, 0);
+}
+.app-ltr .bar-group-leave-active.bar-group-leave.content-advisory .bar {
+  transform: translate3d(0, -0.5em, 0);
+  transition: transform 0.83333333s cubic-bezier(0, 0, 0.1, 1), height 0.4s cubic-bezier(0, 0, 0.5, 1), opacity 0.83333333s cubic-bezier(0, 0, 0.5, 1);
+}
+.app-ltr .bar-group-enter.content-advisory h4,
+.app-ltr .bar-group-enter.content-advisory p {
+  transform: translate3d(0, 0.5em, 0);
+}
+.app-ltr .bar-group-enter-active.bar-group-enter.content-advisory h4,
+.app-ltr .bar-group-enter-active.bar-group-enter.content-advisory p {
+  transform: translate3d(0, 0, 0);
+  transition: opacity 1s cubic-bezier(0.5, 0, 0.1, 1), transform 0.83333333s cubic-bezier(0, 0, 0.1, 1);
+}
+.app-ltr .bar-group-leave.content-advisory h4,
+.app-ltr .bar-group-leave.content-advisory p {
+  transform: translate3d(0, 0, 0);
+}
+.app-ltr .bar-group-leave-active.bar-group-leave.content-advisory h4,
+.app-ltr .bar-group-leave-active.bar-group-leave.content-advisory p {
+  transform: translate3d(0, -0.75em, 0);
+  transition: opacity 0.5s cubic-bezier(0, 0, 0.5, 1), transform 0.5s cubic-bezier(0, 0, 1, 0.1);
+}
+.app-ltr .bar-group-enter-active.bar-group-enter.content-advisory p {
+  opacity: .85;
+  transition-delay: 1.1s;
+}
+.app-ltr .bar-group-enter-active.bar-group-enter.content-advisory h4 {
+  transition-delay: 1s;
+}
+.app-ltr .bar-group-enter-active.bar-group-enter.content-advisory .bar {
+  transition-delay: 1s;
+}
+.app-ltr .bar-group-leave.content-advisory p {
+  opacity: .85;
+}
+
+.app-ltr .bar-group-leave-active.bar-group-leave.content-advisory p {
+  opacity: 0;
+}
+.app-ltr .bar-group-leave-active.bar-group-leave.content-advisory p {
+  transition-delay: 0.066s;
+}
+.app-ltr .audio-subtitle-menu {
+    left: 0px;
+    padding: 20px;
+}
+
+.app-ltr .audio-subtitle-menu-wrapper {
+    left: 0px;
+}
+
+.app-ltr .audio-subtitle-sub-menu-wrapper {
+    margin-left: 20px;
+    margin-right: 20px;
+    left: 0px;
+}
+
+.app-ltr .audio-subtitle-header {
+    left: 0px;
+}
+
+.app-ltr .audio-subtitle-item {
+    left: 0px;
+    margin-right: 8px;
+}
+
+.app-ltr .close-button-container {
+    left: 0px;
+    margin: 0 calc(50% - 25px); /* half width */
+    text-align: center;
+}
+/*rtl:ignore*/
+.app-ltr .playback-bottom-bar {
+    direction: ltr;
+    left: 0px;
+}
+
+/*rtl:ignore*/
+.app-ltr .playback-bottom-bar-image {
+    left: 0px;
+}
+
+/*rtl:ignore*/
+.app-ltr .playback-bottom-bar-work-area {
+    left: 0px;
+}
+
+/*rtl:ignore*/
+.app-ltr .playback-bottom-bar-work-area .bar-button,
+.app-ltr .playback-bottom-bar-work-area .scrub-bar {
+    margin-right: 4pt;
+}
+.app-ltr .bar-group-enter.bar-group-enter-active .shim {
+    transition: opacity .3s cubic-bezier(0,1,0,1);
+}
+
+.app-ltr .bar-group-leave-active .shim {
+    transition: opacity .25s;
+}
+
+.app-ltr .bar-group-enter .overlay {
+    transform: translateY(-20%);
+}
+
+.app-ltr .bar-group-enter.bar-group-enter-active .overlay {
+    transform: translateY(0);
+    transition: opacity .4s cubic-bezier(0,1,0,1), transform .6s cubic-bezier(0,1,0,1);
+}
+
+.app-ltr .bar-group-leave-active .overlay {
+    transform: translateY(-10%);
+    transition: opacity .25s cubic-bezier(.5,0,1,.5), transform .25s cubic-bezier(.5,0,1,.5);
+}
+
+.app-ltr .playback-episode-selector .overlay {
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.9);
+    transform: translateY(0);
+}
+
+.app-ltr .playback-episode-selector-container {
+    padding: 10px 21px 40px 8px;
+}
+
+.app-ltr .playback-episode-selector .seasons {
+    margin: 0 15px;
+}
+
+.app-ltr .playback-episode-selector .season {
+    margin: 0 23px;
+    padding: 5px 15px;
+}
+.app-ltr .playback-episode-selector .episode-button {
+    margin: 4px;
+}
+
+.app-ltr .playback-episode-selector .title {
+    margin: .80em 0 .19em;
+}
+
+.app-ltr .playback-episode-selector .now-playing:before {
+    margin-right:10px;
+}
+
+.app-ltr .playback-episode-selector .details-bookmark.episode {
+    right: 0;
+    left: 0;
+}
+
+.app-ltr .playback-closeChevron {
+    padding-top: 25px;
+    left: 50%;
+    margin-left: -75px; /* = -width/2 */
+    text-align: center;
+    text-shadow: 0 -0.5px 5px rgba(0,0,0,0.9);
+    transition: transform .2s cubic-bezier(0,1,0,1);
+}
+
+.app-ltr .playback-closeChevron:hover,
+.app-ltr .playback-closeChevron:focus {
+    transform: scale(1.1,1.1);
+}
+.app-ltr .playback-title .title {
+    margin-left: 8pt;
+}
+
+.app-ltr .playback-title .episodeTitle {
+    margin-left: 6pt;
+    margin-right: 8pt;
+}
+
+.app-ltr .volume-control {
+    position: absolute;
+
+    box-sizing: border-box;
+    border: 1pt solid rgba(255,255,255,0.14);
+
+    background-color: rgba(0,0,0,0.7);
+
+    height: 254pt;
+    width: 47pt;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    top: 45.5pt;
+    pointer-events: visible;
+
+    box-sizing: border-box;
+    justify-content: space-around;
+
+    max-height: calc(100vh - 64px* 2);        /* Exclude top and bottom bars */
+}
+
+.app-ltr .volume-control .volume-base {
+    width: 2pt;
+    height: 168pt;
+    background-color: #D8D8D8;
+    margin-top: 23pt;
+    margin-bottom: 23pt;
+    position: relative;
+}
+
+.app-ltr .volume-control .volume-mute {
+    color: #B6B4B3;
+    margin-bottom: 23pt;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.app-ltr .volume-control .volume-level {
+    position: absolute;
+    bottom: 0;
+    width: 2pt;
+    background-color: #E50914;
+    height: 100%;
+}
+
+.app-ltr .volume-control .volume-thumb {
+    position: relative;
+    top: -10pt;
+
+    box-sizing: border-box;
+
+    height: 20pt;
+    width: 20pt;
+    background-color: #E50914;
+}
+
+.app-ltr .volume-control {
+    border-radius: 23.5pt;
+    right: 4.5pt;
+}
+
+.app-ltr .volume-control .volume-base {
+    border-radius: 1pt;
+}
+
+.app-ltr .volume-control .volume-level {
+    border-radius: 1pt;
+}
+
+.app-ltr .volume-control .volume-thumb {
+    left: -9pt;
+    border-radius: 50%;
+}
+/*rtl:ignore*/
+
+/*rtl:ignore*/
+.app-ltr .skip-button {
+    padding: 12px;
+}
+
+/*rtl:ignore*/
+.app-ltr .skip-credits {
+    z-index: 1;
+    right: 50px;
+    bottom: 75px;
+}
+
+/*rtl:ignore*/
+.app-ltr .skip-credits .skip-credits-wrapper {
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+}
+
+/*rtl:ignore*/
+.app-ltr .skip-credits-wrapper .skip-credits-label {
+    display: inline-block;
+    white-space: nowrap;
+    transform: translateX(0);
+}
+
+/*rtl:ignore*/
+.app-ltr .skip-credits-enter {
+    opacity: 0;
+}
+
+/*rtl:ignore*/
+.app-ltr .skip-credits-enter.skip-credits-enter-active {
+    opacity: 1;
+    transition: opacity 325ms linear;
+}
+
+/*rtl:ignore*/
+.app-ltr .skip-credits-leave {
+    opacity: 1;
+}
+    
+/*rtl:ignore*/
+.app-ltr .skip-credits-leave.skip-credits-leave-active {
+    opacity: 0;
+    transition: opacity 3650ms linear 325ms;
+}
+
+
+/* Button In Animations */
+
+/*rtl:ignore*/
+.app-ltr .skip-credits-enter .skip-credits-wrapper {
+    width: 20%;
+    right: -90%;
+    opacity: 0;
+    transition: width 650ms cubic-bezier(0.23, 1, 0.32, 1), right 650ms cubic-bezier(0.23, 1, 0.32, 1), opacity 325ms linear;
+}
+
+/*rtl:ignore*/
+.app-ltr .skip-credits-enter-active .skip-credits-wrapper {
+    width: 100%;
+    right: 0;
+    opacity: 1;
+    transition: width 650ms cubic-bezier(0.23, 1, 0.32, 1), right 650ms cubic-bezier(0.23, 1, 0.32, 1), opacity 325ms linear;
+}
+
+/*rtl:ignore*/
+.app-ltr .skip-credits-enter .skip-credits-label {
+    transform: translateX(-40px);
+    opacity: 0;
+    transition: transform 650ms cubic-bezier(0.23, 1, 0.32, 1), opacity 325ms linear;
+}
+
+/*rtl:ignore*/
+.app-ltr .skip-credits-enter-active .skip-credits-label {
+    transform: translateX(0);
+    opacity: 1;
+    transition: transform 650ms cubic-bezier(0.23, 1, 0.32, 1), opacity 325ms linear;
+}
+
+
+/* Button Out Animations */
+
+/*rtl:ignore*/
+.app-ltr .skip-credits-leave .skip-credits-wrapper {
+    width: 100%;
+    right: 0;
+    opacity: 1;
+    transition: width 650ms cubic-bezier(0.55, 0.055, 0.675, 0.19), right 650ms cubic-bezier(0.55, 0.055, 0.675, 0.19), opacity 325ms linear 325ms;
+}
+
+/*rtl:ignore*/
+.app-ltr .skip-credits-leave-active .skip-credits-wrapper {
+    width: 20%;
+    right: -90%;
+    opacity: 0;
+    transition: width 650ms cubic-bezier(0.55, 0.055, 0.675, 0.19), right 650ms cubic-bezier(0.55, 0.055, 0.675, 0.19), opacity 325ms linear 325ms;
+}
+
+/*rtl:ignore*/
+.app-ltr .skip-credits-leave .skip-credits-label {
+    transform: translateX(0);
+    opacity: 1;
+    transition: transform 650ms cubic-bezier(0.55, 0.055, 0.675, 0.19), opacity 325ms linear 325ms;
+}
+
+
+.app-ltr .skip-credits-leave-active .skip-credits-label {
+    transform: translateX(-40px);
+    opacity: 0;
+    transition: transform 650ms cubic-bezier(0.55, 0.055, 0.675, 0.19), opacity 325ms linear 325ms;
+}
+
+.app-ltr .postplay-container {
+    top:    0;
+    left:   0;
+    right:  0;
+    bottom: 0;
+}
+
+.app-ltr .postplay-nextepisode-container .bottom-container {
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+}
+
+@media all and (min-width: 950px) {
+    .app-ltr .postplay-nextepisode-container .bottom-container {
+        left: 65px;
+        right: 35px;
+        bottom: 35px;
+    }
+}
+
+.app-ltr .postplay-nextepisode-meta {
+    margin-left: 2.5em;
+}
+
+.app-ltr .postplay-nextepisode-nextepisode {
+    padding-bottom: 0.25em;
+}
+
+.app-ltr .postplay-nextepisode-title {
+    padding: 0 0 0.25em 0;
+}
+
+.app-ltr .number, .app-ltr .spacer, .app-ltr .title {
+    margin-right: 0.2em;
+}
+
+@media all and (orientation: portrait) and (max-width: 532px) {
+    .app-ltr .postplay-nextepisode-container .bottom-container {
+        padding-top: 10px;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        margin: 0;
+        height: auto;
+    }
+
+    .app-ltr .postplay-nextepisode-container .postplay-nextepisode-image {
+        position: relative;
+    }
+
+    .app-ltr .postplay-nextepisode-meta {
+        margin: 2em 0 0 0;
+    }
+}
+
+.app-ltr .postplay-nextepisode-image-container .play-button-image-aligner {
+    left: 0;
+}
+
+/* PostplayNextEpisode*/
+.app-ltr .postplay-nextepisode-container .background-image-gradient {
+    background: linear-gradient(-180deg, rgba(0,0,0,0.00) 0%, #000000 92%);
+    top:    0;
+    left:   0;
+    right:  0;
+    bottom: 0;
+    position: absolute;
+}
+
+/* PostplayRecs */
+.app-ltr .postplay-recs-container {
+    background: transparent;
+}
+
+.app-ltr .postplay-recs-container .top-container-gradient,
+.app-ltr .compact-top-container .top-container-gradient {
+    background: linear-gradient(-180deg, rgba(0,0,0,0.00) 0%, #000000 92%);
+    left:0;
+    top:0;
+}
+
+.app-ltr .postplay-recs-container .bottom-container {
+    background: transparent;
+}
+
+.app-ltr .postplay-recs-container .bottom-container .bottom-container-back {
+    top:    0;
+    left:   0;
+    right:  0;
+    bottom: 0;  
+    background: black;
+}
+
+.app-ltr .postplay-recs-container .bottom-container .bottom-container-front {
+    margin: 0 40px;
+}
+
+.app-ltr .postplay-selection-meta {
+    padding-left: 40px;
+}
+
+.app-ltr .postplay-recs-instruction {
+    padding: 10px 0;
+}
+
+.app-ltr .postplay-recs-content-bar {
+    padding-left: 40px;
+}
+
+.app-ltr .recs-container .rec-container {
+    margin-right: 10px;
+}
+
+.app-ltr .rec-container .rec-image-mask{
+    top:    0;
+    left:   0;
+    right:  0;
+    bottom: 0;
+    background: black;
+}
+
+/* Compact Overlay Styles */
+.app-ltr .compact-overlay-page .bottom-container {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.app-ltr .compact-overlay-page .postplay-nextepisode-meta {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: all;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-ltr .postplay-compact-overlay-container {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.app-ltr .compact-recs-container {
+    left: 0;
+    right: 0;
+    margin: 20px 20px 0px 20px;
+}
+
+.app-ltr .compact-top-container {
+    left: 0;
+    right: 0;
+}
+
+.app-ltr .compact-top-container .compact-background-image {
+    left: 0;
+    right: 0;
+    background-position: 50% 0%;
+}
+
+.app-ltr .postplay-compact-overlay-container .postplay-selection-extrameta {
+    padding: 0 20px;
+}
+
+.app-ltr .compact-movie-recommendation .compact-play-next-button {
+    padding: 0;
+}
+
+@media all and (min-width: 300px) {
+    .app-ltr .postplay-compact-overlay-container .postplay-selection-extrameta {
+        padding: 0;
+    }
+
+    .app-ltr .compact-movie-recommendation .compact-play-next-button {
+        padding: 4px 8px;
+    }
+}
+.app-ltr .progress-container {
+    text-align: center;
+}
+/* everything in the bottom bar is supposed to stay LTR even for RTL languages. */
+/*rtl:ignore*/
+.app-ltr .scrub-bar-base {
+    margin-left: 24pt;
+    /* 4 for padding between this control and the next,
+       plus 24 to put it in what would be the center of 
+       the 48pt square it's anchored to.
+       See https://confluence.netflix.com/display/UXD/Windows+X+-+Player
+       for a picture.
+    */
+    margin-right: 28pt;
+
+    border-radius: 1pt;
+}
+
+/*rtl:ignore*/
+.app-ltr .scrub-bar-time-remain .time {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*rtl:ignore*/
+.app-ltr .scrub-bar-progress {
+    border-radius: 1pt;
+}
+
+/*rtl:ignore*/
+.app-ltr .scrub-bar-time-progress {
+    float: right;
+    text-align: center;
+    right: -20px;
+}
+
+/*rtl:ignore*/
+.app-ltr .scrub-bar-thumb {
+    border-radius: 14px;
+}
+
+/*rtl:ignore*/
+.app-ltr .scrub-bar-thumb-play {
+    float: right;
+    right: -13px;
+}
+/*
+.search-header-enter.search-header-enter-active {
+  transition: opacity .5s ease-in;
+}
+*/
+.app-ltr .searchbox-button {
+    padding-right: 5px;
+}
+.app-ltr .star-container:nth-child(1) {
+	margin-left: 0;
+}
+.app-ltr .star-container {
+    margin-right: .2em;
+}
+.app-ltr .star-value-holder * { pointer-events: none }
+.app-ltr .star-value-holder {
+  right:0; left:0;
+  margin: -.5em -.11em;
+}
+
+.app-ltr .star::after {
+	text-align: center;
+}
+
+.app-ltr .stars .star {
+  transform: rotate(0.01deg);
+  left:0;
+  transform: rotate(0.01deg);
+}
+
+.app-ltr .stars .default1.star {
+  transition: opacity .723s ease-out;
+}
+
+.app-ltr .stars .default2.star {
+  transition: opacity .723s ease-out;
+}
+
+.app-ltr .details-header-popup {
+  left:0;
+}
+
+.app-ltr .star-popup {
+  padding: .07em .3em .35em .5em;
+}
+
+.app-ltr .star-popup-holder {
+  cursor:pointer;
+}
+
+.app-ltr .popup-container .win-flyout  {
+  padding:0;
+  border-color: #3e3e3e;
+}
+.app-ltr .star-popup .event-source {
+    left:-0px;
+    padding-left:0px;
+}
+.app-ltr .star-left-of-first,
+.app-ltr .star-right-of-last{
+  width: 4em;
+  height:5em;
+  top:-1.2em;
+  display:inline-block;
+  position:absolute;
+}
+.app-ltr .star-left-of-first{ 
+  left:-3.5em;
+}
+.app-ltr .star-right-of-last{
+  right: -3.5em;
+}
+
+.app-ltr .star-popup .stars .default1.star {
+  text-shadow:
+      0 0 1.2px #666,
+      0 0 1.2px #666,
+      0 0 1.2px #666,
+      0 0 1.2px #666
+}
+
+
+.app-ltr .rating-slider {
+    opacity:  0;
+    position: absolute;
+    height:   20px;
+    width:    200px;
+}
+.app-ltr .viewableitem-image {
+    transition: opacity 0.6s ease-out;
+}
+.app-ltr .virtualized-list.horizontal {
+}
+.app-ltr .virtualized-list.horizontal .virtualized-list-scroll-before,
+    .app-ltr .virtualized-list.horizontal .virtualized-list-scroll-after {
+    transition: opacity 0.6s ease-out,
+                    background-color 0.25s ease-out;
+}
+.app-ltr .virtualized-list.horizontal .virtualized-list-scroll-before > span, .app-ltr .virtualized-list.horizontal .virtualized-list-scroll-after > span {
+    transition: transform 0.25s ease-out;
+}
+.app-ltr .virtualized-list.horizontal .virtualized-list-scroll-before:hover > span, .app-ltr .virtualized-list.horizontal .virtualized-list-scroll-after:hover > span {
+    transform: scale(1.2, 1.2);
+}
+.app-ltr .virtualized-list.horizontal .virtualized-list-scroll-before {
+    left: 0;
+}
+.app-ltr .virtualized-list.horizontal .virtualized-list-scroll-after {
+    right: 0;
+}
+.app-ltr .virtualized-list.horizontal .icon-before:after {
+    content: '\e758'/*rtl:'\e759'*/;
+}
+.app-ltr .virtualized-list.horizontal .icon-after:after {
+    content: '\e759'/*rtl:'\e758'*/;
+}

@@ -1,0 +1,5442 @@
+﻿.win-listview .win-horizontal .win-gridlayout .win-cellspanninggridlayout.win-itemscontainer.win-laidout {
+  display: -webkit-box;
+  display: -ms-grid;
+}
+
+/* general */
+.apptitle {
+    font-size:xx-large;
+}
+
+.page-container {
+    overflow: auto;
+    height: calc(100vh - 64px);
+    background-color: #181818;
+}
+
+.splash-progress-container {
+    width: 100%;
+}
+
+#mount-point {
+    /* Hide Scrollbars - auto behaves like -ms-autohiding-scrollbar */
+    -ms-overflow-style: auto;
+}
+/*::-webkit-scrollbar { width: 0px !important }*/
+
+/* Ellipsis for overflow text */
+.ellipsis {
+    text-overflow: ellipsis;
+
+    /*Required properties to achieve text-overflow */
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.netflixRedColor {
+    color: #E50914;
+}
+
+.netflixRedBackgroundColor {
+    background-color: #E50914;
+}
+
+.selectable-text {
+    -ms-user-select: text; 
+    user-select: text;
+}
+
+.selectable-element {
+    -ms-user-select: element; 
+    user-select: element;
+}
+
+.svg-icon {
+  width: 1em;
+  height: 1em;
+}
+#fps-meter {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+}
+
+.user-dialog-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    /* allow all text within this element to be selected for copy */
+    -ms-user-select: element;
+}
+
+.app-ltr.user-dialog-container .dialog {
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%)
+}
+
+.app-rtl.user-dialog-container .dialog {
+    top: 50%;
+    right: 50%;
+    transform: translateY(-50%) translateX(50%)
+}
+
+.user-dialog-container .panel {
+    margin: 20px;
+
+    /* hints that text can be selected due to -ms-user-select on .user-dialog-container */
+    cursor: text;
+}
+
+.user-dialog-container .user-dialog-backdrop {
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.user-dialog-container .button {
+    margin: 5px;
+}
+
+/* Universal Message Dialog specific styles */
+
+.app-ltr.universal-message-dialog .auto_prompt {
+    padding-right: 35px; /* Ensures there's enough room for the close button if the UMA is not modal */
+}
+
+.app-rtl.universal-message-dialog .auto_prompt {
+    padding-left: 35px; /* Ensures there's enough room for the close button if the UMA is not modal */
+}
+
+/* To avoid border corners, use a pseudo-elements, and offset by the border width */
+.universal-message-dialog .dialog:after {
+    content: '';
+    top: -1px;
+    position: absolute;
+    left: -1px;
+    right: -1px;
+    height: 3px;
+    background-color: #E50914;
+}
+
+/* Introduce an artificial space after each footer display element */
+.user-dialog-container .footer-copy:after {
+    content: ' ';
+    display: inline-block;
+}
+
+.user-dialog-container .footer-copy.element-link {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.universal-message-dialog .button.primary-button {
+    background-color: #E50914;
+}
+
+.universal-message-dialog .button.header-cta {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    border: transparent;
+}
+
+.user-dialog-container {
+    background-color: rgba(0,0,0,0.8);
+    z-index: 30000;
+}
+
+.user-dialog-container .dialog {
+    border: 1px solid #434343;
+    background-color: #333;
+    position: relative;
+    width: 500px;
+}
+
+.user-dialog-container .user-dialog-backdrop {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+.user-dialog-container .panel {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.user-dialog-container .panel.buttons {
+    justify-content: flex-end;
+}
+
+.user-dialog-container .button {
+    background-color: #5D5D5D
+}
+
+/** Universal Messaging Dialog specific styles */
+.universal-message-dialog .auto_prompt {
+    font-size: 28px;
+}
+
+.universal-message-dialog .auto_detail {
+    /* At least 100px (4-5 lines) at the shortest window size */
+    /* Dialog header and footer will remain visible */
+    max-height: calc(80vh - 157px);
+    overflow-y: auto;
+}
+
+.user-dialog-container .cta-container {
+    display: inline-flex;
+    width: 100%;
+    flex-wrap: wrap-reverse;
+    align-content: stretch;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.user-dialog-container .footer {
+    flex-direction: row;
+    color: #a6a6a6;
+    display: inline;
+    flex-grow: 999;
+    align-items: center;
+}
+
+.user-dialog-container .footer .footer-copy {
+    font-size: 11px;
+    display: inline-block;
+}
+
+.universal-message-dialog .panel.buttons {
+    align-items: flex-start;
+}
+
+/* pages */
+
+/*
+Listview hierarchy:
+all classes begin with 'win-'
+
+listview 
+  viewport
+    headercontainer
+    surface
+    footercontainer
+
+surface
+  itemscontainer
+    itemscontainer-padder
+    itemsblock
+    ...
+    itemsblock
+
+itemsblock
+  container (+ container-even or container-odd)
+    itembox
+      item
+*/
+
+.details-shim {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.7);
+    position: absolute;
+    top: 0px;
+}
+.details-popup-box {
+    height: 100%;
+    max-width: 768px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: #1a1a1a;
+}
+.details-popup {
+    height: 100%;
+}
+
+.details-popup-enter .details-shim {
+    opacity: 0;
+}
+.details-popup-enter-active .details-shim {
+    opacity: 1;
+}
+.details-popup-leave-active .details-shim {
+    opacity: 0;
+}
+
+/* immedeately after popup is dismissed start ignoring all clicks on it (while it still fades out) */
+.details-popup-leave-active .details-shim, 
+.details-popup-leave-active .details-popup-box,
+.details-popup-leave-active .details-popup-box * {
+    pointer-events: none;
+}
+
+.details-popup-enter .details-popup-box{
+    opacity: 0;
+}
+.details-popup-enter-active .details-popup-box {
+    opacity: 1;
+}
+.details-popup-enter {
+    opacity: .99;
+}
+
+.details-popup-enter-active {
+    opacity: 1;
+}
+
+.details-popup-leave-active {
+    opacity: .99;
+}
+
+.details-popup-leave-active .details-popup-box{
+    opacity: 0;
+}
+
+.details-page-content  {
+    width: 100%;
+    height:100%;
+    position: absolute;
+    display: block;
+}
+
+.details-popup img {
+    vertical-align: middle;
+}
+
+.details-popup .win-listview {
+    height:100%;
+}
+
+.details-page-content .details-non-episodic .win-container {
+  display: none;
+}
+
+.details-page-content-enter {
+    opacity: 0;
+}
+
+.details-page-content-enter.details-page-content-enter-active {
+    opacity: 1;
+}
+
+.details-page-leave-active {
+    opacity: 0;
+}
+
+.details-closeButton,
+.details-backButton {
+    position: absolute;
+    width: 30px;
+    font-size: 16px;
+    z-index: 1001;
+}
+
+.details-page-content .win-listview .win-item {
+    height:310px;
+}
+
+.display-page-title {
+    color: #b3b3b3;
+}
+.display-page-title .episode {
+    margin-top: 16px; color: #e6e6e6;
+}
+.display-page-title .episode .title {
+    color: #b3b3b3;
+}
+
+.display-page-title .title-heading {
+    font-size: 33px;
+    font-weight: bold;
+    padding-bottom: 6px;
+    opacity:.99;
+    color: white;
+}
+
+.title-synopsis {
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+    line-height: 19px;
+    color: #e6e6e6;
+}
+
+.details-header-spacer {
+    margin-bottom: -60px; /* allow details title to overlap by 60px*/
+}
+
+.image-cycler-layer {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    opacity: 0;
+}
+
+.image-cycler-layer.top {
+    z-index: 1;
+}
+
+.display-page-story-art {
+    position: absolute;
+    width: 100%;
+    /* want a 16:9 aspect ratio */
+    height: 100%;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    /* Fade out the story art near the bottom
+    -webkit-mask-box-image: -webkit-linear-gradient(top, #000 0px, #000 420px, transparent 450px);
+        */
+}
+
+/* 16:9 aspect magic */
+.aspect-box {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+}
+.aspect-box::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+.ratio16_9::before {
+  padding-top: 56.25%;
+}
+
+.aspect-content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+/*.details-gradient{ width:100%; height: 100%;
+  position:absolute;
+}
+    */
+.details_background {
+    position:absolute;
+}
+
+.details-header-spacer2 {
+    line-height:0;
+}
+
+.display-page-play-button {
+    width: 80px;
+    height: 80px;
+    top: calc(60% - 70px);
+    position: absolute;
+}
+
+.display-page-play-button .play-button-icon::after {
+    content: "\e646";
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    font-feature-settings: normal;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    position: absolute;
+    top: 10px; /* ::before and ::after top settings must match */
+    width: 58px;
+    height: 58px;
+    line-height: 58px;
+    font-size: 22px;
+    color: #fff;
+    opacity: 0.7;
+    pointer-events: none;
+}
+.display-page-play-button .play-button-icon::before {
+    display: block;
+    position: absolute;
+    top: 10px; /* ::before and ::after top settings must match */
+    width: 54px;
+    height: 54px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    content: '';
+    pointer-events: none;
+}
+
+.similar-details {
+    border: solid 4px rgb(25,25,25);
+}
+
+.episode-details img {
+}
+.episode-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: #b3b3b3;
+    margin-top: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+
+
+.details-page-content .win-listview .win-gridlayout .win-container {
+   /*border: 5px solid rgba(255,0,0,.2) !important;
+    outline: 4px solid rgba(255,255,0,.4) !important;
+    */
+    width: 100%;
+}
+
+/* surface is one of the outer-most boxes in the Listview hierarchy
+  that doesn't include header and footer.
+  Good place to give our Listview non-transparent background
+  and extra space on both sides
+ */
+.details-page-content .win-listview .win-vertical .win-gridlayout.win-surface {
+    background-color: #1a1a1a;
+    display: block;
+}
+
+.details-page-content .win-listview .win-itemsblock {
+    overflow: visible; /* Required if we want to display outline around selected/hovered items
+    but don't want to allow additional space for it, which might be ok between items, but will
+    overflow and will be cut off on the sides */
+}
+
+.episode-image, .similar-image {
+    width: 100%;
+}
+
+.details-page-content .win-listview .win-focusedoutline,
+.details-page-content .win-itemcontainer .win-focusedoutline {
+  outline: #ffffff solid 2px;
+}
+.details-page-content .win-listview.win-selectionstylefilled .win-selected .win-selectionbackground,
+.details-page-content .win-itemcontainer.win-selectionstylefilled.win-selected .win-selectionbackground {
+    opacity: 0.6;
+}
+
+.details-page-content .win-listview .win-vertical .win-gridlayout.win-structuralnodes .win-uniformgridlayout.win-itemscontainer.win-laidout {
+    display: block;
+}
+
+.details-page-content .win-container:hover {
+    background-color: #2f2f2f;
+}
+.details-page-content .win-container:hover .win-itembox {
+    background-color: transparent!important;
+}
+
+/* Fullscreen Micro
+  This layout is optimal for small screen widths.
+  All content is reflowed into a single-column layout (e.g. metadata, episodes, etc.)
+*/
+@media all and (max-width: 431px) {
+  .details-media::after { content: "Fullscreen Micro"; }
+
+  .details-page-content .win-listview .win-vertical .win-gridlayout.win-surface {
+    width: calc(100% - 2px) !important;
+  }
+  .details-page-content .win-itemscontainer {
+    width: calc(100% - 10px) !important;
+  }
+
+}
+
+@media all and (min-width: 432px) {
+  .details-media::after { content: "432px < Fullscreen Standard"; }
+  .details-page-content .win-listview .win-gridlayout .win-container {
+    max-width: calc(50% - 8px); /* 50% - 2 * (margin + padding), margin can be expressed as percentage of width */
+  }
+  .details-page-content .win-listview > .win-viewport.win-vertical .win-surface {
+    /*width: calc(100% - 8px) !important; /* 100% - 2 * padding_of_container) */
+    width: calc(100% - 2px) !important;
+
+  }
+  .details-page-content .win-itemscontainer {
+    width: calc(100% - 10px) !important;
+  }
+}
+
+
+/* Fullscreen Standard 
+  This layout range is for landscape phones, smaller tablets, or tablets in portrait mode.
+  The page elements are reflowed into two columns to fully utilize the horizontal space.
+*/
+/*@media all and (min-width: 432px) and (max-width: 640px){
+  .details-media::after { content: "432px < Fullscreen Standard < 640p"; }
+}
+*/
+@media all and (min-width: 640px)  {
+  .details-media::after { content: "640px < Fullscreen Standard "; }
+  .details-page-content .win-listview > .win-viewport.win-vertical .win-surface {
+    width: calc(100% - 78px) !important;
+  }
+  .details-page-content .win-itemscontainer {
+    width: calc(100% - 10px) !important;
+  }
+}
+
+/* Modal: 
+   The layout for wide screens is similar to the fullscreen standard, but locks the width of
+   the DP in a modal. Content does not reflow past two columns, as per the Fullscreen standard
+   layout. */
+/*@media all and (min-width: 768px) {
+  .details-media::after { content: "Modal"; }
+}
+*/
+
+.details-page-content .win-listview .win-item { height: auto !important; }
+.details-page-content div.win-itembox { height: auto; }
+.details-page-content .win-container { height: auto !important; }
+/**/
+
+
+.queue-action { display: inline-block; }
+.queue-action:hover { color: white; }
+
+.queue-action .queue-action-button {
+    position:relative;
+    font-size: 31px;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.icon-queue-add::after { content: "\F020" }
+.icon-queue-remove::after { content: "\F031" }
+
+.details-bookmark {
+    display: flex;
+    font-size: 15px; 
+}
+.details-bookmark.episode {
+    position: absolute;
+    pointer-events: none;
+}
+.details-bookmark-bar {
+    flex-grow: 1;
+    order: 2;
+    display:inline-block; 
+}
+.episode .details-bookmark-bar {
+    position: relative;
+    top: -35px;
+}
+.details-bookmark-container {
+    height:100%;
+    display: block;
+    position: relative; 
+}
+.details-bookmark-grey {
+    height: 4.31px;
+    background-color: #333333;
+    position: absolute;
+    top:50%;
+    width:100%;
+}
+.episode .details-bookmark-grey {
+    background-color: #666666;
+    height: 2.84px;
+}
+.details-bookmark-red {
+    height: 100%;
+    background-color: #E50914;
+    position: absolute;
+}
+.episode:not(.current)
+.details-bookmark-red{
+    background-color: #e6e6e6;
+}
+.details-bookmark-label {
+    width: auto;
+}
+
+.episode .details-bookmark-label {
+    display: none;
+}
+
+
+
+.details-page-content .virtualized-list-surface {
+    background-color: rgb(25,25,25);
+}
+.horizontal .virtualized-list-header-container {
+    width: 0; 
+}
+
+/* the purpose of the footer is to add extra space to the bottom of the virtualized list 
+    that space is different depending on wether even or odd item will be in the list last.
+*/
+.details-page-content .virtualized-list-footer.details-list-container {
+    position: relative;
+}
+.details-page-content .c-r + .virtualized-list-spacer + .virtualized-list-footer.details-list-container {
+    height: 0;
+}
+
+.details-page-content .c-l + .virtualized-list-spacer + .virtualized-list-footer.details-list-container {
+}
+
+.details-list-item {
+    position: relative;
+}
+
+.details-list-item-top {
+    position: relative;
+}
+
+.details-page-list {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.details-page-list > .virtualized-list-scroller {
+    overflow-y: scroll;
+}
+
+.details-list-container {
+    width: calc(50% - 47px);
+    height: 100px;
+    overflow:visible!important;
+}
+.details-list-container.details-group-container {
+    width: calc(100% - 2 * 47px);
+}
+
+
+.details-list-container.c-r {
+    position:relative;
+    top: -100px;
+}
+.details-list-container.c-l {
+    position:relative;
+}
+
+.details-list-container.details-group-container {
+    height: auto;
+    font-size: 24px;
+}
+
+.details-list-item {
+}
+.details-list-item-highlight {
+    height: 100%;
+    border: 4px solid rgb(25,25,25);
+}
+.details-list-container .details-list-item-highlight:hover,
+.details-list-container .details-list-item-highlight.hover {
+     height:auto;
+     border: 4px solid #2f2f2f;
+} 
+
+.details-list-container:hover,
+.details-list-container.hover {
+    overflow: visible !important;
+    z-index: 100 !important;
+}
+
+.details-list-container .details-list-item-highlight:hover,
+.details-list-container .details-list-item-highlight.hover {
+    background-color: #2f2f2f !important;
+    overflow: visible !important;
+}
+
+.episode-image-container {
+  width: 100%;
+  position:relative;
+  overflow:hidden;
+  border: 1px solid rgb(50,50,50);
+}
+.episode-image-container img {
+  max-width: 100%;
+  opacity: 0;
+  position: relative;
+  top: 50%;
+}
+
+.episode-synopsis {
+    font-size: 15px; /* type ramp: body */
+    color: #b2b2b2;
+    font-weight: 200;
+    letter-spacing: 0.03em;
+    line-height: 1.3em;
+}
+
+.episode-synopsis-top { position: relative; }
+.episode-synopsis-container {
+    overflow:hidden;
+}
+.episode-synopsis-container {
+    position:absolute;
+    top:-2px;
+}
+.details-list-item-highlight:hover .episode-synopsis-container,
+.details-list-item-highlight.hover .episode-synopsis-container {
+    visibility: collapse;
+}
+
+.episode-synopsis-full {
+    visibility: collapse;
+}
+.details-list-item-highlight:hover .episode-synopsis-full,
+.details-list-item-highlight.hover .episode-synopsis-full {
+    visibility: visible;
+}
+
+
+@media all and (max-width: 639px) {
+    .details-list-container {
+        width: calc(50% - 9px);
+    }
+    .details-list-container.details-group-container {
+        width: calc(100% - 2 * 9px);
+    }
+}
+
+
+
+.image-container {
+  position:relative;
+}
+.image-container div.placeholder {
+  position:absolute;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  
+  opacity: .1;
+  border: 1px solid #FFFFFF;
+}
+.image-container div.image{
+  position:absolute;
+  opacity: 0;
+  box-sizing: border-box;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}
+.image-container img { visibility: collapse; position: absolute; }
+
+.image-container img.loaded ~ div.image {
+  opacity: 1;
+}
+
+
+.episode-meta  {
+    opacity:0;
+    display:flex;
+    flex-direction:row;
+}
+
+.episode-meta.ready {
+    opacity:1;
+}
+
+.copyright /* in the popup */ {
+    font-size: 18px;
+}
+
+
+.episode-meta-main-part { width: calc(100% - 52px); }
+
+.episode-dl-placeholder { width: 44px; /* make some space for the button */ }
+
+.fillBackground {   fill:   rgba(25,25,25,1); }
+.strokeBackground { stroke: rgba(25,25,25,1); }
+
+.details-list-item-highlight:hover  .fillBackground, 
+.details-list-item-highlight.hover  .fillBackground 
+ { fill: #2f2f2f; }
+
+.details-list-item-highlight:hover  .strokeBackground, 
+.details-list-item-highlight.hover  .strokeBackground
+ { stroke: #2f2f2f; }
+
+
+.view-more-episodes-button {
+    display: inline-block;
+}
+
+.download-expiration {
+    color: #e06709;
+    font-size: 15px;
+
+}
+
+.mylist-icon .svg-icon {
+    width: 100%;
+}
+
+h1.downloads-page-title {
+    font-size: 29px;
+    color: white;
+    font-family: 'Segoe UI Light';
+}
+
+.downloads-page {
+    width: 100%;
+    height: 100%
+
+    /* 
+        there should always be enough space for:
+            * 4.33 items
+            * a 99px gap between sections 
+            * 14px gaps between items
+
+        width of one item:
+    */
+}
+
+.downloads-page .win-hub-section-header {
+  height: auto;
+}
+
+.downloads-page.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.downloads-page.empty .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 421px;
+  height: 50%;
+}
+
+.downloads-page.empty .container > svg {
+  height: 50%;
+}
+
+.downloads-page.empty .hintText {
+  font-size: 30px;
+  font-weight: 300;
+  color: #b3b3b3;
+  margin-top: 10%;
+  margin-bottom: 15%;
+}
+
+.downloads-page.empty .unavailable-hintText {
+  font-size: 20px;
+  font-weight: 300;
+  color: #b3b3b3;
+  margin-top: 10%;
+  margin-bottom: 0%;
+}
+
+.downloads-page.empty .button {
+  font-size: 21px;
+  font-weight: 500;
+  color: white;
+  min-height: auto;
+}
+
+.downloads-page .section-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.downloads-page .section-header .icon {
+  width: 58px;
+  height: 58px;
+}
+
+.downloads-page .section-header .title {
+  font-size: 37px;
+  font-weight: 300;
+}
+
+.downloads-page.full {
+}
+
+.downloads-page.full .win-hub-section {
+  overflow-y: auto;
+}
+
+.downloads-page.full .win-hub-section .win-hub-section-header {
+  margin-top: 15px;
+}
+
+.downloads-page.full .downloads-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+  min-width: 352px;
+  width: calc(
+                 5px + 11px + 2 * ( (100vw - 76px - 3*11px) / 4.33 )
+             );
+}
+
+.downloads-page.full .downloads-list.three-col {
+  min-width: 536px;
+  width: calc(
+                     10px + 2 * 11px + 3 * ( (100vw - 76px - 3*11px) / 4.33 )
+                 );
+}
+
+.downloads-page.full .downloads-list .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.downloads-page.full .downloads-list .item .item-container {
+  position: relative;
+  width: calc((100vw - 76px - 3*11px) / 4.33);
+  min-width: 168px;
+}
+
+.downloads-page.full .downloads-list .item .item-container:before {
+  display: block;
+  content: "";
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+.downloads-page.full .downloads-list .item .item-container .download-group.placeholder {
+  position: absolute;
+  top: 0px;
+  bottom: 0;
+  background-color: #050505;
+  opacity: 0.2;
+  border: 1px solid #FFFFFF;
+}
+
+.downloads-page.full .downloads-list .item .item-container .viewableitem {
+  position: absolute;
+  top: 0px;
+  bottom: 0;
+}
+
+.downloads-page.full .downloads-list .item .item-container .edit-control {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.35);
+}
+
+.downloads-page.full .downloads-list .item .item-container .edit-control .checkbox {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.downloads-page.full .downloads-list .item .label, .downloads-page.full .downloads-list .item .expiration, .downloads-page.full .downloads-list .item .error, .downloads-page.full .downloads-list .item .placeholder {
+  font-size: 18px;
+}
+
+.downloads-page.full .downloads-list .item .expiration {
+  color: #e87c03;
+}
+
+.downloads-page.full .downloads-list .item .error {
+  color: rgba(231, 113, 0, 1);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.downloads-page.full .downloads-list.three-col .item:nth-child(n+4),
+            .downloads-page.full .downloads-list:not(.three-col) .item:nth-child(n+3) {
+  margin-top: 25px;
+}
+
+.downloads-page.full .downloads-list .viewableitem {
+}
+
+.downloads-page.full .downloads-list .viewableitem.placeholder {
+  height: 0;
+}
+.onboard-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.onboard-dialog {
+    color: black;
+    background-color: white;
+
+    width: 400px
+
+}
+
+.onboard-dialog h1 {
+  font-weight: 100;
+}
+
+.onboard-dialog .icon > svg {
+  width: 150px;
+  height: 150px;
+}
+
+.onboard-dialog .button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  font-size: 15px;
+  height: 48px;
+  font-weight: bold;
+  border-top: 1px solid #ebebeb;
+}
+
+.onboard-dialog .button:hover {
+  background-color: rgba(0, 0, 0, 0.10);
+}
+
+.lomo-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 8.5px;
+    margin-bottom: 8.5px;
+}
+
+.lomo-row-title {
+    margin-bottom: 5px;
+    font-family: "Segoe UI", sans-serif, "Segoe MDL2 Assets", "Symbols";
+    font-weight: 300;
+}
+
+.home-page {
+    height: 100%;
+    position: relative
+}
+
+.home-page .lolomo {
+  height: 100%;
+  width: 100%;
+}
+
+.home-page .dimmer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  opacity: 0.7;
+  background-color: black;
+}
+
+.home-page .movie-container {
+  margin-bottom: 4px;
+  position: relative;
+}
+
+.home-page .movie-container .viewableitem-image {
+  width: 100%;
+  height: auto;
+}
+
+.home-page .movies-list.continueWatching .movie-container {
+  width: 254px;
+  height: 194px;
+}
+
+.home-page .viewableitem.placeholder,
+    .home-page .continueItem.placeholder {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  opacity: 0.1;
+  border: 1px solid #FFFFFF;
+}
+
+.home-page .continueItem {
+  position: relative;
+  height: 100%;
+  background-color: #050505;
+}
+
+.home-page .continueItem .continue-scrim {
+  position: absolute;
+  bottom: 0;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+.home-page .continueItem .continue-scrim .continue-info-container {
+  pointer-events: auto;
+}
+
+.home-page .continueItem .continue-info {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: flex-start;
+  padding-bottom: 8px;
+}
+
+.home-page .continueItem .continueImage {
+  width: 254px;
+  height: 142.875px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.home-page .continueItem .progress-bar {
+  width: 95%;
+  margin-bottom: 6px;
+  height: 3px;
+  background-color: #868686;
+}
+
+.home-page .continueItem .progress-bar .progress {
+  height: 100%;
+  background-color: #E50914;
+}
+
+.home-page .continueItem .info-button {
+  pointer-events: all;
+  font-size: 25px;
+  height: 25px;
+  -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.home-page .continue-info .titles {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.home-page .continue-info .titles .name,
+        .home-page .continue-info .titles .episodeOrRuntime {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 2px;
+}
+
+.home-page .continue-info .titles .episodeOrRuntime {
+  font-size: 14px;
+  color: #d1d1d1;
+}
+
+.home-page .continuePlayButton {
+  position: absolute;
+  top: 20%;
+  width: 60px;
+  height: 60px;
+  background-color: rgba(0,0,0,0.5);
+  opacity: 0.6;
+  border: 3px solid white;
+}
+
+.home-page .play-icon {
+  display: block;
+  position: absolute;
+  top: 17px;
+  font-size: 25px;
+}
+
+.home-page .lomo-row-title {
+}
+
+@media all and (min-width: 1120px),
+               all and (orientation: landscape) and (min-width: 900px) {
+  .home-page .lomo-row-title {
+    font-size: 18px;
+  }
+}
+
+.home-page .movies-list:not(.continueWatching) {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.home-page .movies-list:not(.continueWatching) .movie-container {
+  display: inline-block;
+}
+
+@media all and (max-width:  499px) {
+  .home-page {
+
+    /* 3 columns, 5% peek */
+  }
+  .home-page .movies-list:not(.continueWatching) .movie-container {
+    width: calc(31.66667% - 8px);
+    height: 0;
+    padding-bottom: calc(44.33334% - 11.2px);
+  }
+    }
+
+@media  all and (min-width:  500px) and (max-width:  699px) {
+  .home-page {
+
+    /* 4 columns, 5% peek */
+  }
+  .home-page .movies-list:not(.continueWatching) .movie-container {
+    width: calc(23.75%  - 8px);
+    height: 0;
+    padding-bottom: calc(33.25%  - 11.2px);
+  }
+    }
+
+@media  all and (min-width:  700px) and (max-width:  899px) {
+  .home-page {
+
+    /* 5 columns, 5% peek */
+  }
+  .home-page .movies-list:not(.continueWatching) .movie-container {
+    width: calc(19%  - 8px);
+    height: 0;
+    padding-bottom: calc(26.6%  - 11.2px);
+  }
+    }
+
+@media   all and (min-width:  900px) and (max-width: 1199px) {
+  .home-page {
+
+    /* 6 columns, 5% peek */
+  }
+  .home-page .movies-list:not(.continueWatching) .movie-container {
+    width: calc(15.83333%   - 8px);
+    height: 0;
+    padding-bottom: calc(22.16666%   - 11.2px);
+  }
+    }
+
+@media all and (min-width: 1200px) and (max-width: 1499px) {
+  .home-page {
+
+    /* 7 columns, 5% peek */
+  }
+  .home-page .movies-list:not(.continueWatching) .movie-container {
+    width: calc(13.57143% - 8px);
+    height: 0;
+    padding-bottom: calc(19% - 11.2px);
+  }
+    }
+
+@media all and (min-width: 1500px) and (max-width: 1799px) {
+  .home-page {
+
+    /* 8 columns, 5% peek */
+  }
+  .home-page .movies-list:not(.continueWatching) .movie-container {
+    width: calc(11.875% - 8px);
+    height: 0;
+    padding-bottom: calc(16.625% - 11.2px);
+  }
+    }
+
+@media  all and (min-width: 1800px) and (max-width: 1999px) {
+  .home-page {
+
+    /* 9 columns, 5% peek */
+  }
+  .home-page .movies-list:not(.continueWatching) .movie-container {
+    width: calc(10.55556%  - 8px);
+    height: 0;
+    padding-bottom: calc(14.77778%  - 11.2px);
+  }
+    }
+
+@media   all and (min-width: 2000px) {
+  .home-page {
+
+    /* 10 columns, 5% peek */
+  }
+  .home-page .movies-list:not(.continueWatching) .movie-container {
+    width: calc(9.5%   - 8px);
+    height: 0;
+    padding-bottom: calc(13.3%   - 11.2px);
+  }
+    }
+.page-container .playback-page .postplay-container { /* this container cannot create a new stacking context */
+    z-index: auto;
+    opacity: 1;
+}
+
+.playback-page {
+    position: absolute; 
+}
+
+/*  
+    We are making all children positioned to make sure that 
+    they follow the z order represented by the appearance in the body structure
+*/
+.playback-page > div,
+.playback-page > img {
+    position: absolute;
+}
+
+.playback-background-image {
+    opacity: 0;
+    position:       absolute;
+    height:         100%;
+    width:          auto;
+}
+
+.playback-tester {
+    display: none;
+}
+
+.image-based-subtitles {
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+}
+
+.playback-group-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.postplay-playback-gradient {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    position: absolute;
+}
+
+.playback-container {
+    height: 100%;
+}
+
+/* Make sure that the children of the playback-container do not handle the pointer events */
+.playback-container div,
+.playback-container video {
+    pointer-events: none;
+}
+
+.playback-container .player-streams,
+.playback-container .player-streams div {
+    pointer-events: visiblePainted;
+}
+
+/* Make sure the playback container does not prevent the pinprompt from handling pointer events in mode-2/PIN*/
+.playback-group-container.mode-2 {
+    pointer-events: none;
+}
+
+.playback-top-bar {
+    pointer-events: none;
+}
+
+.playback-top-bar .button-container {
+    pointer-events: visible;
+}
+
+.playback-top-bar .playback-title {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.playback-top-bar .bar-container {
+    display: flex;
+    pointer-events: none;
+}
+
+.playback-page .bar-group { 
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+}
+
+.bar-group-enter {
+    opacity: .99;
+}
+
+/* Children of CSSTransitionGroup can get in a state of 'leaving' while still 'entering'.
+   In this case we need this animation to generate additional event. Otherwise, elements end up "stuck" in the DOM .  */
+@keyframes hideAnimation {
+    to { opacity: 0 }
+}
+
+.bar-group-enter-active.bar-group-leave.bar-group-leave-active {
+    animation: hideAnimation .25s;
+}
+
+.playback-gradient {
+    position: absolute; top: 0; bottom: 0;
+    pointer-events: none;
+}
+.bar-group-enter.playback-gradient {
+    opacity: 0;
+}
+
+.profilegate {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-header {
+    font-size: 26px;
+}
+
+.profile-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20vh;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profilegate .profile-image,
+.profilegate .placeholder
+{
+    width: 100px;
+    height: 100px;
+}
+
+.profilegate .placeholder {
+    background-color: rgba(80, 80, 80, 0.4);
+}
+
+.profilegate .profile-name {
+    max-width: 100px;
+    color: gray;
+}
+.profilegate .profile-container:focus .profile-name,
+.profilegate .profile-container:hover .profile-name {
+    color: #e5e5e5;
+}
+
+
+/* profile-count-1 and profile-count-2
+   No need for a media query as it fits within the 320px min phone width
+*/
+
+/* profile-count-3 */
+@media all and (max-width: 400px) {
+
+    .profile-count-3.profilegate {
+        justify-content: flex-start;
+        align-items: stretch;
+    }
+
+    .profile-count-3 .profile-header {
+        min-height: 40px;
+        -ms-grid-row-align: center;
+            align-self: center;
+    }
+
+    .profile-count-3 .profile-list {
+        -ms-grid-row-align: center;
+            align-self: center;
+        width: 264px;
+        margin-bottom: 0;        
+    }
+}
+
+/* profile-count-4 */
+@media all and (max-width: 540px) {
+
+    .profile-count-4.profilegate {
+        justify-content: flex-start;
+        align-items: stretch;
+    }
+
+    .profile-count-4 .profile-header {
+        min-height: 40px;
+        -ms-grid-row-align: center;
+            align-self: center;
+    }
+
+    .profile-count-4 .profile-list {
+        -ms-grid-row-align: center;
+            align-self: center;
+        width: 264px;
+        margin-bottom: 0;        
+    }
+}
+/* profile-count-5 */
+@media all and (max-width: 680px) {
+
+    .profile-count-5.profilegate {
+        justify-content: flex-start;
+        align-items: stretch;
+    }
+
+    .profile-count-5 .profile-header {
+        min-height: 40px;
+        -ms-grid-row-align: center;
+            align-self: center;
+    }
+
+    .profile-count-5 .profile-list {
+        -ms-grid-row-align: center;
+            align-self: center;
+        width: 264px;
+        margin-bottom: 0;        
+    }
+}
+
+.page-container,
+.related-page {
+    background-color: black;  
+}
+
+.related-page img {
+    display: block; /*Ensure no bottom gap*/
+}
+
+.related-header {
+    font-size: 2.5em;
+    font-weight: 300;
+}
+
+.related-header > .related-header-prefix {
+    font-weight: 100;
+}
+
+.related-page .related-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.related-page .related-list .related-viewable{
+    flex: 1 0 calc(50% - 2*2*2px);
+}
+
+.related-page .related-list .related-viewable.placeholder{
+    height: 0;
+}
+
+
+@media all and (min-width: 880px) {
+    .related-page .related-list .related-viewable {
+        flex: 1 0 calc(33.33333% - 3*2*2px);
+    }
+}
+@media all and (min-width: 1280px) {
+    .related-page .related-list .related-viewable{
+        flex: 1 0 calc(25% - 4*2*2px);
+    }
+}
+
+@media all and (min-width: 1680px) {
+    .related-page .related-list .related-viewable{
+        flex: 1 0 calc(20% - 5*2*2px);
+    }
+}
+
+@media all and (min-width: 2080px) {
+    .related-page .related-list .related-viewable{
+        flex: 1 0 calc(16.66667% - 6*2*2px);
+    }
+}
+
+@media all and (min-width: 2480px) {
+    .related-page .related-list .related-viewable{
+        flex: 1 0 calc(14.28571% - 7*2*2px);
+    }
+}
+
+@media all and (min-width: 2880px) {
+    .related-page .related-list .related-viewable{
+        flex: 1 0 calc(12.5% - 8*2*2px);
+    }
+}
+
+@media all and (min-width: 3280px) {
+    .related-page .related-list .related-viewable{
+        flex: 1 0 calc(11.11111% - 9*2*2px);
+    }
+}
+
+@media all and (min-width: 3680px) {
+    .related-page .related-list .related-viewable{
+        flex: 1 0 calc(10% - 10*2*2px);
+    }
+}
+
+.search-page {
+    height: 100%;
+}
+
+.no-search-result-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.search-results {
+    width: auto;
+}
+.search-results .win-hub-surface {
+    box-sizing: border-box;
+}
+
+.search-results-list {
+    margin-bottom: 24px;
+}
+
+.search-results-list-videos {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.search-results-list-videos img {
+    display: block; /*Ensure no bottom gap*/
+}
+
+/* Default One Column*/
+.search-results-list-videos .viewableitem {
+    flex: 1 0 calc(100% - 2* 4px);
+}
+
+.search-results-list-videos .viewableitem.placeholder{
+    height: 0;
+}
+
+.search-results-none,
+.search-enter-term {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.search-results-none > .search-results-none-hilite {
+    font-weight: bold;
+}
+
+.search-page > .progress-container {
+    position: absolute;
+    top: 64px;
+}
+
+
+.search-results.win-hub-horizontal .win-hub-section-header {
+    height: 52px;
+}
+    /* Ellipsis for overflow text (same as .ellipsis in app.css)*/
+    .search-results-hubsection>.win-hub-section-header .win-hub-section-header-content {
+        text-overflow: ellipsis;
+
+        /*Required properties to achieve text-overflow */
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+.win-hub-surface {
+    width:100%;
+}
+
+.search-results-hubsection.win-hub-section {
+    overflow-y: auto; /*allows vertical scroll in each hub section independently*/
+}
+
+.search-results-hubsection .win-hub-section-header {
+    height: auto;
+}
+
+.search-results-hubsection .win-footercontainer {
+    /* ensures a gap at bottom even with horizontal scrollbar,
+       and lets vertical scrollbar extend to the bottom of the page*/
+    height: 20px; 
+}
+
+
+.search-results-list .personitem .personitem-headshot {
+    min-width: 70px;
+    min-height: 70px;
+    width: 70px;
+    height: 70px;
+}
+/**
+* Vertical Alignment of people's names
+*/
+.search-results-list .personitem, 
+.search-results-list .suggestion {
+    display:flex;
+    align-items: center;
+    width: 300px;
+}
+
+.search-results-list .personitem-name {
+    font-size: 20px;
+    font-weight: 300;
+}
+.search-results-list .personitem-name,
+.search-results-list .suggestion-name {
+    font-size: 20px;
+    font-weight: 300;
+}
+.search-results-hubsection .win-hub-section-header-content {
+    font-size: 34px;
+    font-weight: 400;
+}
+
+/* Responsive Layout for Search Result Sections */
+.search-results.section-count-1 .search-results-hubsection-videos.win-hub-section {
+    width: 100%;
+}
+
+/* All phones (large and small) */
+/*
+@media (--phone-widths) {
+ 
+    .search-results .win-hub-viewport {
+        -ms-scroll-snap-type: mandatory;
+        overflow-x: auto;
+        overflow: auto;
+    }
+
+    .search-results .win-hub-section {
+        margin-top: 0;
+    }
+
+    .search-results.section-count-1 .win-hub-section {
+        width: 100vw;
+    }
+
+    .search-results.win-hub-horizontal .win-hub-section-header {
+        height: var(--section-header-height);
+    }
+
+}
+*/
+
+/* Reorder the Search Result Sections for lager Tablet/PC using flex*/
+/*.search-results.win-hub-horizontal .win-hub-surface {
+    display: inline-block;
+}*/
+/*.search-results.win-hub-horizontal .win-hub-surface {
+    display: flex;
+}
+.search-results-hubsection-videos.win-hub-section {
+    order: 3;
+}
+
+.search-results-hubsection-unavailable.win-hub-section {
+    order: 2;
+}
+.search-results-hubsection-people.win-hub-section {
+    order: 1;
+}*/
+
+
+
+/* Small Phone Portrait */
+/*
+@media (--small-phone-widths) {
+    .search-results .win-hub-section {
+        width: 90vw;
+    }
+    .search-results.section-count-2 .win-hub-viewport {
+        -ms-scroll-snap-points-x: snapList(0, 80%) !important;   
+    }
+    .search-results.section-count-3 .win-hub-viewport {
+        -ms-scroll-snap-points-x: snapList(0, 90%, 170%) !important;        
+    }
+}
+*/
+/* Large Phone Portrait */
+/*
+@media (--large-phone-widths) {
+    .search-results .search-results-hubsection-videos {
+        width: 95vw;
+    }
+    .search-results .search-results-hubsection-unavailable,
+    .search-results .search-results-hubsection-people {
+        width: 90vw;
+    }
+
+    .search-results.section-count-2.section-names-videos-people .win-hub-viewport,
+    .search-results.section-count-2.section-names-videos-unavailable .win-hub-viewport {
+        -ms-scroll-snap-points-x: snapList(0, 85%) !important;
+    }
+    .search-results.section-count-2.section-names-unavailable-people .win-hub-viewport{
+        -ms-scroll-snap-points-x: snapList(0, 80%) !important;
+    }
+
+    .search-results.section-count-3 .win-hub-viewport {
+        -ms-scroll-snap-points-x: snapList(0, 95%, 175%) !important;        
+    }
+
+    .search-results-list-videos .viewableitem {
+        flex: 1 0 calc((100%/2) - 2*2*var(--item-margin));
+    }
+}
+*/
+/* Non-Phones (portrait mode) */
+
+@media       all and (min-width: 432px) {
+    .search-results .search-results-hubsection-videos.win-hub-section {
+        width: 90%;
+    }
+    /* Two Columns*/
+    .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(50% - 2*2*2px);
+    }
+}
+
+/* Enough space devoted to the Titles Section, so let the other sections grow now */
+@media      all and (min-width: 600px) {
+    .search-results-hubsection-videos.win-hub-section {
+        min-width: 516px;
+    }
+
+    .search-results.section-count-1 .search-results-hubsection-videos.win-hub-section {
+        max-width: 100%;
+    }
+
+    .search-results.section-count-2 .search-results-hubsection-videos.win-hub-section {
+        width: calc(100% - 324px);
+    }
+
+    .search-results.section-count-3 .search-results-hubsection-videos.win-hub-section {
+        width: calc(100% - 648px);
+    }
+    /* Two Columns*/
+    .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(50% - 2*2*4px);
+    }
+
+}
+/* No max width */
+@media    all and (min-width: 880px) {
+    .search-results-hubsection-videos.win-hub-section {
+        max-width: none;
+    }
+    .search-results.section-count-2 .search-results-hubsection-videos.win-hub-section {
+        min-width: 516px;
+        width: calc(100% - 404px);
+    }
+    .search-results.section-count-3 .search-results-hubsection-videos.win-hub-section {
+        min-width: 540px;
+        width: calc(100% - 760px);
+    }
+}
+
+@media       all and (min-width: 880px){
+    .search-results-hubsection-videos.win-hub-section {
+        min-width: 516px;
+    }
+    /* Three Columns*/
+    .search-results.section-count-1 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(33.33333% - 3*2* 4px);
+    }
+    /* Two Columns*/
+    .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(50% - 2*2* 4px);
+    }
+}
+
+@media       all and (min-width: 1280px) {
+    /* Four Columns*/
+    .search-results.section-count-1 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(25% - 4*2* 4px);
+    }
+    /* Three Columns*/
+    .search-results.section-count-2 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(33.33333% - 3*2* 4px);
+    }
+    /* Two Columns*/
+    .search-results.section-count-3 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(50% - 2*2* 4px);
+    }
+}
+
+@media       all and (min-width: 1680px) {
+    /* Five Columns*/
+    .search-results.section-count-1 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(20% - 5*2* 4px);
+    }
+    /* Four Columns*/
+    .search-results.section-count-2 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(25% - 4*2* 4px);
+    }
+    /* Three Columns*/
+    .search-results.section-count-3 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(33.33333% - 3*2* 4px);
+    }
+}
+
+@media       all and (min-width: 2080px) {
+    /* Six Columns*/
+    .search-results.section-count-1 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(16.66667% - 6*2* 4px);
+    }
+    /* Five Columns*/
+    .search-results.section-count-2 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(20% - 5*2* 4px);
+    }
+    /* Four Columns*/
+    .search-results.section-count-3 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(25% - 4*2* 4px);
+    }
+}
+
+@media     all and (min-width: 2480px) {
+    /* Seven Columns*/
+    .search-results.section-count-1 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(14.28571% - 7*2* 4px);
+    }
+    /* Six Columns*/
+    .search-results.section-count-2 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(16.66667% - 6*2* 4px);
+    }
+    /* Five Columns*/
+    .search-results.section-count-3 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(20% - 5*2* 4px);
+    }
+}
+
+@media       all and (min-width: 2880px) {
+    /* Eight Columns*/
+    .search-results.section-count-1 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(12.5% - 8*2* 4px);
+    }
+    /* Seven Columns*/
+    .search-results.section-count-1 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(14.28571% - 7*2*4px);
+    }
+    /* Six Columns*/
+    .search-results.section-count-2 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(16.66667% - 6*2* 4px);
+    }
+}
+
+
+@media      all and (min-width: 3280px) {
+    /* Nine Columns*/
+    .search-results.section-count-1 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(11.11111% - 9*2* 4px);
+    }
+    /* Eight Columns*/
+    .search-results.section-count-1 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(12.5% - 8*2* 4px);
+    }
+    /* Seven Columns*/
+    .search-results.section-count-1 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(14.28571% - 7*2* 4px);
+    }
+}
+
+@media       all and (min-width: 3680px) {
+    /* Ten Columns*/
+    .search-results.section-count-1 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(10% - 10*2* 4px);
+    }
+    /* Nine Columns*/
+    .search-results.section-count-1 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(11.11111% - 9*2* 4px);
+    }
+    /* Eight Columns*/
+    .search-results.section-count-1 .search-results-list-videos .viewableitem {
+        flex: 1 0 calc(12.5% - 8*2* 4px);
+    }
+}
+
+.sign-in-page {
+    width: 100%;
+    height: 100%;
+    overflow:hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sign-in-container {
+    width: 98%;
+    max-width: 288px;
+}
+
+.sign-in-form {
+    width: 100%;
+    height: 120px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sign-in-form input {
+    color: #838484;
+}
+
+.sign-in-form input, .sign-in-form button {
+    width: 100%;
+    height: 32px;
+}
+
+.sign-in-form .win-button.win-button-primary {
+    background-color: #E50914;
+}
+
+.sign-in-form .win-button.win-button-primary:disabled {
+    background-color: #242424;
+    color: #606060;
+}
+
+.sign-in-container .link-container {
+    height: 78px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.sign-in-container .link-container a {
+    display: block;
+    text-decoration: none;
+    color: #9f9f9f;
+}
+
+.sign-in-container hr {
+    width: 100%;
+}
+.sign-in-page input[type=email].win-textbox:focus::-ms-input-placeholder,
+.sign-in-page input[type=password].win-textbox:focus::-ms-input-placeholder  {
+    color: rgba(140, 140, 140, 0.5);
+}
+
+.sign-in-page input[type=email].win-textbox:focus,
+.sign-in-page input[type=password].win-textbox:focus{
+  background-color: #ffffff;
+}
+.sign-up-page,
+.sign-up-page .sign-up-webview {
+    width: 100%;
+    height: 100%;
+}
+
+.sign-up-page {
+    background-color: white;
+}
+@media (min-width: 600px) {
+    .settings-page {
+        width: 600px;
+    }
+}
+
+@media (max-width: 599px) {
+    .settings-page {
+        width: 100vw;
+    }
+}
+
+.settings-page {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: #191919;
+    color: #aaa;
+
+    box-sizing: border-box;
+
+    overflow-y: auto;
+    overflow-x: hidden
+}
+
+.settings-page .external-link {
+}
+
+.settings-page .external-link:hover {
+  background-color: rgba(255, 255, 255, 0.10);
+}
+
+.settings-page .external-link > div {
+  color: white;
+  height: 44px;
+  width: auto;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  display: inline-block;
+}
+
+.settings-page .external-link > div div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.settings-page .details-closeButton {
+  font-size: 16px;
+}
+
+.settings-page h1 {
+  font-size: 28px;
+  font-weight: 200;
+  margin-top: 0;
+  color: white;
+}
+
+.settings-page h2 {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 16px;
+  margin-top: 36px;
+  color: white;
+}
+
+.settings-page h3, .settings-page div {
+  font-size: 15px;
+}
+
+.settings-page div {
+  font-weight: 300;
+}
+
+.settings-page button:hover {
+  background-color: rgba(255, 255, 255, 0.40) !important;
+}
+
+.settings-page .video-quality-selector {
+  position: relative;
+}
+
+.settings-page .video-quality-selector .video-quality-menu {
+  position: absolute;
+  width: 100%;
+  max-width: 300px;
+  background-color: #282828;
+  top: 0;
+  overflow-y: auto;
+  z-index: 999;
+}
+
+.settings-page .menu-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  font-size: 15px;
+  color: white;
+  height: 48px;
+}
+
+.settings-page .menu-item .label {
+  font-size: 12px;
+  color: #808080;
+}
+
+.settings-page .menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.10);
+}
+
+.settings-page .delete-all-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  font-size: 15px;
+  color: white;
+  height: 48px;
+}
+
+.settings-page .delete-all-item:hover {
+  background-color: rgba(255, 255, 255, 0.10);
+}
+
+.settings-page .disk-meter {
+}
+
+.settings-page .disk-meter > .label {
+  font-size: 12px;
+  color: #808080;
+}
+
+.settings-page .disk-meter .legend {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 85%;
+}
+
+.settings-page .disk-meter .legend .legend-entry {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.settings-page .disk-meter .legend .legend-entry .swatch {
+  width: 8px;
+  height: 8px;
+  margin-top: 1px;
+}
+
+.settings-page .disk-meter .legend .legend-entry > .label {
+  font-size: 12px;
+  color: #979797;
+}
+
+.settings-page .disk-meter .bar {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+  margin-top: 4px;
+}
+
+.settings-page .disk-meter .bar .chunk {
+  height: 8px;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+
+/* components */
+.bar-button {
+    /*width:  var(--header-height);  Allow bar-button to flex when long text is placed within */
+
+    /* also specify min-width so these buttons don't get shrunken in flexboxes. */
+    min-width: 64px;
+    height: 64px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bar-button-icon {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+
+    position: relative
+}
+
+.bar-button-icon .text,
+    .bar-button-icon:before {
+  position: absolute;
+  font-size: 16pt;
+  line-height: 32px;
+}
+
+.bar-button-icon svg {
+  height: 100%;
+  width: 100%;
+}
+.cancelable-overlay-clickgrabber {
+    position: fixed;
+    z-index: 998;
+    top: 0;
+    bottom: 0;
+}
+
+.cancelable-overlay-clickgrabber .header-scrim {
+    background-color:black;
+    width: 100%;
+    height: 64px;
+}
+
+.cancelable-overlay-clickgrabber .body-scrim {
+    background-color:black;
+    width: 100%;
+    height: calc(100vh - 64px)
+}
+.focus_sink {
+    opacity: 0;
+}
+
+.header-container {
+    height: 64px;
+}
+
+.header {
+    position:absolute;
+    top:0;
+    height: 64px;
+    width: 100%;
+    overflow:hidden;
+
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header > :not(.spacer) {
+    flex-grow: 0;
+}
+
+.header > .spacer,
+.header > .searchbox-container {
+    flex-grow: 1;
+}
+
+
+.header.dark {
+    background-color: black;
+    color: white;
+}
+
+.header.light {
+    background-color: white;
+    color: #4e4e4e;
+}
+
+.header {
+}
+
+.header .wormhole-exit > div {
+  display: flex;
+  flex-direction: row;
+}
+
+.logoContainer {
+	font-family: 'nf-icon';
+    color: #E50914;
+    pointer-events: none;
+    margin-top: 6px;
+}
+
+.logo {
+    display: inline-block;
+    font-size: 30px;
+    color: #E50914;
+}
+
+.header .genreTitle {
+    font-size: 24pt;
+    color: white;
+    font-family: 'Segoe UI Semilight'
+}
+
+@media                        all and (max-width: 432px) {
+    .header .genreTitle {
+        font-size: 16pt;
+        font-family: 'Segoe UI Semibold'
+    }
+}
+
+.mdxButtonContainer {
+    width: 35px;
+}
+
+.header .signInButton .bar-button-icon .text,
+.header .signOutButton .bar-button-icon .text {
+    font-size: 15px;
+    white-space: nowrap;
+}
+
+.header .signInButton {
+    background-color: #E50914;
+    color: white;
+    max-height: 40px;
+    font-weight: 400;
+}
+
+.menu-showing {
+    background-color: #282828;
+}
+
+.overflow-menu {
+    position: absolute;
+    width: 100%;
+    max-width: 300px;
+    background-color: #282828;
+    top: 64px;
+    overflow-y: auto;
+}
+
+.sidebar-menu {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+
+    width: 100%;
+    max-width: 320px;
+    background-color: #191919;
+    color: #d1d1d1;
+    font-size: 18px;
+    font-weight: 300; /* "light" */
+}
+
+.sidebar-menu .categories {
+    height: calc(100% - 96px);
+    width: 100%;
+    overflow-y: auto;
+}
+
+.sidebar-menu .profile-info {
+    width: 100%;
+    height: 96px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.sidebar-menu .profile-info .avatar {
+    width: 56px;
+    height: 56px;
+}
+
+.sidebar-menu .profile-info .profile-switch-button {
+    color: #d3d3d3;
+}
+
+.sidebar-menu .profile-info .profile-name {
+    flex: 1 1 auto;
+
+    color: white;
+    font-size: 20px;
+    line-height: 27px;
+    font-family: "Segoe UI Light";
+}
+
+.sidebar-menu .profile-info img,
+.sidebar-menu .profile-info div:not(.profile-separator) {
+    display: inline-block;
+}
+
+.sidebar-menu div.profile-separator {
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.settingsButtonContainer,
+.signOutButtonContainer,
+.genreButtonContainer,
+.sidebarButton {
+    height: 48px;
+    
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center
+}
+
+.settingsButtonContainer:hover, .signOutButtonContainer:hover, .genreButtonContainer:hover, .sidebarButton:hover {
+  background-color: rgba(255, 255, 255, 0.10);
+  color: white;
+}
+
+.sidebarButton {
+}
+
+.sidebarButton .icon {
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.genreButtonContainer:active {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+.settingsButtonContainer span,
+.signOutButtonContainer span {
+    display: inline-block;
+}
+
+.genreButtonContainer .marker {
+    height: 100%;
+    width: 6px;
+}
+
+.genreButtonContainer.current .marker {
+    background-color: #e90514;
+}
+
+.genreButtonContainer.current .content {
+    color: white;
+    font-weight: bold;
+}
+
+/* ReactCSSTransitionGroup*/
+.header-group {
+    display: block;
+}
+
+.header-group-appear,
+.header-group-enter{
+    opacity: 0;
+}
+
+.header-group-leave.header-group-leave-active{
+    opacity: 0;
+}
+
+.header-group-appear.header-group-appear-active,
+.header-group-enter.header-group-enter-active{
+    opacity: 1;
+}
+
+/* Children of CSSTransitionGroup can get in a state of 'leaving' while still 'entering'.
+   In this case we need this animation to generate additional event. Otherwise, elements end up "stuck" in the DOM .  */
+@keyframes hideAnimation {
+    to { opacity: 0 }
+}
+
+.header-group-appear-active.header-group-leave.header-group-leave-active,
+.header-group-enter-active.header-group-leave.header-group-leave-active,
+.header-group-leave-active.header-group-enter.header-group-enter-active {
+    animation: hideAnimation .01s;
+}
+
+/*.searchbox-container ~ .cancelable-overlay-clickgrabber {
+    pointer-events: none;
+}
+
+
+.searchbox-container ~ .cancelable-overlay-clickgrabber > .body-scrim {
+    pointer-events: visiblePainted;
+}*/
+/*
+.search-header-enter {
+  opacity: 0.01;
+}
+.search-header-enter.search-header-enter-active {
+  opacity: 1;
+}
+*/
+.searchbox-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.searchbox-button {
+    /*vertical-align: middle;*/
+}
+
+input.searchbox-input {
+    flex: 1 0 auto;
+    max-width: 350px;
+    width: auto;
+}
+
+input.searchbox-input:focus {
+    background-color: #000000;
+    color: #ffffff;
+}
+/*
+
+.mdx-icon {
+    position: absolute;
+    height: 100%;
+    top: 0px;
+}
+
+.mdxInsideIcon {
+    width: 80px;
+}
+
+.mdxButton {
+    height: var(--header-height);
+    font-size: 25px;
+    color:white;   
+}
+
+    */
+.mdx-menu {
+    position: absolute;
+    width: 100%;
+    max-width: 200px;
+    height: 300px;
+    background-color: #1a1a1a;
+    top: 25px;
+    overflow-y: auto
+}
+.metabar {
+    font-size: 15px;
+}
+
+.metabar .metabar-part {
+    color: #b3b3b3;
+    display: inline-block;
+}
+
+.metabar .maturity {
+    border: 1px solid gray;
+    font-size: 90%;
+}
+
+.metabar .icon-badge {
+    font-size: 21px;
+    position: relative;
+    top: 5px;
+}
+
+.metabar .icon-badge-ultraHd::before {
+    content: "\E727";
+    color: #555555;
+}
+
+.metabar .icon-badge-hdr::before {
+    content: "\F092";
+    color: #555555;
+}
+
+.metabar .icon-badge-hd::before {
+    content: "\E648";
+    color: #555555;
+}
+
+.metabar .icon-badge-51-audio::before {
+    content: "\E730";
+    color: #555555;
+}
+
+.metabar .icon-svg {
+    height: 21px;
+    fill: #555555;
+}
+
+.metabar .icon-svg svg {
+    height: 100%
+}
+.notifications-header {
+    font-size: 18px;
+    font-weight: 300;
+    color: #d1d1d1;
+    white-space: nowrap;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.notifications.full .notifications-header-arrow::before {
+    content: "\E868";
+}
+
+
+.notifications.abridged .notifications-header {
+    position: relative;
+}
+
+.notifications.abridged .notifications-header::before,
+.notifications-item::before {
+    content: "\25CF";
+    color: red;
+    position: relative;
+}
+.notifications-item::before {
+    top: -14px;
+}
+
+.notifications-item {
+    display: flex;
+}
+
+
+.notifications-header.seen-true::before,
+.notifications-item.seen-true::before  {
+    opacity:0;
+}
+
+
+.notifications-header-arrow {
+    position: absolute;
+    font-size: 14px;
+	top: 19px;
+}
+
+
+.notifications-item .image {
+    width: 90px;
+}
+
+.notifications-item .text {
+    min-width: 0;
+}
+
+.notifications-item .line
+{
+    font-size: 14px;
+    line-height: 133%;
+    margin-bottom: -2px;
+}
+
+.notifications-item .line1 {
+    color: #b3b3b3;
+}
+
+.notifications-item .line2 {
+    color: #9d9d9d;
+}
+
+.notifications-item .line3 {
+    color: #595959;
+    font-size: 13px;
+}
+
+.notifications-item .line b {
+    font-weight: 500;
+}
+div.null {
+    display: none !important;
+}
+.pinprompt-container {
+    height: 100%;
+    width: 100%;
+    pointer-events: visible;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column
+}
+
+.pinprompt-container .message {
+    text-align : center;
+    font-size: 24px;
+}
+
+.pinprompt-container .pinpad {
+    display: flex;
+    flex-direction: row;
+    justify-content: center
+}
+
+.pinprompt-container .link-container {
+    width:      256px;
+    height:     50px;
+    display:    flex;
+    align-self:  center;
+    justify-content: center
+}
+
+.pinprompt-container button {
+    width:      256px;
+    height:     50px;
+    -ms-grid-row-align: center;
+        align-self: center;
+    font-size: 20px
+}
+
+.pinprompt-container .pin-number {
+    height:     64px;
+    width:      64px;
+    font-size:  30px;
+}
+
+
+.compact-overlay-controls {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.35);
+    pointer-events: none;
+}
+
+.compact-overlay-controls-area {
+    pointer-events: visible;
+    align-items: center;
+    display: flex;
+    max-width: 80vw;
+}
+
+.compact-ovleray-controls-area .bar-button {
+    flex-basis: 64px;
+    max-width: inherit;
+}
+
+
+.compact-overlay-control-spacer {
+    display: flex;
+    flex-basis: 64px;
+}
+
+.compact-overlay-bar {
+    bottom: 0;
+    z-index: 1;
+    position: absolute;
+    pointer-events: visible;
+}
+
+
+/*
+    Switching from compact overlay to default mode there's a render cycle. 
+    Use media queries to avoid any overlap
+*/
+@media all and (min-width: 501px) {
+    .compact-overlay-controls {
+        display: none;
+    }
+}
+
+.gradient-background {
+    position: absolute;
+
+    align-items:center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.compact-overlay-prompt-container {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.user-prompt-button {
+    pointer-events: all;
+}
+
+@media all and (min-width: 250px) {
+    .user-prompt-button {
+        margin-top: 15px;
+    }
+}
+.content-advisory {
+  position: absolute;
+  top: 30px;
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+}
+.content-advisory .bar {
+  width: 4px;
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+.content-advisory h4 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 21px;
+  position: relative;
+  top: -0.5px;
+}
+.content-advisory p {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 30px;
+  opacity: .85;
+  position: relative;
+  top: 5px;
+}
+.bar-group-enter.content-advisory .bar {
+  bottom: 0;
+  top: auto;
+  height: 0;
+}
+.bar-group-enter-active.bar-group-enter.content-advisory .bar {
+  height: 100%;
+}
+.bar-group-leave.content-advisory .bar {
+  bottom: auto;
+  top: 0;
+  height: 100%;
+}
+.bar-group-leave-active.bar-group-leave.content-advisory .bar {
+  height: 0;
+  opacity: 0;
+}
+.bar-group-enter.content-advisory h4,
+.bar-group-enter.content-advisory p {
+  opacity: 0;
+}
+.bar-group-enter-active.bar-group-enter.content-advisory h4,
+.bar-group-enter-active.bar-group-enter.content-advisory p {
+  opacity: 1;
+}
+.bar-group-leave.content-advisory h4,
+.bar-group-leave.content-advisory p {
+  opacity: 1;
+}
+.bar-group-leave-active.bar-group-leave.content-advisory h4,
+.bar-group-leave-active.bar-group-leave.content-advisory p {
+  opacity: 0;
+}
+.audio-subtitle-menu {
+    position: absolute;
+    background-color: black;
+    width: 100%;
+    box-sizing: border-box;
+    top: 0px;
+    pointer-events: visible;
+    height: 100%;
+    max-height: 300px;
+}
+
+.audio-subtitle-menu-wrapper {
+    height: auto;
+    width: 100%;
+}
+
+.audio-subtitle-sub-menu-wrapper {
+    height: 100%;
+    width: calc(50% - 40px);
+}
+
+.audio-subtitle-sub-menu {
+    height: 100%;
+    max-height: 190px;
+    width: 100%;
+    overflow-y: auto
+}
+
+.audio-subtitle-header {
+    position: relative;
+    height: 60px;
+    width: 100%;
+    top: 0px;
+    font-size: 30px;
+}
+
+.audio-subtitle-item {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    top: 0px;
+    font-size: 25px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.close-button-container {
+    height: auto;
+    position: absolute;
+    width: 50px;
+    bottom: 14px;
+    box-sizing: content-box;
+}
+.playback-bottom-bar {
+    height: 200px;
+    width: 100%;
+    bottom: 0px;
+    position: absolute;
+    background-color: transparent;
+    pointer-events:  none;
+}
+
+.playback-bottom-bar-image {
+    position: absolute;
+    background-color: black;
+    top: 0px;
+}
+
+.playback-bottom-bar-work-area {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    pointer-events:  visible;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.playback-bottom-bar-work-area .scrub-bar {
+    flex: 1 0 auto;
+}
+
+.playback-bottom-bar-button-area {
+    position: relative;
+    background-color: transparent;
+    bottom: 0px;
+    height: 41px;
+}
+.icon-uniE706-chevron-up:before {
+    content: "\e706";
+}
+
+.playback-episode-selector {
+  position: absolute;
+  width: 100%;
+  box-sizing: border-box;
+ 
+  pointer-events: visible;
+  min-height: 100px;
+  bottom: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+.playback-episode-selector .shim {
+    background-color: rgba(0,0,0,.4);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.bar-group-enter .shim {
+    opacity: 0;
+}
+
+.bar-group-enter.bar-group-enter-active .shim {
+    opacity: 1;
+}
+
+.bar-group-leave-active .shim {
+    opacity: 0;
+}
+
+.bar-group-enter .overlay {
+    opacity: 0;
+}
+
+.bar-group-enter.bar-group-enter-active .overlay {
+    opacity: 1;
+}
+
+.bar-group-leave-active .overlay {
+    opacity: 0;
+}
+
+.playback-episode-selector .overlay {
+    background-color: rgba(25,25,25,.9);
+    padding-top: 28px;
+}
+
+.playback-episode-selector .episode-selector {
+    min-height: 453.79px; /* button height 392px + margins 2*4px + paddings 40px+10px + misterious 3.79px (TODO: figure this mistery out) */ 
+}
+
+.playback-episode-selector-container {
+    white-space: normal;
+}
+
+.playback-episode-selector-container span {
+    display: block;
+}
+
+/* TODO: PX-542: image-container size needs to be calculated base on height of the playback-episode-selector. 210 is the right height for 380 pixels of container */
+.playback-episode-selector-container .image-container {
+    height:210px;
+}
+
+.playback-episode-selector .seasons {
+    white-space: nowrap;
+}
+
+.playback-episode-selector .seasons-scroller {
+    overflow-x: auto;
+    height: 70px;
+    position: relative;
+}
+
+.playback-episode-selector .season {
+    color: #8F8E8E;
+    line-height: 50px;
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: .4px;
+}
+
+.playback-episode-selector .season:hover {
+    color: white;
+}
+
+.playback-episode-selector .season:focus,
+.playback-episode-selector .season.current {
+    outline: 2px solid white;
+    color: white;
+}
+
+.playback-episode-selector .episode-button {
+    position: relative;
+    width: 372px;
+    height: 392px;
+}
+
+.playback-episode-selector .episode-button:hover,
+.playback-episode-selector .episode-button:focus {
+    background-color: rgba(25,25,25,1);
+    outline: 8px solid rgba(25,25,25,1);
+}
+
+.playback-episode-selector .title {
+    font: normal 21px/150% 'Segoe UI';
+    letter-spacing: .4px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.playback-episode-selector .synopsis {
+    color: #9f9f9f;
+    font-size: 18px;
+    line-height: 165%;
+    letter-spacing: .4px;
+}
+
+.playback-episode-selector .now-playing:before {
+    color: white;
+    font-size: 11px;
+}
+
+.playback-episode-selector .details-bookmark-grey {
+    height: 4px;
+}
+
+.playback-closeChevron {
+    position: absolute;
+    padding-top: 25px;
+    margin-top: -75px;
+    width: 150px;
+    font-size: 30px;
+    z-index: 1001;
+}
+.playback-title {
+    background-color: transparent;
+    pointer-events: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center
+}
+
+.playback-title-back-button-container {
+    flex: 0 0 auto;
+    pointer-events: visible;
+}
+
+.playback-title .title {
+    color: #fff;
+    font-size: 16pt;
+    flex: 1 1 auto;
+}
+
+.volume-control {
+    position: absolute;
+
+    box-sizing: border-box;
+    border: 1pt solid rgba(255,255,255,0.14);
+
+    background-color: rgba(0,0,0,0.7);
+
+    height: 254pt;
+    width: 47pt;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    top: 45.5pt;
+    pointer-events: visible;
+
+    box-sizing: border-box;
+    justify-content: space-around;
+
+    max-height: calc(100vh - 64px* 2);        /* Exclude top and bottom bars */
+}
+
+.volume-control .volume-base {
+    width: 2pt;
+    height: 168pt;
+    background-color: #D8D8D8;
+    margin-top: 23pt;
+    margin-bottom: 23pt;
+    position: relative;
+}
+
+.volume-control .volume-mute {
+    color: #B6B4B3;
+    margin-bottom: 23pt;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.volume-control .volume-level {
+    position: absolute;
+    bottom: 0;
+    width: 2pt;
+    background-color: #E50914;
+    height: 100%;
+}
+
+.volume-control .volume-thumb {
+    position: relative;
+    top: -10pt;
+
+    box-sizing: border-box;
+
+    height: 20pt;
+    width: 20pt;
+    background-color: #E50914;
+}
+.play-button-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+    cursor: pointer;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+ }
+
+.play-button-container .play-button {
+    position: absolute;
+    -ms-grid-row-align: center;
+        align-self: center;
+    width: 25%;
+    box-sizing: border-box;
+    transition: transform 300ms ease 0ms, opacity 350ms ease 0ms;
+    pointer-events: visible;
+}
+
+
+.play-button-container .play-ring {
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    border-radius: 50%;
+    border-color: white;
+    background-color: rgba(0,0,0,0.2);
+    border-width: 4px;
+    border-style: solid;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    box-sizing: border-box;
+    transition: background-color 300ms ease 0ms;
+}
+
+.play-button-container .play-ring:after {
+    content: "";
+}
+
+.play-button-container .play-icon {
+    font-size: 32px;
+    -ms-grid-row-align: center;
+        align-self: center;
+    width: 100%;
+    font-weight: 400;
+    position: absolute;
+    left: 6%;
+    text-align: center;
+    transition: color 300ms ease 0ms;
+}
+
+.play-button:focus,
+.play-button:hover {
+    transform: scale(1.08, 1.08);
+}
+
+.play-button:focus .play-ring,
+.play-button:hover .play-ring {
+    background-color: rgba(0,0,0,0.5);
+}
+
+.play-button:focus .play-icon,
+.play-button:hover .play-icon {
+    color: #E50914;
+    fill: #E50914;
+}
+.skip-button {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.skip-credits {
+    pointer-events: all;
+    position: absolute;
+    overflow: hidden;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.skip-credits .skip-credits-wrapper {
+    width: 100%;
+    overflow: hidden;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    opacity: 1;
+}
+
+.skip-credits-wrapper .skip-credits-label {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.skip-credits-leave {
+    pointer-events: none;
+}
+.postplay-container .gradient {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+ }
+   
+ .minimized-playback-container {
+    pointer-events: none;
+ }
+
+/* PostplayNextEpisode*/
+
+.postplay-container { 
+    position: absolute;
+    pointer-events: none; /*allow the playback-container under the postplay-container to handle pointer events*/
+}
+
+.postplay-nextepisode-container {
+    height: 100%;
+}
+
+.postplay-nextepisode-image-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    flex: 1;
+    flex-basis: 30vw;
+    flex-direction: column;
+}
+
+.postplay-nextepisode-image-container .postplay-nextepisode-image-aligner {
+    position: relative;
+}
+
+.postplay-nextepisode-image-container .play-button-image-aligner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+.postplay-nextepisode-container .bottom-container {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    pointer-events: visible; /*allow the postplay-container children to handle pointer events*/
+}
+
+.postplay-nextepisode-meta {
+    max-width: 800px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden;
+    flex: 3;
+    max-width: 100%;
+}
+
+.postplay-nextepisode-nextepisode {
+    flex: 1;
+    font-size: 1.3em;
+    color: white;
+    line-height: 1.25em;
+}
+
+.postplay-nextepisode-title {
+    flex: 1.5;
+    font-size: 1.6em;
+    color: white;
+    line-height: 1em;
+    max-width: 100%;
+}
+
+.postplay-nextepisode-synopsis {
+    color: white;
+    display: none;
+}
+
+
+@media all and (min-width: 501px) {
+    .postplay-nextepisode-title {
+        flex: 1.5;
+        font-size: 1.5em;
+        color: #FFFFFF;
+        line-height: 1.25em;
+    }
+}
+
+@media all and (min-width: 950px) {
+    .postplay-nextepisode-title {
+        flex: 1.5;
+        font-size: 3em;
+        color: white;
+        line-height: 1em;
+    }
+
+    .postplay-nextepisode-nextepisode {
+        font-size: 1.6em;
+    }
+
+    .postplay-nextepisode-image-container {
+        max-width: 350px;
+    }
+
+    .postplay-nextepisode-synopsis {
+        display: block;
+        flex: 2.5;
+        font-size: 1.4em;
+        line-height: 1.333em;
+    }
+}
+
+.postplay-nextepisode-image {
+    width: 100%;
+    max-width: 100%;
+}
+
+@media all and (orientation: portrait) and (max-width: 532px) {
+    .postplay-nextepisode-container .bottom-container {
+        display: block;
+        box-sizing: border-box;
+    }
+    .postplay-nextepisode-image {
+        width: 100%;
+        height: auto;
+    }
+    .postplay-nextepisode-image img{
+        display: block;
+    }
+
+    .postplay-nextepisode-nextepisode {
+        font-size: 1.6em;
+    }
+
+    .postplay-nextepisode-meta {
+        max-width: 100%;
+    }
+    /* TODO: This component should not touch the playback container */
+}
+
+/* PostplayRecs */
+
+.postplay-recs-container .top-container-gradient,
+.compact-top-container .top-container-gradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.postplay-recs-container .bottom-container {
+    position: relative;
+}
+
+.rec-image {
+    width: 100%;
+}
+
+.postplay-recs-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.postplay-recs-container .top-container {
+    position: relative;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+ .postplay-recs-container .top-container .container-above-meta {
+     flex: 1;
+     width: 100%;
+     position: relative;
+ }
+
+.postplay-recs-container .bottom-container .bottom-container-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.postplay-recs-container .bottom-container .bottom-container-front {
+    position: relative;
+    z-index: 1;
+} 
+
+.postplay-selection-title {
+    font-size: 30px;
+    font-weight: 400;
+    color: white;
+    padding-bottom: 14px;
+}
+
+.postplay-selection-synopsis {
+    font-size: 20px;
+    color: white;
+    width: 700px;
+    padding-top: 11px;
+    font-weight: 200;
+}
+
+.postplay-selection-meta {
+    z-index: 1;
+    padding-bottom: 20px;
+}
+
+.postplay-recs-instruction {
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.postplay-recs-bottom-bar {
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.recs-container {
+    display: flex;
+    pointer-events: visible; /*allow the postplay-container children to handle pointer events*/
+}
+
+.rec-container {
+    flex: 0 1 auto;
+    position: relative;
+}
+
+.rec-container.selected {
+    outline: 1px solid white;
+}
+
+.rec-container .rec-image-mask {
+    opacity: 0;
+    position: absolute;
+}
+.rec-container.not-selected .rec-image-mask {
+    opacity: 0.3;
+}
+
+
+/* Compact Overlay Styles */
+
+.compact-overlay-page .postplay-nextepisode-image {
+    display: none;
+}
+
+.compact-overlay-page .postplay-nextepisode-image-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: all;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.compact-overlay-page .postplay-nextepisode-nextepisode {
+    flex: inherit;
+    font-size: 1em;
+    max-width: 100%;
+}
+
+.compact-overlay-page .play-button-container {
+    display: none;
+}
+
+.compact-overlay-page .postplay-nextepisode-meta {
+    max-width: inherit;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex: inherit;
+}
+
+.compact-overlay-page .postplay-nextepisode-synopsis {
+    display: none;
+}
+
+.compact-overlay-page .postplay-nextepisode-title {
+    font-size: inherit;
+    line-height: inherit;
+    flex: inherit
+}
+
+.playback-page:not(.compact-overlay-page) > .compact-play-next-button {
+    display: none;
+}
+
+.compact-overlay-page .bottom-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: all;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0;
+}
+
+.postplay-compact-overlay-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: all;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.compact-top-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.compact-top-container .background-image {
+    display: none;
+}
+
+.compact-top-container .compact-background-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    max-width: 100%;
+    max-height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.compact-top-container .postplay-selection-meta {
+    display: none;
+}
+
+.compact-top-container .play-button {
+    top: 20%;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@media all and (min-height: 300px) {
+    .compact-top-container .play-button {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+    }
+}
+
+.postplay-compact-overlay-container .postplay-nextepisode-nextepisode {
+    flex: inherit;
+    font-size: 1em;
+    max-width: 100%;
+}
+
+.compact-play-next-button {
+    margin-top: 15px;
+    background-color: #E50914;
+    align-items: center;
+    display: none;
+}
+
+.compact-recs-container {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+}
+
+.compact-recs-container .not-selected {
+    display: none;
+}
+
+.compact-recs-container .selected {
+    flex-basis: 45vw;
+}
+
+.postplay-ancestor-title {
+    font-weight: bold;
+    margin-top: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.postplay-compact-overlay-container .postplay-selection-extrameta {
+    max-width: 100%;
+    display: flex;
+    margin-top: 5px;
+}
+
+.compact-movie-recommendation .play-next-label {
+    display: none;
+}
+
+.compact-movie-recommendation .compact-play-next-button {
+    display: flex !important;
+    min-width: inherit;
+
+    background-color: transparent;
+    margin-top: 5px;
+}
+
+.postplay-compact-overlay-container .postplay-ancestor-title {
+    margin-top: 0;
+    max-width: 100%;
+}
+
+.postplay-compact-overlay-container .icon-badge {
+    display: none;
+}
+
+@media all and (min-width: 300px) {
+    .postplay-ancestor-title {
+        font-size: 1.4rem;
+        margin-top: 15px;
+    }
+
+    .compact-overlay-page .compact-play-next-button {
+        display: flex;
+        min-width: 120px;
+        min-width: inherit;
+        margin-top: 15px;
+        background-color: #E50914;
+    }
+
+    .compact-movie-recommendation .play-next-label {
+        display: inline-block;
+    }
+
+    .postplay-compact-overlay-container .postplay-selection-extrameta {
+        max-width: inherit;
+        display: block;
+        margin-top: 20px;
+    }
+
+    .postplay-compact-overlay-container .icon-badge {
+        display: inline-block;
+    }
+}
+.progress-container {
+    width: 100%;
+}
+
+progress {
+    color: #E50914;
+}
+.scrub-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.scrub-bar-base {
+    background-color: #333333;
+    height: 2pt;
+    flex: 1 0 auto;
+}
+
+.scrub-bar-time-remain {
+    width:  48pt;
+    height: 48pt;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.scrub-bar-time-remain .timeBox {
+    display: inline-block;
+    width:  24pt;
+    height: 24pt;
+    box-sizing: border-box;
+
+    position: relative;
+}
+
+.scrub-bar-time-remain .time {
+    position: absolute;
+    font-size: 14pt;
+    line-height: 14pt;
+}
+
+.scrub-bar-progress {
+    position: relative;
+    top: 0px;
+    height: 2pt;
+    background-color: #E50914;
+}
+
+.scrub-bar-time-progress {
+    position: relative;
+    top: -30px;
+    height: 24px;
+    width: 60px;
+    font-size: 14pt;
+}
+
+.scrub-bar-thumb {
+    top: -9px;
+    height: 24px;
+    width: 26px;
+    background-color: #E50914;
+}
+
+.scrub-bar-thumb-play {
+    position: relative;
+}
+.starbar {
+	font-size: 117%;
+  color: rgba(127, 127, 127, 0.4);
+}
+
+.star-container {
+	position: relative;
+    display: inline-block;
+    top: 0.25em; bottom:0;
+}
+.star-value-holder * { pointer-events: none }
+.star-value-holder {
+  top:0; bottom:0;
+}
+
+.icon-star::after {
+	content: "\e877";
+}
+
+.stars .star {
+
+  position: absolute;
+  overflow: hidden;
+  opacity:1;
+}
+.stars {color: #E50914;  }
+.stars.rated {
+  	color: #ffe000;
+}
+.stars .default.star {  position:relative; opacity: 0; }
+
+.stars .default1.star {
+  color: #444444;
+  opacity:1;
+}
+
+.stars .default2.star {
+  color: #191919;
+  opacity:0;
+}
+
+.details-header-popup {
+  display:block;
+  top:0;
+  position:relative;
+  background-color: #333333;
+}
+
+.star-popup {
+  font-size: 23pt;
+}
+
+.star-popup-holder {
+  display:inline-block;
+}
+
+.popup-container .win-flyout  {
+  overflow:visible;
+  background-color: #111;
+}
+.star-popup .event-source {
+    top:0; 
+    padding-top:30px;
+    position:relative;
+}
+
+.star-popup .star-value-holder {
+  margin-top:-2em;
+  margin-bottom:-2em;
+}
+
+.star-popup .stars .default1.star {
+  color: #000;
+}
+/* Two image sizes at the moment
+    
+    height: 185px;
+    width: 329px;
+    
+    height: 319px;
+    width: 567px;
+*/
+
+.viewableitem-image {
+    width: 100%;
+    height: auto;
+    opacity: 0;
+}
+
+.viewableitem-image-small {
+    max-width:329px;
+}
+
+.viewableitem-image-large {
+    max-width:567px
+}
+/* Horizontal */
+
+.virtualized-list {
+}
+
+.virtualized-list.horizontal {
+  position: relative;
+}
+
+.virtualized-list.horizontal > .virtualized-list-scroller {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -ms-overflow-style: auto;
+}
+
+.virtualized-list.horizontal > .virtualized-list-scroller > .virtualized-list-surface {
+  white-space: nowrap;
+}
+
+.virtualized-list.horizontal > .virtualized-list-scroller > .virtualized-list-surface > .virtualized-list-container,
+                .virtualized-list.horizontal > .virtualized-list-scroller > .virtualized-list-surface > .virtualized-list-spacer {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.virtualized-list.horizontal.pageScrolled > .virtualized-list-scroller {
+  -ms-overflow-style: none;
+}
+
+.virtualized-list.horizontal .virtualized-list-scroll-before,
+        .virtualized-list.horizontal .virtualized-list-scroll-after {
+  width: 50px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background-color: rgba(0,0,0,0.35);
+  opacity: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.virtualized-list.horizontal .virtualized-list-scroll-before:hover, .virtualized-list.horizontal .virtualized-list-scroll-after:hover {
+  background-color: rgba(0,0,0,0.65);
+}
+
+.virtualized-list.horizontal:hover .virtualized-list-scroll-before,
+        .virtualized-list.horizontal:hover .virtualized-list-scroll-after {
+  opacity: 1;
+}
+
+.virtualized-list.horizontal .icon-before,
+        .virtualized-list.horizontal .icon-after {
+  color: white;
+  font-size: 25px;
+  display: block;
+}
+
+.virtualized-list.vertical {
+
+  /* TODO: if we want paginated scrolling vertically, figure out the right style */
+}
+
+.virtualized-list.vertical > .virtualized-list-scroller {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.virtualized-list.vertical > .virtualized-list-scroller > .virtualized-list-surface > .virtualized-list-container {
+  overflow: hidden;
+}
+
+.virtualized-list.vertical > .virtualized-list-scroll-before,
+        .virtualized-list.vertical > .virtualized-list-scroll-after {
+  display: none;
+}
+
+.compact-overlay-page .playback-top-bar {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+}
+
+.compact-overlay-page .playback-title {
+    display: none !important;
+}
+
+.compact-overlay-page .playback-title .title {
+    font-size: 12pt;
+    margin-left: 0 !important;
+}
+
+.compact-overlay-page .bar-container .button-container {
+    display: none;
+}
+
+.compact-overlay-page .playback-bottom-bar {
+    display: none;
+}
+
+.compact-overlay-page .bar-group-leave.playback-bottom-bar,
+.compact-overlay-page .bar-group-leave-active.playback-bottom-bar,
+.compact-overlay-page .bar-group-leave.bar-group-leave-active.playback-bottom-bar,
+.compact-overlay-page .bar-group-enter.playback-bottom-bar,
+.compact-overlay-page .bar-group-enter-active.playback-bottom-bar,
+.compact-overlay-page .bar-group-enter.bar-group-enter-active.playback-bottom-bar {
+    display: none;
+}
+
+/* Push the skip intro credits button above the compact overlay button */
+.compact-overlay-page .skip-credits {
+    right: 15px !important;
+    bottom: 45px !important;
+}
+
+.compact-overlay-page .playbackBackButton {
+    display: none;
+}
+
+.compact-overlay-bar {
+    display: none;
+}
+
+.compact-overlay-page .compact-overlay-bar {
+    display: inherit;
+}
+
+/* User Dialog Styles */
+@media all and (max-width: 499px) {
+
+    .user-dialog-container .dialog {
+        width: 100%;
+    }
+
+    .user-dialog-container .panel {
+        margin: 10px 20px;
+        font-size: 80%;
+    }
+
+    .user-dialog-container .buttons {
+        display: flex;
+    }
+
+    .user-dialog-container .win-button {
+        min-width: inherit;
+        flex-grow: 1;
+    }
+
+    .user-dialog-container .win-button:first-child {
+        margin-left: 0;
+    }
+
+    .user-dialog-container .win-button:last-child {
+        margin-right: 0;
+    }
+}
+
+/* other imports */
+@font-face {
+  font-family: 'nf-icon';
+  src: url('/fonts/v1-92/nf-icon.eot?');
+  src: url('/fonts/v1-92/nf-icon.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/v1-92/nf-icon.woff?') format('woff'),
+	   url('/fonts/v1-92/nf-icon.otf?') format('opentype'),
+       url('/fonts/v1-92/nf-icon.ttf?') format('truetype'),
+       url('/fonts/v1-92/nf-icon.svg?#nf-icon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'nf-icon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-feature-settings: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-windows-"],
+[class*=" icon-windows-"] {
+    font-family: 'Segoe MDL2 Assets';
+}
+
+.icon-windows-trash:before {
+    content: "\E74D";
+}
+
+.icon-windows-edit:before {
+    content: "\E70F";
+}
+
+.icon-windows-cancel:before {
+    content: "\E711";
+}
+
+.iconButtonSize {
+    font-size: 25px;
+}
+
+/*TODO: use SCSS (?) to enable variable/constants */
+/*$back_glyph: "\e758";*/
+/*$close_glyph: "\e762";*/
+:not(.icon-mirror-for-rtl).icon-back:after {
+  content: "\F081";
+}
+.icon-mirror-for-rtl.icon-back:before {
+  content: "\F081";
+}
+.icon-close:after {
+  content: "\e762"
+}
+
+.icon-uniE5D0:before {
+	content: "\E5D0";
+}
+.icon-uniE5D1:before {
+	content: "\E5D1";
+}
+.icon-uniE600:before {
+	content: "\E600";
+}
+.icon-uniE601:before {
+	content: "\E601";
+}
+.icon-uniE602:before {
+	content: "\E602";
+}
+.icon-uniE603:before {
+	content: "\E603";
+}
+.icon-uniE604:before {
+	content: "\E604";
+}
+.icon-uniE605:before {
+	content: "\E605";
+}
+.icon-uniE606:before {
+	content: "\E606";
+}
+.icon-uniE607:before {
+	content: "\E607";
+}
+.icon-uniE608:before {
+	content: "\E608";
+}
+.icon-uniE609:before {
+	content: "\E609";
+}
+.icon-uniE610:before {
+	content: "\E610";
+}
+.icon-uniE611:before {
+	content: "\E611";
+}
+.icon-uniE612:before {
+	content: "\E612";
+}
+.icon-uniE613:before {
+	content: "\E613";
+}
+.icon-uniE614:before {
+	content: "\E614";
+}
+.icon-uniE615:before {
+	content: "\E615";
+}
+.icon-uniE616:before {
+	content: "\E616";
+}
+.icon-uniE617:before {
+	content: "\E617";
+}
+.icon-uniE618:before {
+	content: "\E618";
+}
+.icon-uniE619:before {
+	content: "\E619";
+}
+.icon-uniE620:before {
+	content: "\E620";
+}
+.icon-uniE621:before {
+	content: "\E621";
+}
+.icon-uniE622:before {
+	content: "\E622";
+}
+.icon-uniE623:before {
+	content: "\E623";
+}
+.icon-uniE624:before {
+	content: "\E624";
+}
+.icon-uniE625:before {
+	content: "\E625";
+}
+.icon-uniE626:before {
+	content: "\E626";
+}
+.icon-uniE627:before {
+	content: "\E627";
+}
+.icon-uniE628:before {
+	content: "\E628";
+}
+.icon-uniE629:before {
+	content: "\E629";
+}
+.icon-uniE630:before {
+	content: "\E630";
+}
+.icon-uniE631:before {
+	content: "\E631";
+}
+.icon-uniE632:before {
+	content: "\E632";
+}
+.icon-uniE633:before {
+	content: "\E633";
+}
+.icon-uniE634:before {
+	content: "\E634";
+}
+.icon-uniE635:before {
+	content: "\E635";
+}
+.icon-uniE636:before {
+	content: "\E636";
+}
+.icon-uniE637:before {
+	content: "\E637";
+}
+.icon-uniE638:before {
+	content: "\E638";
+}
+.icon-uniE639:before {
+	content: "\E639";
+}
+.icon-uniE640:before {
+	content: "\E640";
+}
+.icon-uniE641:before {
+	content: "\E641";
+}
+.icon-uniE642:before {
+	content: "\E642";
+}
+.icon-uniE643:before {
+	content: "\E643";
+}
+.icon-uniE644:before {
+	content: "\E644";
+}
+.icon-uniE645:before {
+	content: "\E645";
+}
+.icon-uniE646:before {
+	content: "\E646";
+}
+.icon-uniE647:before {
+	content: "\E647";
+}
+.icon-uniE648:before {
+	content: "\E648";
+}
+.icon-uniE649:before {
+	content: "\E649";
+}
+.icon-uniE650:before {
+	content: "\E650";
+}
+.icon-uniE651:before {
+	content: "\E651";
+}
+.icon-uniE652:before {
+	content: "\E652";
+}
+.icon-uniE653:before {
+	content: "\E653";
+}
+.icon-uniE654:before {
+	content: "\E654";
+}
+.icon-uniE655:before {
+	content: "\E655";
+}
+.icon-uniE656:before {
+	content: "\E656";
+}
+.icon-uniE657:before {
+	content: "\E657";
+}
+.icon-uniE658:before {
+	content: "\E658";
+}
+.icon-uniE659:before {
+	content: "\E659";
+}
+.icon-uniE660:before {
+	content: "\E660";
+}
+.icon-uniE661:before {
+	content: "\E661";
+}
+.icon-uniE662:before {
+	content: "\E662";
+}
+.icon-uniE663:before {
+	content: "\E663";
+}
+.icon-uniE664:before {
+	content: "\E664";
+}
+.icon-uniE665:before {
+	content: "\E665";
+}
+.icon-uniE666:before {
+	content: "\E666";
+}
+.icon-uniE667:before {
+	content: "\E667";
+}
+.icon-uniE668:before {
+	content: "\E668";
+}
+.icon-uniE669:before {
+	content: "\E669";
+}
+.icon-uniE670:before {
+	content: "\E670";
+}
+.icon-uniE671:before {
+	content: "\E671";
+}
+.icon-uniE672:before {
+	content: "\E672";
+}
+.icon-uniE673:before {
+	content: "\E673";
+}
+.icon-uniE674:before {
+	content: "\E674";
+}
+.icon-uniE675:before {
+	content: "\E675";
+}
+.icon-uniE676:before {
+	content: "\E676";
+}
+.icon-uniE677:before {
+	content: "\E677";
+}
+.icon-uniE678:before {
+	content: "\E678";
+}
+.icon-uniE679:before {
+	content: "\E679";
+}
+.icon-uniE680:before {
+	content: "\E680";
+}
+.icon-uniE681:before {
+	content: "\E681";
+}
+.icon-uniE682:before {
+	content: "\E682";
+}
+.icon-uniE683:before {
+	content: "\E683";
+}
+.icon-uniE684:before {
+	content: "\E684";
+}
+.icon-uniE685:before {
+	content: "\E685";
+}
+.icon-uniE687:before {
+	content: "\E687";
+}
+.icon-uniE688:before {
+	content: "\E688";
+}
+.icon-uniE689:before {
+	content: "\E689";
+}
+.icon-uniE690:before {
+	content: "\E690";
+}
+.icon-uniE691:before {
+	content: "\E691";
+}
+.icon-uniE692:before {
+	content: "\E692";
+}
+.icon-uniE693:before {
+	content: "\E693";
+}
+.icon-uniE694:before {
+	content: "\E694";
+}
+.icon-uniE695:before {
+	content: "\E695";
+}
+.icon-uniE696:before {
+	content: "\E696";
+}
+.icon-uniE697:before {
+	content: "\E697";
+}
+.icon-uniE698:before {
+	content: "\E698";
+}
+.icon-uniE699:before {
+	content: "\E699";
+}
+.icon-uniE700:before {
+	content: "\E700";
+}
+.icon-uniE701:before {
+	content: "\E701";
+}
+.icon-uniE702:before {
+	content: "\E702";
+}
+.icon-uniE703:before {
+	content: "\E703";
+}
+.icon-uniE704:before {
+	content: "\E704";
+}
+.icon-uniE705:before {
+	content: "\E705";
+}
+.icon-uniE706:before {
+	content: "\E706";
+}
+.icon-uniE707:before {
+	content: "\E707";
+}
+.icon-uniE708:before {
+	content: "\E708";
+}
+.icon-uniE709:before {
+	content: "\E709";
+}
+.icon-uniE710:before {
+	content: "\E710";
+}
+.icon-uniE711:before {
+	content: "\E711";
+}
+.icon-uniE712:before {
+	content: "\E712";
+}
+.icon-uniE713:before {
+	content: "\E713";
+}
+.icon-uniE714:before {
+	content: "\E714";
+}
+.icon-uniE715:before {
+	content: "\E715";
+}
+.icon-uniE716:before {
+	content: "\E716";
+}
+.icon-uniE718:before {
+	content: "\E718";
+}
+.icon-uniE719:before {
+	content: "\E719";
+}
+.icon-uniE720:before {
+	content: "\E720";
+}
+.icon-uniE721:before {
+	content: "\E721";
+}
+.icon-uniE722:before {
+	content: "\E722";
+}
+.icon-uniE723:before {
+	content: "\E723";
+}
+.icon-uniE724:before {
+	content: "\E724";
+}
+.icon-uniE725:before {
+	content: "\E725";
+}
+.icon-uniE726:before {
+	content: "\E726";
+}
+.icon-uniE727:before {
+	content: "\E727";
+}
+.icon-uniE728:before {
+	content: "\E728";
+}
+.icon-uniE729:before {
+	content: "\E729";
+}
+.icon-uniE730:before {
+	content: "\E730";
+}
+.icon-uniE731:before {
+	content: "\E731";
+}
+.icon-uniE732:before {
+	content: "\E732";
+}
+.icon-uniE733:before {
+	content: "\E733";
+}
+.icon-uniE734:before {
+	content: "\E734";
+}
+.icon-uniE735:before {
+	content: "\E735";
+}
+.icon-uniE736:before {
+	content: "\E736";
+}
+.icon-uniE737:before {
+	content: "\E737";
+}
+.icon-uniE738:before {
+	content: "\E738";
+}
+.icon-uniE739:before {
+	content: "\E739";
+}
+.icon-uniE740:before {
+	content: "\E740";
+}
+.icon-uniE741:before {
+	content: "\E741";
+}
+.icon-uniE742:before {
+	content: "\E742";
+}
+.icon-uniE743:before {
+	content: "\E743";
+}
+.icon-uniE744:before {
+	content: "\E744";
+}
+.icon-uniE745:before {
+	content: "\E745";
+}
+.icon-uniE746:before {
+	content: "\E746";
+}
+.icon-uniE747:before {
+	content: "\E747";
+}
+.icon-uniE748:before {
+	content: "\E748";
+}
+.icon-uniE749:before {
+	content: "\E749";
+}
+.icon-uniE750:before {
+	content: "\E750";
+}
+.icon-uniE751:before {
+	content: "\E751";
+}
+.icon-uniE752:before {
+	content: "\E752";
+}
+.icon-uniE753:before {
+	content: "\E753";
+}
+.icon-uniE754:before {
+	content: "\E754";
+}
+.icon-uniE755:before {
+	content: "\E755";
+}
+.icon-uniE756:before {
+	content: "\E756";
+}
+.icon-uniE757:before {
+	content: "\E757";
+}
+.icon-uniE758:before {
+	content: "\E758";
+}
+.icon-uniE759:before {
+	content: "\E759";
+}
+.icon-uniE760:before {
+	content: "\E760";
+}
+.icon-uniE761:before {
+	content: "\E761";
+}
+.icon-uniE762:before {
+	content: "\E762";
+}
+.icon-uniE763:before {
+	content: "\E763";
+}
+.icon-uniE764:before {
+	content: "\E764";
+}
+.icon-uniE765:before {
+	content: "\E765";
+}
+.icon-uniE766:before {
+	content: "\E766";
+}
+.icon-uniE767:before {
+	content: "\E767";
+}
+.icon-uniE775:before {
+	content: "\E775";
+}
+.icon-uniE776:before {
+	content: "\E776";
+}
+.icon-uniE777:before {
+	content: "\E777";
+}
+.icon-uniE778:before {
+	content: "\E778";
+}
+.icon-uniE779:before {
+	content: "\E779";
+}
+.icon-uniE780:before {
+	content: "\E780";
+}
+.icon-uniE781:before {
+	content: "\E781";
+}
+.icon-uniE782:before {
+	content: "\E782";
+}
+.icon-uniE783:before {
+	content: "\E783";
+}
+.icon-uniE784:before {
+	content: "\E784";
+}
+.icon-uniE785:before {
+	content: "\E785";
+}
+.icon-uniE786:before {
+	content: "\E786";
+}
+.icon-uniE787:before {
+	content: "\E787";
+}
+.icon-uniE796:before {
+	content: "\E796";
+}
+.icon-uniE797:before {
+	content: "\E797";
+}
+.icon-uniE798:before {
+	content: "\E798";
+}
+.icon-uniE799:before {
+	content: "\E799";
+}
+.icon-uniE800:before {
+	content: "\E800";
+}
+.icon-uniE801:before {
+	content: "\E801";
+}
+.icon-uniE802:before {
+	content: "\E802";
+}
+.icon-uniE803:before {
+	content: "\E803";
+}
+.icon-uniE804:before {
+	content: "\E804";
+}
+.icon-uniE805:before {
+	content: "\E805";
+}
+.icon-uniE806:before {
+	content: "\E806";
+}
+.icon-uniE807:before {
+	content: "\E807";
+}
+.icon-uniE850:before {
+	content: "\E850";
+}
+.icon-uniE851:before {
+	content: "\E851";
+}
+.icon-uniE852:before {
+	content: "\E852";
+}
+.icon-uniE853:before {
+	content: "\E853";
+}
+.icon-uniE854:before {
+	content: "\E854";
+}
+.icon-uniE855:before {
+	content: "\E855";
+}
+.icon-uniE856:before {
+	content: "\E856";
+}
+.icon-uniE857:before {
+	content: "\E857";
+}
+.icon-uniE858:before {
+	content: "\E858";
+}
+.icon-uniE859:before {
+	content: "\E859";
+}
+.icon-uniE860:before {
+	content: "\E860";
+}
+.icon-uniE861:before {
+	content: "\E861";
+}
+.icon-uniE862:before {
+	content: "\E862";
+}
+.icon-uniE863:before {
+	content: "\E863";
+}
+.icon-uniE864:before {
+	content: "\E864";
+}
+.icon-uniE865:before {
+	content: "\E865";
+}
+.icon-uniE866:before {
+	content: "\E866";
+}
+.icon-uniE867:before {
+	content: "\E867";
+}
+.icon-uniE868:before {
+	content: "\E868";
+}
+.icon-uniE869:before {
+	content: "\E869";
+}
+.icon-uniE870:before {
+	content: "\E870";
+}
+.icon-uniE871:before {
+	content: "\E871";
+}
+.icon-uniE872:before {
+	content: "\E872";
+}
+.icon-uniE873:before {
+	content: "\E873";
+}
+.icon-uniE874:before {
+	content: "\E874";
+}
+.icon-uniE875:before {
+	content: "\E875";
+}
+.icon-uniE876:before {
+	content: "\E876";
+}
+.icon-uniE877:before {
+	content: "\E877";
+}
+.icon-uniE878:before {
+	content: "\E878";
+}
+.icon-uniE879:before {
+	content: "\E879";
+}
+.icon-uniE880:before {
+	content: "\E880";
+}
+.icon-uniE881:before {
+	content: "\E881";
+}
+.icon-uniE882:before {
+	content: "\E882";
+}
+.icon-uniE883:before {
+	content: "\E883";
+}
+.icon-uniE884:before {
+	content: "\E884";
+}
+.icon-uniE885:before {
+	content: "\E885";
+}
+.icon-uniE886:before {
+	content: "\E886";
+}
+.icon-uniE887:before {
+	content: "\E887";
+}
+.icon-uniE888:before {
+	content: "\E888";
+}
+.icon-uniE889:before {
+	content: "\E889";
+}
+.icon-uniE88A:before {
+	content: "\E88A";
+}
+.icon-uniE88B:before {
+	content: "\E88B";
+}
+.icon-uniE88C:before {
+	content: "\E88C";
+}
+.icon-uniE88D:before {
+	content: "\E88D";
+}
+.icon-uniE890:before {
+	content: "\E890";
+}
+.icon-uniE891:before {
+	content: "\E891";
+}
+.icon-uniE892:before {
+	content: "\E892";
+}
+.icon-uniE893:before {
+	content: "\E893";
+}
+.icon-uniE894:before {
+	content: "\E894";
+}
+.icon-uniE895:before {
+	content: "\E895";
+}
+.icon-uniE896:before {
+	content: "\E896";
+}
+.icon-uniE897:before {
+	content: "\E897";
+}
+.icon-uniE898:before {
+	content: "\E898";
+}
+.icon-uniE89A:before {
+	content: "\E89A";
+}
+.icon-uniE89B:before {
+	content: "\E89B";
+}
+.icon-uniE89C:before {
+	content: "\E89C";
+}
+.icon-uniE89D:before {
+	content: "\E89D";
+}
+.icon-uniE8A1:before {
+	content: "\E8A1";
+}
+.icon-uniE8A2:before {
+	content: "\E8A2";
+}
+.icon-uniE8A3:before {
+	content: "\E8A3";
+}
+.icon-uniE8A4:before {
+	content: "\E8A4";
+}
+.icon-uniE8A5:before {
+	content: "\E8A5";
+}
+.icon-uniE8A6:before {
+	content: "\E8A6";
+}
+.icon-uniE8A7:before {
+	content: "\E8A7";
+}
+.icon-uniE8A8:before {
+	content: "\E8A8";
+}
+.icon-uniE900:before {
+	content: "\E900";
+}
+.icon-uniE901:before {
+	content: "\E901";
+}
+.icon-uniE902:before {
+	content: "\E902";
+}
+.icon-uniE903:before {
+	content: "\E903";
+}
+.icon-uniE904:before {
+	content: "\E904";
+}
+.icon-uniE905:before {
+	content: "\E905";
+}
+.icon-uniE906:before {
+	content: "\E906";
+}
+.icon-uniE907:before {
+	content: "\E907";
+}
+.icon-uniE908:before {
+	content: "\E908";
+}
+.icon-uniE909:before {
+	content: "\E909";
+}
+.icon-uniE910:before {
+	content: "\E910";
+}
+.icon-uniE911:before {
+	content: "\E911";
+}
+.icon-uniE912:before {
+	content: "\E912";
+}
+.icon-uniE913:before {
+	content: "\E913";
+}
+.icon-uniE914:before {
+	content: "\E914";
+}
+.icon-uniE915:before {
+	content: "\E915";
+}
+.icon-uniE916:before {
+	content: "\E916";
+}
+.icon-uniE940:before {
+	content: "\E940";
+}
+.icon-uniE941:before {
+	content: "\E941";
+}
+.icon-uniE942:before {
+	content: "\E942";
+}
+.icon-uniE943:before {
+	content: "\E943";
+}
+.icon-uniF000:before {
+	content: "\F000";
+}
+.icon-uniF001:before {
+	content: "\F001";
+}
+.icon-uniF002:before {
+	content: "\F002";
+}
+.icon-uniF003:before {
+	content: "\F003";
+}
+.icon-uniF004:before {
+	content: "\F004";
+}
+.icon-uniF005:before {
+	content: "\F005";
+}
+.icon-uniF006:before {
+	content: "\F006";
+}
+.icon-uniF007:before {
+	content: "\F007";
+}
+.icon-uniF008:before {
+	content: "\F008";
+}
+.icon-uniF009:before {
+	content: "\F009";
+}
+.icon-uniF010:before {
+	content: "\F010";
+}
+.icon-uniF011:before {
+	content: "\F011";
+}
+.icon-uniF012:before {
+	content: "\F012";
+}
+.icon-uniF013:before {
+	content: "\F013";
+}
+.icon-uniF014:before {
+	content: "\F014";
+}
+.icon-uniF015:before {
+	content: "\F015";
+}
+.icon-uniF016:before {
+	content: "\F016";
+}
+.icon-uniF017:before {
+	content: "\F017";
+}
+.icon-uniF018:before {
+	content: "\F018";
+}
+.icon-uniF019:before {
+	content: "\F019";
+}
+.icon-uniF020:before {
+	content: "\F020";
+}
+.icon-uniF021:before {
+	content: "\F021";
+}
+.icon-uniF022:before {
+	content: "\F022";
+}
+.icon-uniF023:before {
+	content: "\F023";
+}
+.icon-uniF024:before {
+	content: "\F024";
+}
+.icon-uniF025:before {
+	content: "\F025";
+}
+.icon-uniF026:before {
+	content: "\F026";
+}
+.icon-uniF027:before {
+	content: "\F027";
+}
+.icon-uniF028:before {
+	content: "\F028";
+}
+.icon-uniF029:before {
+	content: "\F029";
+}
+.icon-uniF030:before {
+	content: "\F030";
+}
+.icon-uniF031:before {
+	content: "\F031";
+}
+.icon-uniF032:before {
+	content: "\F032";
+}
+.icon-uniF033:before {
+	content: "\F033";
+}
+.icon-uniF034:before {
+	content: "\F034";
+}
+.icon-uniF035:before {
+	content: "\F035";
+}
+.icon-uniF036:before {
+	content: "\F036";
+}
+.icon-uniF037:before {
+	content: "\F037";
+}
+.icon-uniF038:before {
+	content: "\F038";
+}
+.icon-uniF039:before {
+	content: "\F039";
+}
+.icon-uniF040:before {
+	content: "\F040";
+}
+.icon-uniF041:before {
+	content: "\F041";
+}
+.icon-uniF042:before {
+	content: "\F042";
+}
+.icon-uniF043:before {
+	content: "\F043";
+}
+.icon-uniF044:before {
+	content: "\F044";
+}
+.icon-uniF045:before {
+	content: "\F045";
+}
+.icon-uniF046:before {
+	content: "\F046";
+}
+.icon-uniF047:before {
+	content: "\F047";
+}
+.icon-uniF048:before {
+	content: "\F048";
+}
+.icon-uniF049:before {
+	content: "\F049";
+}
+.icon-uniF050:before {
+	content: "\F050";
+}
+.icon-uniF051:before {
+	content: "\F051";
+}
+.icon-uniF052:before {
+	content: "\F052";
+}
+.icon-uniF053:before {
+	content: "\F053";
+}
+.icon-uniF054:before {
+	content: "\F054";
+}
+.icon-uniF055:before {
+	content: "\F055";
+}
+.icon-uniF056:before {
+	content: "\F056";
+}
+.icon-uniF057:before {
+	content: "\F057";
+}
+.icon-uniF058:before {
+	content: "\F058";
+}
+.icon-uniF059:before {
+	content: "\F059";
+}
+.icon-uniF060:before {
+	content: "\F060";
+}
+.icon-uniF061:before {
+	content: "\F061";
+}
+.icon-uniF062:before {
+	content: "\F062";
+}
+.icon-uniF063:before {
+	content: "\F063";
+}
+.icon-uniF064:before {
+	content: "\F064";
+}
+.icon-uniF065:before {
+	content: "\F065";
+}
+.icon-uniF067:before {
+	content: "\F067";
+}
+.icon-uniF068:before {
+	content: "\F068";
+}
+.icon-uniF069:before {
+	content: "\F069";
+}
+.icon-uniF070:before {
+	content: "\F070";
+}
+.icon-uniF071:before {
+	content: "\F071";
+}
+.icon-uniF072:before {
+	content: "\F072";
+}
+.icon-uniF073:before {
+	content: "\F073";
+}
+.icon-uniF074:before {
+	content: "\F074";
+}
+.icon-uniF075:before {
+	content: "\F075";
+}
+.icon-uniF076:before {
+	content: "\F076";
+}
+.icon-uniF077:before {
+	content: "\F077";
+}
+.icon-uniF078:before {
+	content: "\F078";
+}
+.icon-uniF079:before {
+	content: "\F079";
+}
+.icon-uniF080:before {
+	content: "\F080";
+}
+.icon-uniF081:before {
+	content: "\F081";
+}
+.icon-uniF082:before {
+	content: "\F082";
+}
+.icon-uniF083:before {
+	content: "\F083";
+}
+.icon-uniF084:before {
+	content: "\F084";
+}
+.icon-uniF085:before {
+	content: "\F085";
+}
+.icon-uniF089:before {
+	content: "\F089";
+}
+.icon-uniF090:before {
+	content: "\F090";
+}
+.icon-uniF091:before {
+	content: "\F091";
+}
+.icon-uniF092:before {
+	content: "\F092";
+}
+.icon-uniF093:before {
+	content: "\F093";
+}
+.icon-uniF094:before {
+	content: "\F094";
+}
+.icon-uniF095:before {
+	content: "\F095";
+}
+.icon-uniF096:before {
+	content: "\F096";
+}
+.icon-uniF097:before {
+	content: "\F097";
+}
+.icon-uniF098:before {
+	content: "\F098";
+}
+.icon-uniF099:before {
+	content: "\F099";
+}
+.icon-uniF100:before {
+	content: "\F100";
+}
+.icon-uniF101:before {
+	content: "\F101";
+}
+.icon-uniF102:before {
+	content: "\F102";
+}
+.icon-uniF103:before {
+	content: "\F103";
+}
+.icon-uniF104:before {
+	content: "\F104";
+}
+.icon-uniF105:before {
+	content: "\F105";
+}
+.icon-uniF106:before {
+	content: "\F106";
+}
+.icon-uniF107:before {
+	content: "\F107";
+}
+.icon-uniF108:before {
+	content: "\F108";
+}
+.icon-uniF109:before {
+	content: "\F109";
+}
+.icon-uniF110:before {
+	content: "\F110";
+}
+.icon-uniF111:before {
+	content: "\F111";
+}
+.icon-uniF112:before {
+	content: "\F112";
+}
+.icon-uniF113:before {
+	content: "\F113";
+}
+.icon-uniF114:before {
+	content: "\F114";
+}
+.icon-uniF115:before {
+	content: "\F115";
+}
+.icon-uniF116:before {
+	content: "\F116";
+}
+.icon-uniF117:before {
+	content: "\F117";
+}
+.icon-uniF118:before {
+	content: "\F118";
+}
+.icon-uniF119:before {
+	content: "\F119";
+}
+.icon-uniF120:before {
+	content: "\F120";
+}
+.icon-uniF121:before {
+	content: "\F121";
+}
+.lang-ko {
+    word-break: keep-all;
+}
