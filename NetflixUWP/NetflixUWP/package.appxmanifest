@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
+  <Identity Name="99c75598-af8a-4a13-a144-6ea59b690e91" Version="1.0.0.0" Publisher="CN=Mohsens22" />
+  <mp:PhoneIdentity PhoneProductId="99c75598-af8a-4a13-a144-6ea59b690e91" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Properties>
+    <DisplayName>Netflix</DisplayName>
+    <PublisherDisplayName>Mohsens22</PublisherDisplayName>
+    <Logo>images\package\StoreLogo.50x50.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" StartPage="default.html">
+      <uap:VisualElements BackgroundColor="#000000" Description="Netflix" DisplayName="Netflix" Square150x150Logo="images\package\Square.150x150.png" Square44x44Logo="images\package\Square.44x44.png">
+        <uap:DefaultTile Square310x310Logo="images\package\Square.310x310.png" Square71x71Logo="images\package\Square.71x71.png" Wide310x150Logo="images\package\Wide.310x150.png">
+        </uap:DefaultTile>
+        <uap:SplashScreen BackgroundColor="#000000" Image="images\package\SplashScreen.620x300.png" />
+      </uap:VisualElements>
+      <Extensions>
+        <uap:Extension Category="windows.search" />
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="netflix" />
+        </uap:Extension>
+        <Extension Category="windows.backgroundTasks" StartPage="js\resumeBackgroundDownloads.js">
+          <BackgroundTasks>
+            <Task Type="general" />
+            <Task Type="systemEvent" />
+          </BackgroundTasks>
+        </Extension>
+      </Extensions>
+      <uap:ApplicationContentUriRules>
+        <uap:Rule Match="https://netflix.com" Type="include" WindowsRuntimeAccess="none" />
+        <uap:Rule Match="https://*.netflix.com" Type="include" WindowsRuntimeAccess="none" />
+        <uap:Rule Match="https://*.test.netflix.com" Type="include" WindowsRuntimeAccess="none" />
+        <uap:Rule Match="https://*.stage.netflix.com" Type="include" WindowsRuntimeAccess="none" />
+      </uap:ApplicationContentUriRules>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <Capability Name="internetClientServer" />
+    <Capability Name="privateNetworkClientServer" />
+  </Capabilities>
+</Package>

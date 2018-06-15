@@ -40,7 +40,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AppxManifest.xml" />
     <Content Include="default.html" />
     <Content Include="fonts\HandsetSansKufiArabic-Bold.ttf" />
     <Content Include="fonts\HandsetSansKufiArabic-Bold.woff" />
@@ -96,6 +95,7 @@
     <Content Include="images\package\Wide.310x150.scale-400.png" />
     <Content Include="js\resumeBackgroundDownloads.js" />
     <Content Include="js\SignUpBridge.js" />
+    <None Include="NetflixUWP_TemporaryKey.pfx" />
     <Content Include="obj\app-ltr.css" />
     <Content Include="obj\app-rtl.css" />
     <Content Include="obj\app.css" />
@@ -110,6 +110,11 @@
   <ItemGroup>
     <Folder Include="bin\Debug\" />
     <Folder Include="bld\Debug\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>ab54dea8-d65f-4593-a8b2-4df38758db93</ProjectGuid>
@@ -128,6 +133,13 @@
     <MinimumVisualStudioVersion>$(VersionNumberMajor).$(VersionNumberMinor)</MinimumVisualStudioVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <PackageCertificateKeyFile>NetflixUWP_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
+    <AppInstallerUpdateFrequency>1</AppInstallerUpdateFrequency>
+    <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
+    <PackageCertificateThumbprint>A25656E820E50CF3463BBCF3312DDDBA8E5F9F1F</PackageCertificateThumbprint>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
