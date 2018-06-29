@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="99c75598-af8a-4a13-a144-6ea59b690e91" Version="1.0.0.0" Publisher="CN=Mohsens22" />
+  <Identity Name="99c75598-af8a-4a13-a144-6ea59b690e91-2" Version="6.69.295.0" Publisher="CN=Mohsens22" />
   <mp:PhoneIdentity PhoneProductId="99c75598-af8a-4a13-a144-6ea59b690e91" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Netflix</DisplayName>
