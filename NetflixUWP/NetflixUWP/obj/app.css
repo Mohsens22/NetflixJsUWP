@@ -1487,6 +1487,101 @@ h1.downloads-page-title {
     opacity: 0;
 }
 
+/*
+    Match the placement of the elements between Profile Gate and Profile Management.
+    Use flex-basis instead of margin to ensure consistent placement across the views
+
+    Profile Gate          Profile Management
+
+    +---------+           +---------+
+    |         |           |         |
+    | List    |           | Details |
+    |         |           |         |
+    |         |           |         |
+    |         |           |         |
+    +---------+           +---------+
+
+*/
+
+.profile-management-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-details {
+    display: flex;
+    flex-basis: 40vh;
+
+    /* Profile edit pages have titles in the header. Use margin-top to visually align the content */
+    margin-top: calc(26px + 10vh);
+}
+
+.profile-details .profile-icon-wrapper {
+    min-height: 100px;
+    min-width: 100px;
+    line-height: 0;
+    background-color: #808080;
+    position: relative;
+}
+
+.profile-details .profile-icon-wrapper .change-icon-button {
+    position: absolute;
+    bottom: 5px;
+    font-size: 30px;
+}
+
+.profile-details .avatars-list-anchor {
+    position: relative;
+}
+
+.profile-management-page .profile-metadata-form {
+    position: relative;
+}
+
+.profile-metadata-form .profile-input-text {
+    color: #FFFFFF;
+    background-color: transparent;
+    min-width: 250px;
+    font-size: 16px;
+    margin-top: 0;
+}
+
+.profile-metadata-form .validation-error {
+    position: absolute;
+    color: #e67c21;
+}
+
+/*.profile-management-page .profile-edit-error {
+    flex-basis: 10vh;
+    color: var(--error-color);
+}*/
+
+.profile-management-page .win-button.win-button-primary {
+    background-color: #E50914;
+}
+
+.profile-management-page .win-button.win-button-primary:disabled {
+    background-color: #242424;
+    color: #606060;
+}
+.avatar-wrapper {
+    width: 100px; /* Match the size of the avatar image to be loaded inside */
+}
+
+.avatars-list-wrapper {
+    position: absolute;
+    max-height: 0;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.avatars-list-anchor.active .avatars-list-wrapper {
+    max-height: 100vh;  /* Arbitrary height, is only used to allow a transition */
+}
+
 .profilegate {
     height: 100%;
     display: flex;
@@ -1504,7 +1599,8 @@ h1.downloads-page-title {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20vh;
+    flex-basis: 40vh;
+    align-content: flex-start;
 }
 
 .profile-container {
@@ -1533,6 +1629,21 @@ h1.downloads-page-title {
     color: #e5e5e5;
 }
 
+.profilegate .profile-container:focus .add-profile-icon,
+.profilegate .profile-container:hover .add-profile-icon {
+    background-color: #FFFFFF;
+}
+
+.add-profile-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    height: 100px;
+    width: 100px;
+    color: gray;
+}
+
 
 /* profile-count-1 and profile-count-2
    No need for a media query as it fits within the 320px min phone width
@@ -1556,9 +1667,37 @@ h1.downloads-page-title {
         -ms-grid-row-align: center;
             align-self: center;
         width: 264px;
-        margin-bottom: 0;        
+        margin-bottom: 0;
     }
 }
+
+/* Used to align and center the edit icon relative to the avatar image */
+.profile-image-wrapper {
+    position: relative;
+    line-height: 0;
+}
+
+.profile-editing-wrapper {
+    display: none;
+    pointer-events: none;
+}
+
+.profile-is-editing .profile-editing-wrapper {
+    display: flex;
+    pointer-events: all;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.35);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+.profile-edit-icon {
+    font-size: 32px;
+    position: absolute;
+}
+
 
 /* profile-count-4 */
 @media all and (max-width: 540px) {
@@ -1578,7 +1717,7 @@ h1.downloads-page-title {
         -ms-grid-row-align: center;
             align-self: center;
         width: 264px;
-        margin-bottom: 0;        
+        margin-bottom: 0;
     }
 }
 /* profile-count-5 */
@@ -1599,7 +1738,7 @@ h1.downloads-page-title {
         -ms-grid-row-align: center;
             align-self: center;
         width: 264px;
-        margin-bottom: 0;        
+        margin-bottom: 0;
     }
 }
 
@@ -4227,6 +4366,10 @@ progress {
 
 .icon-windows-cancel:before {
     content: "\E711";
+}
+
+.icon-windows-checkmark:before {
+    content: "\E10B";
 }
 
 .iconButtonSize {
